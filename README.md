@@ -39,4 +39,5 @@ Bot is recording it's activites and storing them into logfile.
 Bot is currently still under development, but should work just fine. Currently there aren't much things to be done in the future:
 - heavy code refactor (variables, czenglish code, repeated code blocks, hardcoded things/features, effectivity, ...)
 - reboot command
+- git command (url to this github)
 - admin specific commands (so everything is not so dependend on editing source code)
