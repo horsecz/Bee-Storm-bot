@@ -69,34 +69,71 @@ bot_tag = [
     'Netaguj mne ty zmrde!',
     'Co takhle tagnout toho pravyho a vcelu nechat byt?',
     'Nemas nic lepsiho na praci nez tagovat bezbranneho bota?',
-    '*activating ignore mode ...*'
+    '*activating ignore mode ...*', '*Bee Storm has left server.*',
+    'Udelej to znova a vymazu te z databaze :)',
+    'Jeste jednou me tagnes a kicknu te ze serveru.', 'Co potrebujes?', 'Ano?',
+    'Zrovna na necem delam, neslo by to pozdeji?'
 ]
 
-hello_cmd = ['Nazdar', 'Beemec', 'Cauec', 'Tahni']
+hello_cmd = [
+    'Nazdar', 'Beemec', 'Cauec', 'Tahni', 'Stormec', 'Zdar', 'Zdurburt',
+    'Dobry den', 'Ahoj', 'Hello from the other side'
+]
 tymovesrani = [
     'Uz zase seres?', 'Skvele!', 'Ja uz myslel, ze dnes nepujdes.',
-    'Doufam, ze na zachode ...', 'Zrovna jdu taky!'
+    'Doufam, ze na zachode ...', 'Zrovna jdu taky!',
+    'Podstatne vsak je ... stihls to?', 'Uz bylo na case.',
+    'Vzhuru do nebes sraniboardu!', 'Bude i dalsi?',
+    'Verim, ze mas na vic, dnes ta penta musi padnout!', 'At se dari!',
+    'Budu ti drzet palce.', 'Snad ti to pujde jako vcera.', 'Muzu se pridat?',
+    'Nemas tam misto i pro vcelu? Taky uz musim.',
+    'To je pekne, ale mas toaletak?',
+    '*Information acknowledged and sent to China successfully*',
+    '@TymoveSrani! Aha vlastne, takhle ne ...',
+    '<@&633366955855970343>! Nejsi v tom sam.', 'Preji mnoho uspechu!', 'Ok.',
+    'Nezapomen splachnout.',
+    'Kdyz mi nekdo rekl, ze dnes budou padat hovna, tak jsem fakt necekal, ze to myslel doslova.',
+    'Citim te az sem, a to jsem jen 1500 radku kodu v Pythonu.',
+    'Tak to lituju lidi blizko tebe.'
 ]
-doublekill = ['Tymovy dvojzarez!', 'Doublekill!', 'Tady se nekdo rozjizdi!']
+doublekill = [
+    'Tymovy dvojzarez!', 'Doublekill!', 'Tady se nekdo rozjizdi!',
+    'Jen tak dal!', 'Bude triple?',
+    'Jenom pokracuj, pentakill je jeste daleko.',
+    'Dnes mam dobrou naladu, takze jsem ti zapsal doublekill jako pentu. *kappaPeek*',
+    'Nezastavuj se, cim vic tim lip!', 'O dvojzarez vic ve $sranistats!',
+    'A je to tam!'
+]
 triplekill = [
-    'Tymovy trojzarez!', 'Triplekill!', 'Dneska skorujes!', 'Bude dnes penta?'
+    'Tymovy trojzarez!', 'Triplekill!', 'Dneska skorujes!', 'Bude dnes penta?',
+    'Bude quadra?', 'Pentakill blize nez si myslis! Nevzdavej se!',
+    'Three done, two more to go.', 'Party zacina!', 'Bomba!',
+    'Triplemaster soon!'
 ]
 quadrakill = [
     'Tymovy ctyrzarez!', 'Neboli te brisko?', 'Delas i neco jineho?',
-    'Jsi i jinde nez na zachode?'
+    'Jsi i jinde nez na zachode?', 'Jeste jednou a jsi mezi mistry.',
+    'Quadrakill!', 'Verim, ze dnes ta penta padne!',
+    'Jde ti to dobre, ale nezapomen delat i neco jineho.'
 ]
 pentakill = [
     'PENTAKILL!!!!!!!!!', 'Gratuluji k dnesnimu prujmu!',
-    'Blahopreji k dnesnimu velkemu uspechu!'
+    'Blahopreji k dnesnimu velkemu uspechu!',
+    'Pentakill! Vzhledem k rarite je mozne, ze jsi se zapsal do $pentaboard!',
+    'A mame tu dalsiho pentakillera!', 'A ted si dej pauzu.',
+    'Budeme slavit nebo jeste pokracujes?'
 ]
 hexakill = [
     'Neni cas zajit k lekari?', 'Nepotrebujes spunt?',
-    'Dnes tu zrejme nekdo pil projimadlo misto vody ...'
+    'Dnes tu zrejme nekdo pil projimadlo misto vody ...', 'HEXAKILL!!!',
+    'Takova udalost se nestava kazdy den! Toto musime oslavit!',
+    'Neuveritelna udalost!'
 ]
 legendarykill = [
     'Nemam volat 155?', 'Je cas si dat pauzu ...',
     'A mame tu noveho rekordmana!',
-    'Co takhle s tim pokracovat zitra? Ve dne se daji delat i jine veci ...'
+    'Co takhle s tim pokracovat zitra? Ve dne se daji delat i jine veci ...',
+    'Legendarni.'
 ]
 #########################
 
