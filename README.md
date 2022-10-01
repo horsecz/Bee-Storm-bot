@@ -20,6 +20,7 @@ Discord.py Bot specifically made for Annus Team (or: Bee Storm) Discord server. 
 - random fact every predefined hours at predefined time (300+ random facts)
 - daily message at noon (date, who has nameday or specific messages on Christmas, New Year's Eve)
 - new Year message
+- non-aggresive censure
 
 # Database
 
@@ -33,11 +34,8 @@ Bot is recording it's activites and storing them into logfile.
 - if bot is currently restoring database, logging is disabled
 - every time bot runs, bot run stat will be incremented
 - in case of some crash, bot may try to reboot itself up to 3 times
+- possibility of server message logging
 
 # TODO list
 
-Bot is currently still under development, but should work just fine. Currently there aren't much things to be done in the future:
-- heavy code refactor (variables, czenglish code, repeated code blocks, hardcoded things/features, effectivity, ...)
-- reboot command
-- git command (url to this github)
-- admin specific commands (so everything is not so dependend on editing source code)
+Bot is currently still under development, but should work just fine. Currently there may be some things to be done in the future, but all of them are not core and required things to run the bot, as the bot in the present state works correctly and as expected. If something should be done, it will be listed in issues.
