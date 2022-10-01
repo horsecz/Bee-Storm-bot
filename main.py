@@ -9,6 +9,9 @@ from datetime import datetime
 import pytz
 import sys
 
+# logovani zprav na serveru do souboru
+MESSAGE_LOGGING_ENABLED = True
+
 # automatic database recovery mode
 #   - v pripade ztraty db bot zacne automatickou obnovu dat/statistik z cele historie [kanal general v AT]
 #   - obnova trva vice jak hodinu, data se prubezne pridavaji jako pri beznych operacich, tudiz je mozne db bezne pouzivat i v prubehu obnovy
@@ -56,7 +59,9 @@ channel_karantena = 663452074893377546
 channel_kgb = 988402540343361606
 channel_general = 663806194598805504
 
-help_message = "** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Momentalne jsem jednoduchy, ale casem toho mozna budu umet vic. Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsrani       pocet srani od posledni aktualizace dat\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky (automaticka obnova musi byt zapnuta v kodu)```\n"
+help_message = "** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\nrandomfact    napise nahodny fakt\ngit    github bota (lze taky pouzit: $github)\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsrani       pocet srani od posledni aktualizace dat\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky```\n"
+
+text_github = "Muj zdrojovy kod je open source a najdes ho zde: https://github.com/horsecz/Bee-Storm-bot"
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='$', intents=intents, help_command=None)
@@ -134,6 +139,12 @@ legendarykill = [
     'A mame tu noveho rekordmana!',
     'Co takhle s tim pokracovat zitra? Ve dne se daji delat i jine veci ...',
     'Legendarni.'
+]
+antimod_text = [
+    'Takova slova se tu nepouziva!', 'Okamzite si zklidni svuj slovnik.',
+    'Jazyk vyslovujici tyto nevhodne fraze muze byt brzy eliminovan!',
+    'Slovni spojeni takoveho druhu se zde nesmi pouzivat!',
+    'Prestan takto mluvit!', 'Jeste jednou a vymazu te z databaze. :-)'
 ]
 #########################
 
@@ -286,6 +297,16 @@ def log_print(text):
     log_time = timedata.strftime("%d/%m/%Y %H:%M.%S")
     with open('log.txt', 'a') as logfile:
         logfile.write("[" + log_time + "]: " + text + "\n")
+
+
+def message_log(channel, author, text):
+    if not MESSAGE_LOGGING_ENABLED:
+        return
+    timedata = datetime.now(timezone)
+    log_time = timedata.strftime("%d/%m/%Y %H:%M.%S")
+    with open('message_log.txt', 'a') as logfile:
+        logfile.write("[" + log_time + "] [#" + channel + "] " + author +
+                      " <<'" + text + "'>>\n")
 
 
 def getBotRuntimeString():
@@ -906,6 +927,8 @@ async def on_ready():
     log_print('[INIT] Random facts loaded (' + str(len(random_facts)) + ").")
     start_periods()
     log_print('[INIT] All loop/periodical events started.')
+    if MESSAGE_LOGGING_ENABLED:
+        log_print("[INIT] Message logging into 'message_log.txt' file enabled")
     if not (DEVMODE):
         await messageToChannel(
             random.choice([
@@ -922,6 +945,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    message_log(message.channel.name, str(message.author), message.content)
     if message.author == bot.user:
         return
 
@@ -938,11 +962,6 @@ async def on_message(message):
     if '<@!1023637883283841094>' in message.content or '<@1023637883283841094>' in message.content:
         await message.reply(random.choice(bot_tag))
         countTagy()
-
-    # stormed
-    #if '<@!484312328204976129>' in message.content or '<@484312328204976129>' in message.content:
-    #    await message.reply('Jak se opovazujes tagovat boha?!')
-    #    countTagy()
 
     # tymoveSrani
     if '<@&633366955855970343>' in message.content:
@@ -1009,6 +1028,8 @@ async def on_message(message):
         if 'gde body' in message.content or 'gdebody' in message.content:
             await message.channel.send('body nigde')
         await bot.process_commands(message)
+        if 'nazi mods' in message.content or 'nazi admin' in message.content or 'bad mods' in message.content:
+            await message.reply(random.choice(antimod_text))
 
 
 @bot.event
@@ -1038,6 +1059,16 @@ async def on_command_error(ctx, error):
 #######################
 
 # Prikazy
+
+
+@bot.command()
+async def github(ctx):
+    await ctx.reply(text_github)
+
+
+@bot.command()
+async def git(ctx):
+    await ctx.reply(text_github)
 
 
 @bot.command(pass_context=True)
@@ -1331,6 +1362,12 @@ async def birthday(ctx, *args):
 
 
 @bot.command()
+async def randomfact(ctx):
+    global random_facts
+    await ctx.reply(random.choice(random_facts))
+
+
+@bot.command()
 @commands.is_owner()
 async def shutdown(ctx):
     global proper_shutdown
@@ -1365,21 +1402,13 @@ async def shutdown(ctx):
 async def refreshfacts(ctx):
     global random_facts_count
     old_cnt = random_facts_count
-    new_cnt = random_facts_count - old_cnt
-    log_print('[RELOAD] Random facts reloaded by admin. (new: ' +
-              str(new_cnt) + ")")
     async with ctx.typing():
         randfacts_load()
+        new_cnt = random_facts_count - old_cnt
+        log_print('[RELOAD] Random facts reloaded by admin. (new: ' +
+                  str(new_cnt) + ")")
         channel = bot.get_channel(channel_kgb)
-        change_text = ""
-        if (old_cnt < random_facts_count):
-            change_text = "Bylo pridano " + str(new_cnt) + " faktu."
-        elif (old_cnt > random_facts_count):
-            change_text = "Faktu je o " + str(abs(new_cnt)) + " mene."
-        else:
-            change_text = "Pocet faktu se nezmenil."
-        await channel.send("Seznam nahodnych faktu se aktualizoval. " +
-                           change_text)
+        await channel.send("Seznam nahodnych faktu byl aktualizovan. ")
 
 
 @shutdown.error
