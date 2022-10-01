@@ -1323,6 +1323,28 @@ async def shutdown(ctx):
 #        await ctx.reply("Restart kompletni!")
 
 
+@bot.command()
+@commands.is_owner()
+async def refreshfacts(ctx):
+    global random_facts_count
+    old_cnt = random_facts_count
+    new_cnt = random_facts_count - old_cnt
+    log_print('[RELOAD] Random facts reloaded by admin. (new: ' +
+              str(new_cnt) + ")")
+    async with ctx.typing():
+        randfacts_load()
+        channel = bot.get_channel(channel_kgb)
+        change_text = ""
+        if (old_cnt < random_facts_count):
+            change_text = "Bylo pridano " + str(new_cnt) + " faktu."
+        elif (old_cnt > random_facts_count):
+            change_text = "Faktu je o " + str(abs(new_cnt)) + " mene."
+        else:
+            change_text = "Pocet faktu se nezmenil."
+        await channel.send("Seznam nahodnych faktu se aktualizoval. " +
+                           change_text)
+
+
 @shutdown.error
 async def shutdown_error(ctx, error):
     if isinstance(error, commands.NotOwner):
@@ -1333,6 +1355,13 @@ async def shutdown_error(ctx, error):
 #async def reboot_error(ctx, error):
 #    if isinstance(error, commands.NotOwner):
 #        await ctx.send("Pouze muj vlastnik me muze restartovat prikazem.")
+
+
+@refreshfacts.error
+async def refreshfacts_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send(
+            "Pouze muj vlastnik muze aktualizovat seznam nahodnych faktu.")
 
 
 # $reminder {add/remove/list/syntax} {{add: day}{remove: id/all}} {{add:month}[remove: id]} [year] [hour] [minute] [{text/text:} [...]]
