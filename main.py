@@ -20,12 +20,17 @@ DB_AUTO_RECOVERY = True
 #  - nevypisuje pravidelne zpravy do #general
 #  - nezapisuje log_print do souboru
 #  - neinkrementuje "bot_run" statistiku (pouziva se v logu)
-#
 # pouziti:  [na zivem serveru, na lokalnim neni duvod]
 #  pri zacatku developmentu setnout na True, aby nevypisoval zpravy pri restartech,
 #  po dokonceni (pred finalnim restartem a zacatkem normalniho behu) vratit na False,
 #  zaroven nezapomenout na switch last_update_message
 DEVMODE = False
+
+# mention-tag ownera pri spustemi v pripade ze dojde k neocekavanemu restartu
+RESTART_MENTION = False
+
+# ID ownera
+OWNER_ID = 591643151668871168
 
 # zprava po vyvoji, ktera se prida k Hello po spusteni a oznami update - progress, news
 # development_finished urcite zda se vypise update zprava (1) nebo bezna (0)
@@ -35,8 +40,13 @@ DEVMODE = False
 #    ale napriklad hosting (replit) -- oznaci admina
 development_finished = 0
 last_update_message = "$reminder - pripominky v dany cas, automaticka obnova databaze-statistik v pripade ztraty dat, automaticky restart v pripade padu bota limitovan na 3 pokusy"
+
 if development_finished != 1:
-    last_update_message = "zadne zmeny, tento restart nebyl proveden adminem [pravdepodobny problem na hostingu]` <@!591643151668871168> `how are you?"
+    if RESTART_MENTION:
+        last_update_message = "zadne zmeny, tento restart nebyl proveden adminem - <@!" + str(
+            OWNER_ID) + ">?"
+    else:
+        last_update_message = "zadne zmeny, tento restart nebyl proveden adminem?"
 
 # zona casu v datech
 timezone = pytz.timezone("Europe/Prague")
@@ -204,7 +214,7 @@ def db_load():
             json_obj["reminders"] = []
             with open('db.json', 'w') as openfile:
                 json.dump(json_obj, openfile)
-        srani_list = json_obj["srani"]   
+        srani_list = json_obj["srani"]
         birthday_list = json_obj["birthday"]
         bot_data = json_obj["bot_data"]
         reminder_list = json_obj["reminders"]
@@ -294,6 +304,7 @@ def getSraniMember(name):
 
 
 def addSrani(name):
+    db_member_refresh()
     global srani_list
     for member in srani_list:
         if member["name"] == name:
@@ -570,7 +581,8 @@ async def databaseStatsRecovery():
                 multikill = True
                 legends = legends + 1
                 selected_list = history_members_legend
-                srani_member["legendary kills"] = srani_member["legendary kills"] + 1
+                srani_member[
+                    "legendary kills"] = srani_member["legendary kills"] + 1
             if multikill:
                 srani_member["multikills"] = srani_member["multikills"] + 1
                 for member in selected_list:
@@ -600,10 +612,8 @@ async def databaseStatsRecovery():
         if (msg_cnt == 250000):
             log_print('[DB] Stats recovery: prohledano 250 000 zprav')
 
-    
-    await message_channel.send(
-        '[Obnova statistik] Operace uspesne dokoncena.')
-  
+    await message_channel.send('[Obnova statistik] Operace uspesne dokoncena.')
+
     log_print('[DB] Stats recovery: Completed')
     DB_RECOVERY_RUNNING = False
     #log_print('Aktualizovany pocet zprav v generalu: ' + str(msg_cnt))
@@ -628,8 +638,6 @@ async def databaseStatsRecovery():
     #          str(history_members_hexa) + ">>>!")
     #log_print('Nove pocty legendary killu clenu serveru:\n !<<<' +
     #          str(history_members_legend) + ">>>!")
-
-    
 
 
 def checkSraniPosChanges(auth_name):
@@ -716,11 +724,13 @@ def recoveryBoot():
     global recovery_attempts
     recovery_attempts = recovery_attempts + 1
     if recovery_attempts > 2:
-        log_print("[RECOVERY] Too many attempts to reboot bot. Recovery failed.")
+        log_print(
+            "[RECOVERY] Too many attempts to reboot bot. Recovery failed.")
         sys.exit(1)
     try:
         log_print(
-            "[RECOVERY] Bot has crashed and is trying to start itself again. (attempt "+str(recovery_attempts)+")")
+            "[RECOVERY] Bot has crashed and is trying to start itself again. (attempt "
+            + str(recovery_attempts) + ")")
         bot.run(os.environ['TOKEN'])
     except Exception as e:
         log_print("[EXCEPTION] " + str(e))
@@ -742,8 +752,7 @@ def handleShutdown():
         proper_shutdown = False
         if (result != True):
             sys.exit(1)
-            
-        
+
 
 def addReminder(name, tag, text, datetime):
     global reminder_list
@@ -772,11 +781,14 @@ def addReminder(name, tag, text, datetime):
         user_reminder.append(date)
         user_reminder.append(id)
         reminder_list.append(user_reminder)
-        log_print('addReminder(...): member ' + name + ' added reminder ['+str(id)+'] on '+day+"/"+month+"/"+year+" at "+hour+":"+minute)
+        log_print('addReminder(...): member ' + name + ' added reminder [' +
+                  str(id) + '] on ' + day + "/" + month + "/" + year + " at " +
+                  hour + ":" + minute)
         db_update()
     except Exception as e:
-        log_print('[HANDLED EXCEPTION] '+str(e))
+        log_print('[HANDLED EXCEPTION] ' + str(e))
         return
+
 
 def getNewReminderID(name):
     global reminder_list
@@ -796,6 +808,7 @@ def getNewReminderID(name):
         i = i + 1
     return cnt
 
+
 def getReminderCountOfUser(name):
     global reminder_list
     cnt = 0
@@ -806,6 +819,7 @@ def getReminderCountOfUser(name):
             used_ids.append(people[3])
     return cnt
 
+
 def getReminderListOfUser(name):
     global reminder_list
     reminders = []
@@ -814,8 +828,9 @@ def getReminderListOfUser(name):
             if people[0][0] == name:
                 reminders.append(people)
     except Exception as e:
-        log_print('[HANDLED EXCEPTION] '+str(e))
+        log_print('[HANDLED EXCEPTION] ' + str(e))
     return reminders
+
 
 def removeReminder(name, id):
     global reminder_list
@@ -823,12 +838,14 @@ def removeReminder(name, id):
         if people_data[0][0] == name and int(people_data[3]) == int(id):
             reminder_list.remove(people_data)
             db_update()
-            log_print('removeReminder(...): removed reminder '+str(id)+' of user ' + name)
+            log_print('removeReminder(...): removed reminder ' + str(id) +
+                      ' of user ' + name)
             return True
-    log_print('removeReminder(...): reminder '+ str(id) +' of member ' + name + ' was not found')
+    log_print('removeReminder(...): reminder ' + str(id) + ' of member ' +
+              name + ' was not found')
     return False
 
-      
+
 #########################
 
 # Eventy
@@ -880,10 +897,15 @@ async def on_message(message):
         await message.reply(
             "Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]")
 
-    # bot tag
+    # bot i
     if '<@!1023637883283841094>' in message.content or '<@1023637883283841094>' in message.content:
         await message.reply(random.choice(bot_tag))
         countTagy()
+
+    # stormed
+    #if '<@!484312328204976129>' in message.content or '<@484312328204976129>' in message.content:
+    #    await message.reply('Jak se opovazujes tagovat boha?!')
+    #    countTagy()
 
     # tymoveSrani
     if '<@&633366955855970343>' in message.content:
@@ -1007,7 +1029,9 @@ async def srani(ctx):
                    last_counted_datetime.strftime("%d.%m.%Y") + "): " +
                    str(last_counted_all_poops_count))
     if DB_RECOVERY_RUNNING:
-        await ctx.send("Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.")
+        await ctx.send(
+            "Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna."
+        )
 
 
 @bot.command()
@@ -1032,7 +1056,9 @@ async def sraniboard(ctx):
     else:
         await ctx.send("Nikdo jeste nesral.")
     if DB_RECOVERY_RUNNING:
-        await ctx.send("Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.")
+        await ctx.send(
+            "Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna."
+        )
 
 
 @bot.command()
@@ -1065,7 +1091,9 @@ async def sranistats(ctx):
                    ".\n\n Multikilly: " + multi + "\n Pentakilly: " + pentas +
                    "\n Hexakilly: " + hexas + "\n Legendary killy: " + legend)
     if DB_RECOVERY_RUNNING:
-        await ctx.send("Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.")
+        await ctx.send(
+            "Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna."
+        )
 
 
 @bot.command()
@@ -1129,7 +1157,9 @@ async def pentaboard(ctx):
     else:
         await ctx.send("Nikdo jeste neudelal pentakill.")
     if DB_RECOVERY_RUNNING:
-        await ctx.send("Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.")
+        await ctx.send(
+            "Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna."
+        )
 
 
 @bot.command()
@@ -1150,7 +1180,9 @@ async def multiboard(ctx):
     else:
         await ctx.send("Nikdo jeste nezvladl dat DoubleKill nebo vetsi.")
     if DB_RECOVERY_RUNNING:
-        await ctx.send("Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.")
+        await ctx.send(
+            "Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna."
+        )
 
 
 # vypise zapsane narozeniny vsech clenu
@@ -1310,25 +1342,32 @@ async def reminder(ctx, *args):
     auth_name = str(ctx.author)
     tag = str(ctx.author.id)
     if len(args) == 0:
-        await ctx.send("Prikaz musi mit alespon 1 argument. Zkus `$reminder syntax`!")
+        await ctx.send(
+            "Prikaz musi mit alespon 1 argument. Zkus `$reminder syntax`!")
         return
     if args[0] == "syntax":
-        await ctx.send("Syntax prikazu:\n`$reminder {add/remove/list/syntax} {{add: day}{remove: id/all}} {{add:month}[remove: id]} [year] [hour] [minute] [{text/text:} [...]]`\n\n**Pouziti:**\n```C\n$reminder syntax    tato zprava\n$reminder list    seznam vsech oznameni uzivatele\n$reminder remove all    smaze vsechny reminders uzivatele\n$reminder remove id [id oznameni]    smaze konkretni reminder\n$reminder add {day} {month} [[year] [hour] [minute]] [{text/text:} [...]]    prida oznameni v dany den\n  neuvedeny rok se doplni na soucasny\n  neuvedena hodina se doplni na 12\n  neuvedena minuta se doplni na 00\n  neuvedeny text se doplni na standardni\n  text je vzdycky posledni argument (napr. $reminder add 20 12 2022 text: Konec posledniho semestru na fitu)\n  klicove slovo 'text' nebo 'text:' je nutne napsat pred textem pripominky, pokud je uveden```")
+        await ctx.send(
+            "Syntax prikazu:\n`$reminder {add/remove/list/syntax} {{add: day}{remove: id/all}} {{add:month}[remove: id]} [year] [hour] [minute] [{text/text:} [...]]`\n\n**Pouziti:**\n```C\n$reminder syntax    tato zprava\n$reminder list    seznam vsech oznameni uzivatele\n$reminder remove all    smaze vsechny reminders uzivatele\n$reminder remove id [id oznameni]    smaze konkretni reminder\n$reminder add {day} {month} [[year] [hour] [minute]] [{text/text:} [...]]    prida oznameni v dany den\n  neuvedeny rok se doplni na soucasny\n  neuvedena hodina se doplni na 12\n  neuvedena minuta se doplni na 00\n  neuvedeny text se doplni na standardni\n  text je vzdycky posledni argument (napr. $reminder add 20 12 2022 text: Konec posledniho semestru na fitu)\n  klicove slovo 'text' nebo 'text:' je nutne napsat pred textem pripominky, pokud je uveden```"
+        )
         return
     elif args[0] == "list":
         text = ""
         reminders = getReminderListOfUser(auth_name)
         if len(reminders) == 0:
-            await ctx.send("Uzivatel "+auth_name+" nema nastavene zadne upominky.")
+            await ctx.send("Uzivatel " + auth_name +
+                           " nema nastavene zadne upominky.")
             return
         else:
-          for reminder in reminders:
-              id = reminder[3]
-              remind_text = reminder[1]
-              date = reminder[2][0] + "/" + reminder[2][1] + "/" + reminder[2][2] + " ("+reminder[2][3]+":"+reminder[2][4]+")"
-              text = text + date + " **ID "+str(id)+"**: "+remind_text + "\n"
-          await ctx.send("** **\n**Seznam upominek pro uzivatele "+auth_name+"**\n\n" + text)
-          return
+            for reminder in reminders:
+                id = reminder[3]
+                remind_text = reminder[1]
+                date = reminder[2][0] + "/" + reminder[2][1] + "/" + reminder[
+                    2][2] + " (" + reminder[2][3] + ":" + reminder[2][4] + ")"
+                text = text + date + " **ID " + str(
+                    id) + "**: " + remind_text + "\n"
+            await ctx.send("** **\n**Seznam upominek pro uzivatele " +
+                           auth_name + "**\n\n" + text)
+            return
     elif args[0] == "remove":
         if len(args) == 2:  # all
             if args[1] == "all":
@@ -1339,17 +1378,22 @@ async def reminder(ctx, *args):
                         if reminder[0][0] == auth_name:
                             temp_reminders_list.append(reminder)
                             cnt = cnt + 1
-                      
+
                     for reminder in temp_reminders_list:
                         reminder_list.remove(reminder)
                     db_update()
-                    await ctx.send("Smazany vsechny ("+str(cnt)+") pripominky uzivatele "+auth_name)
+                    await ctx.send("Smazany vsechny (" + str(cnt) +
+                                   ") pripominky uzivatele " + auth_name)
                     return
                 else:
-                    await ctx.send("Nic nebylo smazano - zadne pripominky uzivatele "+auth_name+" nenalazeny.")
-                    return  
+                    await ctx.send(
+                        "Nic nebylo smazano - zadne pripominky uzivatele " +
+                        auth_name + " nenalazeny.")
+                    return
             else:
-                await ctx.send("Spatne pouziti $reminder remove - pri dvou argumentech ocekavam pouze `all`.")
+                await ctx.send(
+                    "Spatne pouziti $reminder remove - pri dvou argumentech ocekavam pouze `all`."
+                )
                 return
         elif len(args) == 3:  # id [id]
             if args[1] == "id":
@@ -1363,28 +1407,37 @@ async def reminder(ctx, *args):
                     nan_exception = True
                 finally:
                     if nan_exception == True:
-                        await ctx.send("Pri $reminder remove id ocekavam jako posledni argument cele cislo.")
+                        await ctx.send(
+                            "Pri $reminder remove id ocekavam jako posledni argument cele cislo."
+                        )
                         return
                     for reminders in reminder_list:
-                        if (reminders[0][0] == auth_name) and (reminders[3] == id):
+                        if (reminders[0][0] == auth_name) and (reminders[3]
+                                                               == id):
                             reminder_list.remove(reminders)
                             found = True
                             break
                     if found:
-                        await ctx.send("Pripominka (id "+str(id)+") uspesna smazana.")
+                        await ctx.send("Pripominka (id " + str(id) +
+                                       ") uspesna smazana.")
                         return
                     else:
-                        await ctx.send("Pripominka s ID "+str(id)+" nenalezena!")
+                        await ctx.send("Pripominka s ID " + str(id) +
+                                       " nenalezena!")
                         return
             else:
-                await ctx.send("Spatne pouziti $reminder remove - pri trech argumentech ocekavam `id` a `[id].`")
+                await ctx.send(
+                    "Spatne pouziti $reminder remove - pri trech argumentech ocekavam `id` a `[id].`"
+                )
                 return
         else:
-            await ctx.send("Spatny pocet argumentu pro prikaz $reminder remove.")
+            await ctx.send(
+                "Spatny pocet argumentu pro prikaz $reminder remove.")
             return
     elif args[0] == "add":
         if len(args) < 3:
-            await ctx.send("Spatny pocet argumentu pro $reminder add. Minimum: 3")
+            await ctx.send(
+                "Spatny pocet argumentu pro $reminder add. Minimum: 3")
             return
         else:
             nan_exception = False
@@ -1405,10 +1458,12 @@ async def reminder(ctx, *args):
                 except:
                     nan_exception = True
             if nan_exception:
-                await ctx.send("Argumenty urcujici den, mesic, rok, hodina a minuta musi byt celym cislem!")
+                await ctx.send(
+                    "Argumenty urcujici den, mesic, rok, hodina a minuta musi byt celym cislem!"
+                )
                 return
 
-            year_except = False  
+            year_except = False
             hour_except = False
             try:
                 year = int(args[3])
@@ -1433,41 +1488,60 @@ async def reminder(ctx, *args):
                         minute = 0
                         i = 5
 
-            if (len(args) > 3 and len(args) > i+1):
+            if (len(args) > 3 and len(args) > i + 1):
                 if args[i] == "text" or args[i] == "text:":
                     i = i + 1
                     text = ""
-                    while(i < len(args)):
+                    while (i < len(args)):
                         text = text + ' ' + args[i]
                         i = i + 1
                 else:
-                    await ctx.send("Po datu musi nasledovat argument s klicovym slovem `text` nebo `text:`")
+                    await ctx.send(
+                        "Po datu musi nasledovat argument s klicovym slovem `text` nebo `text:`"
+                    )
                     return
             try:
-                reminder_date = datetime(day=day, month=month, year=year, hour=hour, minute=minute, tzinfo=timezone)
+                reminder_date = datetime(day=day,
+                                         month=month,
+                                         year=year,
+                                         hour=hour,
+                                         minute=minute,
+                                         tzinfo=timezone)
             except:
                 date_exception = True
             if date_exception:
                 await ctx.send("Neplatne datum pripominky.")
                 return
-            if (year < today.year) or (month < today.month and year == today.year) or (day < today.day and month == today.month and year == today.year):
+            if (year < today.year) or (
+                    month < today.month
+                    and year == today.year) or (day < today.day
+                                                and month == today.month
+                                                and year == today.year):
                 await ctx.send("Pripominka nesmi byt v minulosti.")
                 return
-            if (hour < today.hour and day == today.day and month == today.month and year == today.year):
-                await ctx.send("Pripominka k dnesnimu dni muze byt pouze v nasledujicich hodinach!")
+            if (hour < today.hour and day == today.day and month == today.month
+                    and year == today.year):
+                await ctx.send(
+                    "Pripominka k dnesnimu dni muze byt pouze v nasledujicich hodinach!"
+                )
                 return
             if hour == today.hour and day == today.day and month == today.month and year == today.year:
                 if minute < today.minute + 1:
-                    await ctx.send("Pripominka k dnesnimu dni muze byt nejdrive minutu od soucasneho casu.")
+                    await ctx.send(
+                        "Pripominka k dnesnimu dni muze byt nejdrive minutu od soucasneho casu."
+                    )
                     return
 
             addReminder(auth_name, tag, text, reminder_date)
-            await ctx.send("Pripominka byla uspesne pridana. Upozorneni probehne "+reminder_date.strftime("%d.%m.%Y v %H:%M")+" v kanalu `#general`")
+            await ctx.send(
+                "Pripominka byla uspesne pridana. Upozorneni probehne " +
+                reminder_date.strftime("%d.%m.%Y v %H:%M") +
+                " v kanalu `#general`")
     else:
-        await ctx.send("Druhy argument musi byt `add`,`remove`,`list` nebo `syntax`!")
-          
-        
-      
+        await ctx.send(
+            "Druhy argument musi byt `add`,`remove`,`list` nebo `syntax`!")
+
+
 #################
 
 # pravidelne zpravy
@@ -1606,6 +1680,7 @@ async def new_year_message_prep_2():
         log_print('[TASKS.LOOP] new_year_message_prep_2: end of loops ')
         end_of_year = False
 
+
 @tasks.loop(seconds=30)
 async def reminders_check():
     global reminders_count_check
@@ -1613,18 +1688,26 @@ async def reminders_check():
     time_now = datetime.now(timezone)
     channel = bot.get_channel(channel_general)
     if reminders_count_check == 120:
-        log_print('[TASKS.LOOP] reminders_check: looped (once per hour)')
+        log_print(
+            '[TASKS.LOOP] reminders_check: looped (logged once per hour)')
     reminders_count_check = reminders_count_check + 1
     if reminders_count_check > 120:
         reminders_count_check = 0
     for reminder in reminder_list:
-        if (int(time_now.day) == int(reminder[2][0]) and int(time_now.month) == int(reminder[2][1]) and int(time_now.year) == int(reminder[2][2]) and int(time_now.hour) == int(reminder[2][3])):
+        if (int(time_now.day) == int(reminder[2][0])
+                and int(time_now.month) == int(reminder[2][1])
+                and int(time_now.year) == int(reminder[2][2])
+                and int(time_now.hour) == int(reminder[2][3])):
             if (int(time_now.minute) == int(reminder[2][4])):
                 log_print('reminders_check: reminder activated')
-                await channel.send("Pripomenuti pro uzivatele <@!" + reminder[0][1] + ">: " + reminder[1])
+                await channel.send("Pripomenuti pro uzivatele <@!" +
+                                   reminder[0][1] + ">: " + reminder[1])
                 removeReminder(reminder[0][0], reminder[3])
-                log_print('reminders_check(): automatically removed completed reminder')
-    
+                log_print(
+                    'reminders_check(): automatically removed completed reminder'
+                )
+
+
 # bot run
 bot.run(os.environ['TOKEN'])
 handleShutdown()
