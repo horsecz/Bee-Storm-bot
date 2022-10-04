@@ -177,11 +177,9 @@ def start():
     global recovery_attempts
     global DB_EMPTY
     global DB_RECOVERY_RUNNING
-    global BOT_ACTIVITY_STRING
 
     DB_EMPTY = False
     DB_RECOVERY_RUNNING = False
-    BOT_ACTIVITY_STRING = "Ready! Try '$help' for commands list."
 
     timezone = pytz.timezone("Europe/Prague")
     now = datetime.now(timezone)
@@ -570,11 +568,9 @@ def load_svatky():
 async def databaseStatsRecovery():
     global srani_list
     global DB_RECOVERY_RUNNING
-    global BOT_ACTIVITY_STRING
 
     DB_RECOVERY_RUNNING = True
-    BOT_ACTIVITY_STRING = "Restoring database."
-    await changeBotActivity()
+    await changeBotActivity(discord.Status.idle, "Restoring database.")
 
     history_poops = 0
     msg_cnt = 0
@@ -681,8 +677,8 @@ async def databaseStatsRecovery():
 
     log_print('[DB] Stats recovery: Completed')
     DB_RECOVERY_RUNNING = False
-    BOT_ACTIVITY_STRING = "Ready! Try '$help' for commands list."
-    await changeBotActivity()
+    await changeBotActivity(discord.Status.online,
+                            "Ready! Try '$help' for commands list.")
     #log_print('Aktualizovany pocet zprav v generalu: ' + str(msg_cnt))
     #log_print('Aktualizovany TymoveSrani count: ' + str(history_poops))
     #log_print('2/3/4/5/6/7: ' + str(doubles) + "/" + str(triples) + "/" +
@@ -789,14 +785,13 @@ def updateBotRuns():
 async def recoveryBoot():
     global bot
     global recovery_attempts
-    global BOT_ACTIVITY_STRING
     recovery_attempts = recovery_attempts + 1
     if recovery_attempts > 2:
         log_print(
             "[RECOVERY] Too many attempts (3) to re-run bot mercifully. Attempting to restart 'replit' via killing it."
         )
-        BOT_ACTIVITY_STRING = "Disabled! Recovery failed."
-        await changeBotActivity()
+        await changeBotActivity(discord.Status.do_not_disturb,
+                                "Disabled! Recovery failed.")
         subprocess.run("kill", "1")
         sys.exit(1)
     try:
@@ -809,8 +804,8 @@ async def recoveryBoot():
         return False
 
     log_print("[RECOVERY] Recovery successful.")
-    BOT_ACTIVITY_STRING = "Ready in recovery mode! Try '$help'."
-    await changeBotActivity()
+    await changeBotActivity(discord.Status.online,
+                            "Ready in recovery mode! Try '$help'.")
     await handleShutdown()
     return True
 
@@ -920,11 +915,10 @@ def removeReminder(name, id):
     return False
 
 
-async def changeBotActivity():
-    global BOT_ACTIVITY_STRING
+async def changeBotActivity(status, string):
     global bot
-    activity = discord.Game(name=BOT_ACTIVITY_STRING)
-    await bot.change_presence(status=discord.Status.idle, activity=activity)
+    activity = discord.Game(name=string)
+    await bot.change_presence(status=status, activity=activity)
 
 
 #########################
@@ -975,7 +969,8 @@ async def on_ready():
             db_update()
     log_print('[INIT] Bot is ready for use')
     updateBotRuns()
-    await changeBotActivity()
+    await changeBotActivity(discord.Status.online,
+                            "Ready! Try '$help' for commands list.")
     if DB_AUTO_RECOVERY and DB_EMPTY:
         log_print('[DB] Automatic stats recovery started.')
         await databaseStatsRecovery()
@@ -1844,8 +1839,9 @@ async def reminders_check():
 try:
     bot.run(os.environ['TOKEN'])
 except:
-    BOT_ACTIVITY_STRING = "Disabled! (Auto-Recovery in progress)"
-    asyncio.run(changeBotActivity())
+    asyncio.run(
+        changeBotActivity(discord.Status.do_not_disturb,
+                          "Disabled! (Auto-Recovery in progress)"))
     log_print(
         "[RECOVERY] Exception raised while running bot - temporary ban. Restarting process ..."
     )
@@ -1855,6 +1851,9 @@ except:
                   str(bot_data["banned"]) + " times without any success.")
         log_print("[RECOVERY] Recovery failed. Exiting ...")
         bot_data["banned"] = 0
+        asyncio.run(
+            changeBotActivity(discord.Status.do_not_disturb,
+                              "Disabled! (Auto-Recovery failed)"))
         db_update()
         sys.exit(1)
 
