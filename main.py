@@ -177,9 +177,11 @@ def start():
     global recovery_attempts
     global DB_EMPTY
     global DB_RECOVERY_RUNNING
+    global BOT_ACTIVITY_STRING
 
     DB_EMPTY = False
     DB_RECOVERY_RUNNING = False
+    BOT_ACTIVITY_STRING = "Ready! Try '$help' for commands list."
 
     timezone = pytz.timezone("Europe/Prague")
     now = datetime.now(timezone)
@@ -568,8 +570,12 @@ def load_svatky():
 async def databaseStatsRecovery():
     global srani_list
     global DB_RECOVERY_RUNNING
+    global BOT_ACTIVITY_STRING
 
     DB_RECOVERY_RUNNING = True
+    BOT_ACTIVITY_STRING = "Restoring database."
+    await changeBotActivity()
+
     history_poops = 0
     msg_cnt = 0
 
@@ -675,6 +681,8 @@ async def databaseStatsRecovery():
 
     log_print('[DB] Stats recovery: Completed')
     DB_RECOVERY_RUNNING = False
+    BOT_ACTIVITY_STRING = "Ready! Try '$help' for commands list."
+    await changeBotActivity()
     #log_print('Aktualizovany pocet zprav v generalu: ' + str(msg_cnt))
     #log_print('Aktualizovany TymoveSrani count: ' + str(history_poops))
     #log_print('2/3/4/5/6/7: ' + str(doubles) + "/" + str(triples) + "/" +
@@ -778,14 +786,17 @@ def updateBotRuns():
         db_update()
 
 
-def recoveryBoot():
+async def recoveryBoot():
     global bot
     global recovery_attempts
+    global BOT_ACTIVITY_STRING
     recovery_attempts = recovery_attempts + 1
     if recovery_attempts > 2:
         log_print(
             "[RECOVERY] Too many attempts (3) to re-run bot mercifully. Attempting to restart 'replit' via killing it."
         )
+        BOT_ACTIVITY_STRING = "Disabled! Recovery failed."
+        await changeBotActivity()
         subprocess.run("kill", "1")
         sys.exit(1)
     try:
@@ -798,18 +809,20 @@ def recoveryBoot():
         return False
 
     log_print("[RECOVERY] Recovery successful.")
-    handleShutdown()
+    BOT_ACTIVITY_STRING = "Ready in recovery mode! Try '$help'."
+    await changeBotActivity()
+    await handleShutdown()
     return True
 
 
-def handleShutdown():
+async def handleShutdown():
     global proper_shutdown
     if (proper_shutdown):
         log_print("[SHUTDOWN] Bot has been shut down properly.")
         exit(0)
     else:
         log_print("[SHUTDOWN] Unexpected shutdown of bot.")
-        result = recoveryBoot()
+        result = await recoveryBoot()
         proper_shutdown = False
         if (result != True):
             sys.exit(1)
@@ -907,6 +920,13 @@ def removeReminder(name, id):
     return False
 
 
+async def changeBotActivity():
+    global BOT_ACTIVITY_STRING
+    global bot
+    activity = discord.Game(name=BOT_ACTIVITY_STRING)
+    await bot.change_presence(status=discord.Status.idle, activity=activity)
+
+
 #########################
 
 # Eventy
@@ -955,6 +975,7 @@ async def on_ready():
             db_update()
     log_print('[INIT] Bot is ready for use')
     updateBotRuns()
+    await changeBotActivity()
     if DB_AUTO_RECOVERY and DB_EMPTY:
         log_print('[DB] Automatic stats recovery started.')
         await databaseStatsRecovery()
@@ -1823,12 +1844,22 @@ async def reminders_check():
 try:
     bot.run(os.environ['TOKEN'])
 except:
+    BOT_ACTIVITY_STRING = "Disabled! (Auto-Recovery in progress)"
+    asyncio.run(changeBotActivity())
     log_print(
         "[RECOVERY] Exception raised while running bot - temporary ban. Restarting process ..."
     )
-    bot_data["banned"] = 1
+    bot_data["banned"] = bot_data["banned"] + 1
+    if bot_data["banned"] >= 10:
+        log_print("[RECOVERY] Process has been restarted " +
+                  str(bot_data["banned"]) + " times without any success.")
+        log_print("[RECOVERY] Recovery failed. Exiting ...")
+        bot_data["banned"] = 0
+        db_update()
+        sys.exit(1)
+
     db_update()
     subprocess.run("kill", "1")
     sys.exit(1)
 finally:
-    handleShutdown()
+    asyncio.run(handleShutdown())
