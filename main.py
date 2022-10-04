@@ -8,6 +8,7 @@ from collections import OrderedDict
 from datetime import datetime
 import pytz
 import sys
+import subprocess
 
 # logovani zprav na serveru do souboru
 MESSAGE_LOGGING_ENABLED = True
@@ -49,7 +50,7 @@ if development_finished != 1:
         last_update_message = "zadne zmeny, tento restart nebyl proveden adminem - <@!" + str(
             OWNER_ID) + ">?"
     else:
-        last_update_message = "zadne zmeny, tento restart nebyl proveden adminem?"
+        last_update_message = "zadne zmeny, tento restart nebyl proveden adminem"
 
 # zona casu v datech
 timezone = pytz.timezone("Europe/Prague")
@@ -255,7 +256,7 @@ def db_load():
             with open('db.json', 'w') as openfile:
                 json.dump(json_obj, openfile)
         if not "bot_data" in json_obj.keys():
-            json_obj["bot_data"] = {"bot_runs": 1}
+            json_obj["bot_data"] = {"bot_runs": 1, "banned": 0}
             with open('db.json', 'w') as openfile:
                 json.dump(json_obj, openfile)
         if not "reminders" in json_obj.keys():
@@ -783,7 +784,9 @@ def recoveryBoot():
     recovery_attempts = recovery_attempts + 1
     if recovery_attempts > 2:
         log_print(
-            "[RECOVERY] Too many attempts to reboot bot. Recovery failed.")
+            "[RECOVERY] Too many attempts (3) to re-run bot mercifully. Attempting to restart 'replit' via killing it."
+        )
+        subprocess.run("kill", "1")
         sys.exit(1)
     try:
         log_print(
@@ -930,12 +933,26 @@ async def on_ready():
     if MESSAGE_LOGGING_ENABLED:
         log_print("[INIT] Message logging into 'message_log.txt' file enabled")
     if not (DEVMODE):
-        await messageToChannel(
-            random.choice([
-                "Priletel ten nejlepsi bot na svete!", "Uz jsem zase tady!",
-                "Bee Storm bot je znovu pripraven k pouziti."
-            ]) + "\n(Posledni zmeny: `" + last_update_message + "`)",
-            channel_kgb)
+        if (bot_data["banned"] == 0):
+            await messageToChannel(
+                random.choice([
+                    "Priletel ten nejlepsi bot na svete!",
+                    "Uz jsem zase tady!",
+                    "Bee Storm bot je znovu pripraven k pouziti."
+                ]) + "\n(Posledni zmeny: `" + last_update_message + "`)",
+                channel_kgb)
+        else:
+            await messageToChannel(
+                random.choice([
+                    "Priletel ten nejlepsi bot na svete!",
+                    "Uz jsem zase tady!",
+                    "Bee Storm bot je znovu pripraven k pouziti."
+                ]) +
+                "\n(`Automaticke obnoveni behu pri vyjimce docasneho zakazu provozu (hosting problem).`)",
+                channel_kgb)
+            log_print('[RECOVERY] Recovery was successful.')
+            bot_data["banned"] = 0
+            db_update()
     log_print('[INIT] Bot is ready for use')
     updateBotRuns()
     if DB_AUTO_RECOVERY and DB_EMPTY:
@@ -953,7 +970,7 @@ async def on_message(message):
     srani_member = getSraniMember(author_name)
     change_check = None
     if (srani_member == None):
-        log_print("on_message: unknown member " + message.author +
+        log_print("on_message: unknown member " + str(message.author) +
                   " (UNKN_MEMB)")
         await message.reply(
             "Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]")
@@ -1643,13 +1660,12 @@ async def reminder(ctx, *args):
 
 
 # nahodny fakt kazde x h mezi 8-21 hodinou
-@tasks.loop(hours=7)
+@tasks.loop(hours=10)
 async def random_facts_messages():
     global DEVMODE
     time_now = datetime.now(timezone)
     log_print('[TASKS.LOOP] random_facts_messages: looped ')
-    if (int(time_now.hour) >= 8
-            and int(time_now.hour) <= 21) and not (DEVMODE):
+    if (int(time_now.hour) > 8 and int(time_now.hour) < 21) and not (DEVMODE):
         channel = bot.get_channel(channel_general)
         await channel.send(random.choice(random_facts))
 
@@ -1804,5 +1820,15 @@ async def reminders_check():
 
 
 # bot run
-bot.run(os.environ['TOKEN'])
-handleShutdown()
+try:
+    bot.run(os.environ['TOKEN'])
+except:
+    log_print(
+        "[RECOVERY] Exception raised while running bot - temporary ban. Restarting process ..."
+    )
+    bot_data["banned"] = 1
+    db_update()
+    subprocess.run("kill", "1")
+    sys.exit(1)
+finally:
+    handleShutdown()
