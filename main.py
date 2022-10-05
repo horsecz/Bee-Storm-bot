@@ -816,6 +816,9 @@ async def handleShutdown():
         log_print("[SHUTDOWN] Bot has been shut down properly.")
         exit(0)
     else:
+        await changeBotActivity(
+            discord.Status.do_not_disturb,
+            "Disabled! Cautious Auto-Recovery in progress.")
         log_print("[SHUTDOWN] Unexpected shutdown of bot.")
         result = await recoveryBoot()
         proper_shutdown = False
@@ -990,6 +993,7 @@ async def on_message(message):
                   " (UNKN_MEMB)")
         await message.reply(
             "Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]")
+        newSraniMember(str(message.author))
 
     # bot i
     if '<@!1023637883283841094>' in message.content or '<@1023637883283841094>' in message.content:
@@ -1841,7 +1845,7 @@ try:
 except:
     asyncio.run(
         changeBotActivity(discord.Status.do_not_disturb,
-                          "Disabled! (Auto-Recovery in progress)"))
+                          "Disabled! Process Auto-Recovery in progress"))
     log_print(
         "[RECOVERY] Exception raised while running bot - temporary ban. Restarting process ..."
     )
@@ -1853,7 +1857,7 @@ except:
         bot_data["banned"] = 0
         asyncio.run(
             changeBotActivity(discord.Status.do_not_disturb,
-                              "Disabled! (Auto-Recovery failed)"))
+                              "Disabled! (Process Auto-Recovery failed)"))
         db_update()
         sys.exit(1)
 
