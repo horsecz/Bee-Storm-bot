@@ -220,7 +220,7 @@ def start_periods():
             reminders_check.restart()
             return
     except Exception as e:
-        log_print('[EXCEPTION] ' + str(e))
+        log_print('[HANDLED EXCEPTION] start_periods: ' + str(e))
 
     try:
         random_facts_messages.start()
@@ -229,7 +229,7 @@ def start_periods():
         end_of_year_prep.start()
         reminders_check.start()
     except Exception as e:
-        log_print('[EXCEPTION] ' + str(e))
+        log_print('[HANDLED EXCEPTION] start_periods: ' + str(e))
 
 
 async def db_load():
@@ -242,8 +242,9 @@ async def db_load():
         global DB_EMPTY
         try:
             json_obj = json.load(openfile)
-        except:
+        except Exception as e:
             channel = bot.get_channel(channel_kgb)
+            log_print('[HANDLED EXCEPTION] db_load: ' + str(e))
             await channel.send(
                 "Data v databazi jsou poskozena a je nutne vytvorit novou.")
             json_obj = {}
@@ -584,58 +585,19 @@ async def databaseStatsRecovery():
     message_channel = bot.get_channel(channel_kgb)
     channel = bot.get_channel(channel_general)
     await message_channel.send(
-        '[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zrhuba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'
+        '[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'
     )
+    srani_list = []
+    db_update()
     async for msg in channel.history(limit=None):
-        msg_cnt = msg_cnt + 1
-        Found = False
-        if "<@&633366955855970343>" in msg.content or "<@&821810379952226396>" in msg.content or "<@&809477809772560435>" in msg.content or "<@&809477524828061721>" in msg.content or "<@&800082124009898064>" in msg.content or "<@&828916908413157417>" in msg.content or "<@&939151424963620937>" in msg.content:  #srani (pocita i multikilly)
-            history_poops = history_poops + 1
-            multikill = False
-            await addSrani(msg.author.id)
-            for member in history_members_srani:
-                if member[0] == msg.author.id:
-                    member[1] = member[1] + 1
-                    Found = True
-                    break
-            if not Found:
-                union_list = []
-                union_list.append(msg.author.id)
-                union_list.append(1)
-                history_members_srani.append(union_list)
+        try:
+            msg_cnt = msg_cnt + 1
             Found = False
-            srani_member = getSraniMember(msg.author.id)
-            if "<@&821810379952226396>" in msg.content:  #double
-                multikill = True
-                doubles = doubles + 1
-                selected_list = history_members_double
-            if "<@&809477809772560435>" in msg.content:  #triple
-                multikill = True
-                triples = triples + 1
-                selected_list = history_members_triple
-            if "<@&809477524828061721>" in msg.content:  #quadra
-                multikill = True
-                quadras = quadras + 1
-                selected_list = history_members_quadra
-            if "<@&800082124009898064>" in msg.content:  #penta
-                multikill = True
-                pentas = pentas + 1
-                selected_list = history_members_penta
-                srani_member["pentakills"] = srani_member["pentakills"] + 1
-            if "<@&828916908413157417>" in msg.content:  #hexa
-                multikill = True
-                hexas = hexas + 1
-                selected_list = history_members_hexa
-                srani_member["hexakills"] = srani_member["hexakills"] + 1
-            if "<@&939151424963620937>" in msg.content:  #legendary
-                multikill = True
-                legends = legends + 1
-                selected_list = history_members_legend
-                srani_member[
-                    "legendary kills"] = srani_member["legendary kills"] + 1
-            if multikill:
-                srani_member["multikills"] = srani_member["multikills"] + 1
-                for member in selected_list:
+            if "<@&633366955855970343>" in msg.content or "<@&821810379952226396>" in msg.content or "<@&809477809772560435>" in msg.content or "<@&809477524828061721>" in msg.content or "<@&800082124009898064>" in msg.content or "<@&828916908413157417>" in msg.content or "<@&939151424963620937>" in msg.content:  #srani (pocita i multikilly)
+                history_poops = history_poops + 1
+                multikill = False
+                await addSrani(msg.author.id)
+                for member in history_members_srani:
                     if member[0] == msg.author.id:
                         member[1] = member[1] + 1
                         Found = True
@@ -644,23 +606,88 @@ async def databaseStatsRecovery():
                     union_list = []
                     union_list.append(msg.author.id)
                     union_list.append(1)
-                    selected_list.append(union_list)
-                for member in history_members_multi:
-                    if member[0] == msg.author.id:
-                        member[1] = member[1] + 1
-                        Found = True
-                        break
-                if not Found:
-                    union_list = []
-                    union_list.append(msg.author.id)
-                    union_list.append(1)
-                    history_members_multi.append(union_list)
+                    history_members_srani.append(union_list)
+                Found = False
+                srani_member = getSraniMember(msg.author.id)
+                if "<@&821810379952226396>" in msg.content:  #double
+                    multikill = True
+                    doubles = doubles + 1
+                    selected_list = history_members_double
+                if "<@&809477809772560435>" in msg.content:  #triple
+                    multikill = True
+                    triples = triples + 1
+                    selected_list = history_members_triple
+                if "<@&809477524828061721>" in msg.content:  #quadra
+                    multikill = True
+                    quadras = quadras + 1
+                    selected_list = history_members_quadra
+                if "<@&800082124009898064>" in msg.content:  #penta
+                    multikill = True
+                    pentas = pentas + 1
+                    selected_list = history_members_penta
+                    srani_member["pentakills"] = srani_member["pentakills"] + 1
+                if "<@&828916908413157417>" in msg.content:  #hexa
+                    multikill = True
+                    hexas = hexas + 1
+                    selected_list = history_members_hexa
+                    srani_member["hexakills"] = srani_member["hexakills"] + 1
+                if "<@&939151424963620937>" in msg.content:  #legendary
+                    multikill = True
+                    legends = legends + 1
+                    selected_list = history_members_legend
+                    srani_member["legendary kills"] = srani_member[
+                        "legendary kills"] + 1
+                if multikill:
+                    srani_member["multikills"] = srani_member["multikills"] + 1
+                    for member in selected_list:
+                        if member[0] == msg.author.id:
+                            member[1] = member[1] + 1
+                            Found = True
+                            break
+                    if not Found:
+                        union_list = []
+                        union_list.append(msg.author.id)
+                        union_list.append(1)
+                        selected_list.append(union_list)
+                    for member in history_members_multi:
+                        if member[0] == msg.author.id:
+                            member[1] = member[1] + 1
+                            Found = True
+                            break
+                    if not Found:
+                        union_list = []
+                        union_list.append(msg.author.id)
+                        union_list.append(1)
+                        history_members_multi.append(union_list)
 
-        # progress
-        if (msg_cnt == 75000):
-            log_print('[DB] Stats recovery: prohledano 75 000 zprav')
-        if (msg_cnt == 250000):
-            log_print('[DB] Stats recovery: prohledano 250 000 zprav')
+            # progress
+            if (msg_cnt % 25000 == 0):
+                log_print('[DB] Stats recovery: prohledano ' + str(msg_cnt) +
+                          ' zprav')
+                await changeBotActivity(
+                    discord.Status.idle, "Restoring database. (" +
+                    str(msg_cnt) + "+ messages anaylzed)")
+        except Exception as e:
+            try:
+                await message_channel.send(
+                    '[Obnova statistik] Pri obnovovani databaze nastala vyjimka! Vyjimka:\n`'
+                    + str(e) + "`\nVypis chyby:\n `Nebyla zapocitana zprava " +
+                    str(msg_cnt) + " od " + msg.author.name + " (ID: " +
+                    str(msg.author.id) + ")`\nURL zpravy: " +
+                    str(msg.jump_url))
+            except:
+                await message_channel.send(
+                    '[Obnova statistik] Pri obnovovani databaze nastala vyjimka! Vyjimka:\n`'
+                    + str(e) + "`\nVypis chyby:\n `Nebyla zapocitana zprava " +
+                    str(msg_cnt) + " od uzivatele s ID: " +
+                    str(msg.author.id) + ")`\nURL zpravy: " +
+                    str(msg.jump_url))
+            log_print('[HANDLED EXCEPTION] databaseStatsRecovery: ' + str(e))
+            log_print('STATE:\nmessage_cnt: ' + str(msg_cnt) + "\n author: " +
+                      str(msg.author.id) + "\n content: " + str(msg.content) +
+                      "\n Found: " + str(Found) + "\n Date: " +
+                      str(msg.created_at.date) + "\n URL: " +
+                      str(msg.jump_url))
 
     await message_channel.send('[Obnova statistik] Operace uspesne dokoncena.')
 
@@ -719,7 +746,7 @@ async def addBirthday(id, day, month, year):
     try:
         name = await bot.fetch_user(id)
     except Exception as e:
-        print(str(e))
+        log_print('[HANDLED EXCEPTION] addBirthday: ' + str(e))
         return
     name = str(name.name)
     returnString = None
@@ -730,11 +757,8 @@ async def addBirthday(id, day, month, year):
         year = 1900
     try:
         date = datetime(day=day, month=month, year=year, tzinfo=timezone)
-        print("try")
     except Exception as e:
-        print("except")
-        log_print(
-            '[HANDLED EXCEPTION] raised exception in addBirthday(...): ' + e)
+        log_print('[HANDLED EXCEPTION] addBirthday: ' + e)
         returnString = "Neplatne datum (napriklad: 31.2.2008)"
     union = []
     union.append(id)
@@ -798,7 +822,7 @@ async def recoveryBoot():
             + str(recovery_attempts) + ")")
         bot.run(os.environ['TOKEN'])
     except Exception as e:
-        log_print("[EXCEPTION] " + str(e))
+        log_print("[HANDLED EXCEPTION] recoveryBoot: " + str(e))
         return False
 
     log_print("[RECOVERY] Recovery successful.")
@@ -858,7 +882,7 @@ async def addReminder(id, tag, text, datetime):
                   hour + ":" + minute)
         db_update()
     except Exception as e:
-        log_print('[HANDLED EXCEPTION] ' + str(e))
+        log_print('[HANDLED EXCEPTION] addReminder: ' + str(e))
         return
 
 
@@ -900,7 +924,7 @@ def getReminderListOfUser(id):
             if people[0][0] == id:
                 reminders.append(people)
     except Exception as e:
-        log_print('[HANDLED EXCEPTION] ' + str(e))
+        log_print('[HANDLED EXCEPTION] getReminderListOfUser: ' + str(e))
     return reminders
 
 
@@ -982,7 +1006,10 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    message_log(message.channel.name, str(message.author), message.content)
+    try:
+        message_log(message.channel.name, str(message.author), message.content)
+    except:
+        pass
     if message.author == bot.user:
         return
 
@@ -1360,9 +1387,7 @@ async def birthday(ctx, *args):
                     year = int(args[3])
             except Exception as e:
                 exception = True
-                log_print(
-                    '[HANDLED EXCEPTION] Raised exception at birthday(...): ' +
-                    e)
+                log_print('[HANDLED EXCEPTION] birthday: ' + str(e))
             finally:
                 if exception:
                     await ctx.send(
@@ -1484,11 +1509,10 @@ async def shutdown_error(ctx, error):
 @commands.is_owner()
 async def refreshdata(ctx):
     try:
-        print('kua')
         log_print('[COMMAND] Admin started databse recovery.')
         await databaseStatsRecovery()
     except Exception as e:
-        print(str(e))
+        log_print('[HANDLED EXCEPTION] refreshdata: ' + str(e))
 
 
 @refreshdata.error
@@ -1900,7 +1924,8 @@ async def member_name_check():
 # bot run
 try:
     bot.run(os.environ['TOKEN'])
-except:
+except Exception as e:
+    log_print('[HANDLED EXCEPTION] main.py: bot.run: ' + str(e))
     asyncio.run(
         changeBotActivity(discord.Status.do_not_disturb,
                           "Disabled! Process Auto-Recovery in progress"))
