@@ -43,7 +43,7 @@ OWNER_ID = 591643151668871168
 #  - bezna zprava existuje pro pripady (vynuceneho) restartu, ktery neprovedl uzivatel,
 #    ale napriklad hosting (replit) -- oznaci admina
 development_finished = 0
-last_update_message = "$reminder - pripominky v dany cas, automaticka obnova databaze-statistik v pripade ztraty dat, automaticky restart v pripade padu bota limitovan na 3 pokusy"
+last_update_message = "odstranena fixace uzivatelu v db na jmeno (nove: na id)"
 
 if development_finished != 1:
     if RESTART_MENTION:
@@ -60,7 +60,7 @@ channel_karantena = 663452074893377546
 channel_kgb = 988402540343361606
 channel_general = 663806194598805504
 
-help_message = "** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\nrandomfact    napise nahodny fakt\ngit    github bota (lze taky pouzit: $github)\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsrani       pocet srani od posledni aktualizace dat\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky```\n"
+help_message = "** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\nrandomfact    napise nahodny fakt\ngit    github bota (lze taky pouzit: $github)\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky```\n"
 
 text_github = "Muj zdrojovy kod je open source a najdes ho zde: https://github.com/horsecz/Bee-Storm-bot"
 
@@ -232,7 +232,7 @@ def start_periods():
         log_print('[EXCEPTION] ' + str(e))
 
 
-def db_load():
+async def db_load():
     with open('db.json', 'r') as openfile:
         global json_obj
         global srani_list
@@ -243,6 +243,9 @@ def db_load():
         try:
             json_obj = json.load(openfile)
         except:
+            channel = bot.get_channel(channel_kgb)
+            await channel.send(
+                "Data v databazi jsou poskozena a je nutne vytvorit novou.")
             json_obj = {}
             DB_EMPTY = True
             with open('db.json', 'w') as openfile:
@@ -328,12 +331,9 @@ def getDateTime():
     return "Dnes je " + current_day + ". " + current_month + ". " + current_year + ", " + current_hour + " hodin a " + current_minute + " minut."
 
 
-# id neni id ale poradi v poctu srani
-# :-)
-def newSraniMember(name):
+async def newSraniMember(id):
     sraniMember = {
-        "id": -1,
-        "name": name,
+        "id": id,
         "count": 0,
         "multikills": 0,
         "pentakills": 0,
@@ -345,32 +345,22 @@ def newSraniMember(name):
     db_update()
 
 
-def modifySraniMember(name, type, value):
+def getSraniMember(id):
     global srani_list
     for member in srani_list:
-        if member["name"] == name:
-            member[type] = value
-            db_update()
-            return
-
-
-def getSraniMember(name):
-    global srani_list
-    for member in srani_list:
-        if member["name"] == name:
+        if member["id"] == id:
             return member
     return None
 
 
-def addSrani(name):
-    db_member_refresh()
+async def addSrani(id):
     global srani_list
-    for member in srani_list:
-        if member["name"] == name:
-            member["count"] = member["count"] + 1
-            log_print('addSrani(...): count + 1 to member ' + name)
-            db_update()
-            return
+    await db_member_refresh()
+    member_get = getSraniMember(id)
+    member_get["count"] = member_get["count"] + 1
+    log_print('addSrani(...): count + 1 to member ' + str(id))
+    db_update()
+    return
 
 
 def findHighestSrani():
@@ -382,7 +372,7 @@ def findHighestSrani():
     return max
 
 
-def refreshSraniOrder():
+async def refreshSraniOrder(ctx):
     global srani_list
     global srani_order
     global srani_order_penta
@@ -390,10 +380,11 @@ def refreshSraniOrder():
     cnt_dict = {}
     penta_dict = {}
     multi_dict = {}
-    for member in srani_list:
-        cnt_dict[member["name"]] = member["count"]
-        penta_dict[member["name"]] = member["pentakills"]
-        multi_dict[member["name"]] = member["multikills"]
+    async with ctx.typing():
+        for member in srani_list:
+            cnt_dict[member["id"]] = member["count"]
+            penta_dict[member["id"]] = member["pentakills"]
+            multi_dict[member["id"]] = member["multikills"]
 
     order = OrderedDict(
         sorted(cnt_dict.items(), key=lambda t: t[1], reverse=True))
@@ -424,24 +415,22 @@ def getSraniNameByID(id):
     return member["name"]
 
 
-def db_member_refresh():
+async def db_member_refresh():
     global server_member_list
     global srani_list
-
     for guild in bot.guilds:
         for serverMember in guild.members:
-            serverMember = str(serverMember)
             #log_print(serverMember)
             found = False
             for member in srani_list:
-                if serverMember == member["name"]:
+                if serverMember.id == member["id"]:
                     #log_print('<< found')
                     found = True
                     break
 
             if not found:
-                log_print('new member ' + serverMember + 'added to list')
-                newSraniMember(serverMember)
+                log_print('new member ' + str(serverMember) + 'added to list')
+                await newSraniMember(serverMember.id)
 
 
 async def messageToChannel(message, channel_id):
@@ -603,19 +592,19 @@ async def databaseStatsRecovery():
         if "<@&633366955855970343>" in msg.content or "<@&821810379952226396>" in msg.content or "<@&809477809772560435>" in msg.content or "<@&809477524828061721>" in msg.content or "<@&800082124009898064>" in msg.content or "<@&828916908413157417>" in msg.content or "<@&939151424963620937>" in msg.content:  #srani (pocita i multikilly)
             history_poops = history_poops + 1
             multikill = False
-            addSrani(str(msg.author))
+            await addSrani(msg.author.id)
             for member in history_members_srani:
-                if member[0] == str(msg.author):
+                if member[0] == msg.author.id:
                     member[1] = member[1] + 1
                     Found = True
                     break
             if not Found:
                 union_list = []
-                union_list.append(str(msg.author))
+                union_list.append(msg.author.id)
                 union_list.append(1)
                 history_members_srani.append(union_list)
             Found = False
-            srani_member = getSraniMember(str(msg.author))
+            srani_member = getSraniMember(msg.author.id)
             if "<@&821810379952226396>" in msg.content:  #double
                 multikill = True
                 doubles = doubles + 1
@@ -647,23 +636,23 @@ async def databaseStatsRecovery():
             if multikill:
                 srani_member["multikills"] = srani_member["multikills"] + 1
                 for member in selected_list:
-                    if member[0] == str(msg.author):
+                    if member[0] == msg.author.id:
                         member[1] = member[1] + 1
                         Found = True
                         break
                 if not Found:
                     union_list = []
-                    union_list.append(str(msg.author))
+                    union_list.append(msg.author.id)
                     union_list.append(1)
                     selected_list.append(union_list)
                 for member in history_members_multi:
-                    if member[0] == str(msg.author):
+                    if member[0] == msg.author.id:
                         member[1] = member[1] + 1
                         Found = True
                         break
                 if not Found:
                     union_list = []
-                    union_list.append(str(msg.author))
+                    union_list.append(msg.author.id)
                     union_list.append(1)
                     history_members_multi.append(union_list)
 
@@ -703,17 +692,17 @@ async def databaseStatsRecovery():
     #          str(history_members_legend) + ">>>!")
 
 
-def checkSraniPosChanges(auth_name):
+async def checkSraniPosChanges(ctx, auth_id, auth_name):
     global srani_order
     old_srani_order = srani_order
-    refreshSraniOrder()
+    await refreshSraniOrder(ctx)
     i = 0
     j = 0
     while (i < len(old_srani_order)):
         j = 0
         while (j < len(srani_order)):
             if (old_srani_order[i][0] == srani_order[j][0]
-                    and srani_order[j][0] == auth_name):
+                    and srani_order[j][0] == auth_id):
                 if (i == j):
                     break
                 else:
@@ -725,8 +714,14 @@ def checkSraniPosChanges(auth_name):
     return None
 
 
-def addBirthday(name, day, month, year):
+async def addBirthday(id, day, month, year):
     global birthday_list
+    try:
+        name = await bot.fetch_user(id)
+    except Exception as e:
+        print(str(e))
+        return
+    name = str(name.name)
     returnString = None
     if (year < 1900):
         log_print(
@@ -735,12 +730,14 @@ def addBirthday(name, day, month, year):
         year = 1900
     try:
         date = datetime(day=day, month=month, year=year, tzinfo=timezone)
+        print("try")
     except Exception as e:
+        print("except")
         log_print(
             '[HANDLED EXCEPTION] raised exception in addBirthday(...): ' + e)
         returnString = "Neplatne datum (napriklad: 31.2.2008)"
     union = []
-    union.append(name)
+    union.append(id)
 
     year = str(date.year)
     month = str(date.month)
@@ -755,24 +752,25 @@ def addBirthday(name, day, month, year):
     return returnString
 
 
-def getBirthday(name):
+def getBirthday(id):
     global birthday_list
     for people_data in birthday_list:
-        if people_data[0] == name:
+        if people_data[0] == id:
             return people_data
     return None
 
 
-def removeBirthday(name):
+async def removeBirthday(id):
     global birthday_list
+    name = await bot.fetch_user(id)
     for user in birthday_list:
-        if user[0] == name:
-            log_print('removeBirthday: ' + name + ' removed his birthday')
+        if user[0] == id:
+            log_print('removeBirthday: ' + name.name + ' removed his birthday')
             birthday_list.remove(user)
             db_update()
             return True
 
-    log_print('removeBirthday: not found birthday of user ' + name)
+    log_print('removeBirthday: not found birthday of user ' + name.name)
     return False
 
 
@@ -826,11 +824,13 @@ async def handleShutdown():
             sys.exit(1)
 
 
-def addReminder(name, tag, text, datetime):
+async def addReminder(id, tag, text, datetime):
     global reminder_list
+    name = await bot.fetch_user(id)
+    name = name.name
     try:
         nametag = []
-        nametag.append(name)
+        nametag.append(id)
         nametag.append(tag)
 
         date = []
@@ -845,7 +845,7 @@ def addReminder(name, tag, text, datetime):
         date.append(hour)
         date.append(minute)
 
-        id = getNewReminderID(name)
+        id = getNewReminderID(id)
 
         user_reminder = []
         user_reminder.append(nametag)
@@ -862,12 +862,12 @@ def addReminder(name, tag, text, datetime):
         return
 
 
-def getNewReminderID(name):
+def getNewReminderID(id):
     global reminder_list
     cnt = 0
     used_ids = []
     for people in reminder_list:
-        if people[0][0] == name:
+        if people[0][0] == id:
             cnt = cnt + 1
             used_ids.append(people[3])
 
@@ -881,33 +881,35 @@ def getNewReminderID(name):
     return cnt
 
 
-def getReminderCountOfUser(name):
+def getReminderCountOfUser(id):
     global reminder_list
     cnt = 0
     used_ids = []
     for people in reminder_list:
-        if people[0][0] == name:
+        if people[0][0] == id:
             cnt = cnt + 1
             used_ids.append(people[3])
     return cnt
 
 
-def getReminderListOfUser(name):
+def getReminderListOfUser(id):
     global reminder_list
     reminders = []
     try:
         for people in reminder_list:
-            if people[0][0] == name:
+            if people[0][0] == id:
                 reminders.append(people)
     except Exception as e:
         log_print('[HANDLED EXCEPTION] ' + str(e))
     return reminders
 
 
-def removeReminder(name, id):
+async def removeReminder(user_id, id):
     global reminder_list
+    name = await bot.fetch_user(user_id)
+    name = name.name
     for people_data in reminder_list:
-        if people_data[0][0] == name and int(people_data[3]) == int(id):
+        if people_data[0][1] == user_id and int(people_data[3]) == int(id):
             reminder_list.remove(people_data)
             db_update()
             log_print('removeReminder(...): removed reminder ' + str(id) +
@@ -935,11 +937,11 @@ async def on_ready():
     additional = ""
     if (development_finished == 1):
         additional = "\n('-------------------------------- UPDATED [" + last_update_message + "]"
-    db_load()
+    await db_load()
     log_print('-------------------------------- BOT RUN [' +
               str(bot_data["bot_runs"] + 1) + ']' + additional)
     log_print('[INIT] Logged in as {0.user}'.format(bot))
-    db_member_refresh()
+    await db_member_refresh()
     log_print('[INIT] Database loaded.')
     load_svatky()
     log_print('[INIT] Svatky loaded.')
@@ -975,7 +977,6 @@ async def on_ready():
     await changeBotActivity(discord.Status.online,
                             "Ready! Try '$help' for commands list.")
     if DB_AUTO_RECOVERY and DB_EMPTY:
-        log_print('[DB] Automatic stats recovery started.')
         await databaseStatsRecovery()
 
 
@@ -985,77 +986,95 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    author_name = str(message.author)
-    srani_member = getSraniMember(author_name)
+    author_id = message.author.id
+    srani_member = getSraniMember(author_id)
     change_check = None
     if (srani_member == None):
         log_print("on_message: unknown member " + str(message.author) +
-                  " (UNKN_MEMB)")
-        await message.reply(
-            "Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]")
-        newSraniMember(str(message.author))
+                  " (NEW_MEMB_JOINED) added to list")
+        await newSraniMember(message.author.id)
+        srani_member = getSraniMember(author_id)
 
     # bot i
     if '<@!1023637883283841094>' in message.content or '<@1023637883283841094>' in message.content:
         await message.reply(random.choice(bot_tag))
+        await addSrani(message.author.id)
+        srani_member["multikills"] = srani_member["multikills"] + 1
+        change_check = await checkSraniPosChanges(message.channel,
+                                                  message.author.id,
+                                                  str(message.author))
         countTagy()
 
     # tymoveSrani
     if '<@&633366955855970343>' in message.content:
         await message.reply(random.choice(tymovesrani))
-        addSrani(str(message.author))
-        change_check = checkSraniPosChanges(str(message.author))
+        await addSrani(message.author.id)
+        change_check = await checkSraniPosChanges(message.channel,
+                                                  message.author.id,
+                                                  str(message.author))
 
     # doubleKill
     if '<@&821810379952226396>' in message.content:
         await message.reply(random.choice(doublekill))
-        addSrani(str(message.author))
+        await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
-        change_check = checkSraniPosChanges(str(message.author))
+        change_check = await checkSraniPosChanges(message.channel,
+                                                  message.author.id,
+                                                  str(message.author))
 
     # tripleKill
     if '<@&809477809772560435>' in message.content:
         await message.reply(random.choice(triplekill))
-        addSrani(str(message.author))
+        await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
-        change_check = checkSraniPosChanges(str(message.author))
+        change_check = await checkSraniPosChanges(message.channel,
+                                                  message.author.id,
+                                                  str(message.author))
 
     # 4Kill
     if '<@&809477524828061721>' in message.content:
         await message.reply(random.choice(quadrakill))
-        addSrani(str(message.author))
+        await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
-        change_check = checkSraniPosChanges(str(message.author))
+        change_check = await checkSraniPosChanges(message.channel,
+                                                  message.author.id,
+                                                  str(message.author))
 
     # 5Kill
     if '<@&800082124009898064>' in message.content:
         await message.reply(random.choice(pentakill))
-        addSrani(str(message.author))
+        await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         srani_member["pentakills"] = srani_member["pentakills"] + 1
-        change_check = checkSraniPosChanges(str(message.author))
+        change_check = await checkSraniPosChanges(message.channel,
+                                                  message.author.id,
+                                                  str(message.author))
 
     # 6Kill
     if '<@&828916908413157417>' in message.content:
         await message.reply(random.choice(hexakill))
-        addSrani(str(message.author))
+        await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         srani_member["hexakills"] = srani_member["hexakills"] + 1
-        change_check = checkSraniPosChanges(str(message.author))
+        change_check = await checkSraniPosChanges(message.channel,
+                                                  message.author.id,
+                                                  str(message.author))
 
     # legendaryKill 7+
     if '<@&939151424963620937>' in message.content:
         await message.reply(random.choice(legendarykill))
-        addSrani(str(message.author))
+        await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         srani_member["legendary kills"] = srani_member["legendary kills"] + 1
-        change_check = checkSraniPosChanges(str(message.author))
+        change_check = await checkSraniPosChanges(message.channel,
+                                                  message.author.id,
+                                                  str(message.author))
 
-    if (change_check) != None:
+    if (change_check) != None and not DB_RECOVERY_RUNNING:
         await messageToChannel(
             "V zebricku ($sraniboard) se '" + str(message.author) +
-            "' posunul z **" + change_check[0] + ". mista** na **" +
-            change_check[1] + ".**!", channel_general)
+            "' posunul z **" + str(change_check[0]) + ". mista** na **" +
+            str(change_check[1]) + ".**!", channel_general)
 
     if not message.author.bot:
         if message.content.startswith('uh oh'):
@@ -1129,17 +1148,6 @@ async def hello(ctx):
 
 
 @bot.command()
-async def srani(ctx):
-    await ctx.send("Celkovy pocet srani od posledni aktualizace dat (" +
-                   last_counted_datetime.strftime("%d.%m.%Y") + "): " +
-                   str(last_counted_all_poops_count))
-    if DB_RECOVERY_RUNNING:
-        await ctx.send(
-            "Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna."
-        )
-
-
-@bot.command()
 async def tagy(ctx):
     await ctx.send("Pocet otravnych tagu: " + str(tagy_count))
 
@@ -1147,11 +1155,13 @@ async def tagy(ctx):
 @bot.command()
 async def sraniboard(ctx):
     if findHighestSrani() > 0:
-        refreshSraniOrder()
+        await refreshSraniOrder(ctx.channel)
         i = 0
         text = ""
         while (i < 5):
-            name = srani_order[i][0]
+            id = srani_order[i][0]
+            name = await bot.fetch_user(id)
+            name = name.name
             count = str(srani_order[i][1])
             text = text + "\n **" + str(
                 i + 1) + ".** " + name + " (" + count + " srani)"
@@ -1168,9 +1178,10 @@ async def sraniboard(ctx):
 
 @bot.command()
 async def sranistats(ctx):
-    refreshSraniOrder()
+    await refreshSraniOrder(ctx.channel)
     name = str(ctx.message.author)
-    member = getSraniMember(name)
+    id = ctx.message.author.id
+    member = getSraniMember(id)
     if (member == None):
         log_print('Member ' + str(name) + ' not found!')
         await ctx.send('Interni chyba pri vypisu statistik [UNKN_MEMB]')
@@ -1184,7 +1195,7 @@ async def sranistats(ctx):
     position = -1
     i = 0
     while (i < len(srani_order)):
-        if (srani_order[i][0] == name):
+        if (srani_order[i][0] == id):
             position = str(i + 1)
             break
         i = i + 1
@@ -1247,11 +1258,13 @@ async def svatek(ctx, *args):
 @bot.command()
 async def pentaboard(ctx):
     if findHighestSrani() > 0:
-        refreshSraniOrder()
+        await refreshSraniOrder(ctx.channel)
         i = 0
         text = ""
         while (i < 5):
-            name = srani_order_penta[i][0]
+            id = srani_order_penta[i][0]
+            name = await bot.fetch_user(id)
+            name = name.name
             count = str(srani_order_penta[i][1])
             text = text + "\n **" + str(
                 i + 1) + ".** " + name + " (" + count + " pentakillu)"
@@ -1270,11 +1283,13 @@ async def pentaboard(ctx):
 @bot.command()
 async def multiboard(ctx):
     if findHighestSrani() > 0:
-        refreshSraniOrder()
+        await refreshSraniOrder(ctx.channel)
         i = 0
         text = ""
         while (i < 5):
-            name = srani_order_multi[i][0]
+            id = srani_order_multi[i][0]
+            name = await bot.fetch_user(id)
+            name = name.name
             count = str(srani_order_multi[i][1])
             text = text + "\n **" + str(
                 i + 1) + ".** " + name + " (" + count + " multikillu)"
@@ -1297,13 +1312,15 @@ async def birthdays(ctx):
     text = "** **\n**Seznam zapsanych narozenin**\n\n"
     i = 1
     for people in birthday_list:
+        name = await bot.fetch_user(people[0])
+        name = name.name
         day = people[1]
         month = people[2]
         year = ". " + people[3]
         if (int(people[3]) <= 1900):
             year = " (rok neuveden)"
         date = day + ". " + month
-        text = text + people[0] + " dne " + date + year
+        text = text + name + " dne " + date + year
         i = i + 1
         if (i < len(birthday_list)):
             text = text + ",\n"
@@ -1319,6 +1336,7 @@ async def birthdays(ctx):
 async def birthday(ctx, *args):
     global birthday_list
     author_name = str(ctx.author)
+    author_id = ctx.author.id
     additional_text = ""
     if len(args) > 4 or len(args) == 0:
         await ctx.send(
@@ -1368,14 +1386,16 @@ async def birthday(ctx, *args):
                 if year < int(datetime.now().year) - 150 and not year == -1:
                     additional_text = "Protoze jsi **starsi jak 150 let**, tvuj vek jsem radsi skryl."
                     year = 0
-                if (getBirthday(author_name) == None):
-                    addBirthday(author_name, day, month, year)
+                if (getBirthday(author_id) == None):
+                    print("none")
+                    await addBirthday(author_id, day, month, year)
                     await ctx.send(
                         "Narozeniny pridany. V den narozenin budou ostatni upozorneni v kanalu `#general`. "
                         + additional_text)
+                    print("after add")
                 else:
-                    removeBirthday(author_name)
-                    addBirthday(author_name, day, month, year)
+                    await removeBirthday(author_id)
+                    await addBirthday(author_id, day, month, year)
                     await ctx.send("Narozeniny byly upraveny. " +
                                    additional_text)
         elif args[0] == "remove":
@@ -1385,7 +1405,7 @@ async def birthday(ctx, *args):
                 )
                 return
 
-            result = removeBirthday(author_name)
+            result = await removeBirthday(author_id)
             if (result):
                 await ctx.send("Narozeniny byly smazany.")
             else:
@@ -1460,6 +1480,25 @@ async def shutdown_error(ctx, error):
 #        await ctx.send("Pouze muj vlastnik me muze restartovat prikazem.")
 
 
+@bot.command()
+@commands.is_owner()
+async def refreshdata(ctx):
+    try:
+        print('kua')
+        log_print('[COMMAND] Admin started databse recovery.')
+        await databaseStatsRecovery()
+    except Exception as e:
+        print(str(e))
+
+
+@refreshdata.error
+async def refreshdb_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send(
+            "Pouze muj vlastnik muze aktualizovat nebo obnovovat databazi.")
+    print(str(error))
+
+
 @refreshfacts.error
 async def refreshfacts_error(ctx, error):
     if isinstance(error, commands.NotOwner):
@@ -1472,6 +1511,7 @@ async def refreshfacts_error(ctx, error):
 async def reminder(ctx, *args):
     global reminder_list
     auth_name = str(ctx.author)
+    auth_id = ctx.author.id
     tag = str(ctx.author.id)
     if len(args) == 0:
         await ctx.send(
@@ -1484,7 +1524,7 @@ async def reminder(ctx, *args):
         return
     elif args[0] == "list":
         text = ""
-        reminders = getReminderListOfUser(auth_name)
+        reminders = getReminderListOfUser(auth_id)
         if len(reminders) == 0:
             await ctx.send("Uzivatel " + auth_name +
                            " nema nastavene zadne upominky.")
@@ -1503,11 +1543,11 @@ async def reminder(ctx, *args):
     elif args[0] == "remove":
         if len(args) == 2:  # all
             if args[1] == "all":
-                if (getReminderCountOfUser(auth_name) != 0):
+                if (getReminderCountOfUser(auth_id) != 0):
                     temp_reminders_list = []
                     cnt = 0
                     for reminder in reminder_list:
-                        if reminder[0][0] == auth_name:
+                        if reminder[0][0] == auth_id:
                             temp_reminders_list.append(reminder)
                             cnt = cnt + 1
 
@@ -1544,8 +1584,8 @@ async def reminder(ctx, *args):
                         )
                         return
                     for reminders in reminder_list:
-                        if (reminders[0][0] == auth_name) and (reminders[3]
-                                                               == id):
+                        if (reminders[0][0] == auth_id) and (reminders[3]
+                                                             == id):
                             reminder_list.remove(reminders)
                             found = True
                             break
@@ -1664,7 +1704,7 @@ async def reminder(ctx, *args):
                     )
                     return
 
-            addReminder(auth_name, tag, text, reminder_date)
+            await addReminder(auth_id, tag, text, reminder_date)
             await ctx.send(
                 "Pripominka byla uspesne pridana. Upozorneni probehne " +
                 reminder_date.strftime("%d.%m.%Y v %H:%M") +
@@ -1719,6 +1759,18 @@ async def daily_message():
             time_now.month
         ) + ". a podle mych informaci ma " + additional + "narozeniny " + str(
             birthday_name) + "! "
+        if (len(daily_message_birthday) > 2):
+            daily_message = "Dnes je " + str(time_now.day) + ". " + str(
+                time_now.month
+            ) + ". a podle mych informaci maji dnes narozeniny: "
+            i = 0
+            for even_elements in daily_message_birthday:
+                if (i % 2 == 0):
+                    birthday_name = even_elements
+                    daily_message = daily_message + str(birthday_name) + ", "
+                i = i + 1
+            daily_message = daily_message + "!"
+        daily_message_birthday = []
     else:
         console_print_text = 'daily_message: causal message today'
         daily_message = "Dnes je " + str(time_now.day) + ". " + str(
@@ -1733,7 +1785,7 @@ async def daily_message():
             await channel.send(daily_message + daily_message_additional)
 
 
-# kazdodenni check narozenin
+# kazdodenni check narozenin (3hrs)
 @tasks.loop(hours=3)
 async def birthday_check():
     global daily_message_birthday
@@ -1746,8 +1798,9 @@ async def birthday_check():
     for people in birthday_list:
         if people[1] == str(int(today.day)) and people[2] == str(
                 int(today.month)):
-            daily_message_birthday = []
-            daily_message_birthday.append(people[0])
+            name = await bot.fetch_user(people[0])
+            name = name.name
+            daily_message_birthday.append(name)
             if int(people[3]) <= 1900:
                 daily_message_birthday.append(0)
             else:
@@ -1833,10 +1886,15 @@ async def reminders_check():
                 log_print('reminders_check: reminder activated')
                 await channel.send("Pripomenuti pro uzivatele <@!" +
                                    reminder[0][1] + ">: " + reminder[1])
-                removeReminder(reminder[0][0], reminder[3])
+                await removeReminder(reminder[0][1], reminder[3])
                 log_print(
                     'reminders_check(): automatically removed completed reminder'
                 )
+
+
+@tasks.loop(hours=1)
+async def member_name_check():
+    global srani_list
 
 
 # bot run
