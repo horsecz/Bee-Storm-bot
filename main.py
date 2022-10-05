@@ -661,7 +661,7 @@ async def databaseStatsRecovery():
                         history_members_multi.append(union_list)
 
             # progress
-            if (msg_cnt % 25000 == 0):
+            if (msg_cnt % 10000 == 0):
                 log_print('[DB] Stats recovery: prohledano ' + str(msg_cnt) +
                           ' zprav')
                 await changeBotActivity(
