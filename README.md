@@ -37,7 +37,7 @@ Bot is recording it's activites and storing them into logfile.
 - every time bot runs, bot run stat will be incremented
 - in case of some crash, bot may try to reboot itself up to 3 times
 - possibility of server message logging and internal logging
-- replit hosting related: after expection in runtime (temporary ban), bot will try to reboot (kill & start again) multiple times
+- replit hosting related: after exception in runtime (temporary ban), bot will try to reboot (kill & start again) multiple times
 
 # TODO list
 
