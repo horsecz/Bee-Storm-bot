@@ -21,20 +21,23 @@ Discord.py Bot specifically made for Annus Team (or: Bee Storm) Discord server. 
 - daily message at noon (date, who has nameday or specific messages on Christmas, New Year's Eve)
 - new Year message
 - non-aggresive censure
+- admin commands
 
 # Database
 
 Using simple 'db.json' file and JSON format <=> python dict. 
 - if the file content is entirely lost, bot can auto-restore the stats (slow process, server-specific feature)
-- storing predefined role mentions, birthdays, reminders and bot runs
+- storing predefined role mentions, birthdays, reminders and bot data
+- corrupt database file will be sent in message and if not interrupted or stopped, bot will perform auto-recovery
 
 # Log and crash recovery
 
 Bot is recording it's activites and storing them into logfile.
-- if bot is currently restoring database, logging is disabled
+- if bot is currently restoring database, logging into file is disabled (log remains just in console)
 - every time bot runs, bot run stat will be incremented
 - in case of some crash, bot may try to reboot itself up to 3 times
-- possibility of server message logging
+- possibility of server message logging and internal logging
+- replit hosting related: after expection in runtime (temporary ban), bot will try to reboot (kill & start again) multiple times
 
 # TODO list
 
