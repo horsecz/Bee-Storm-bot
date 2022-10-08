@@ -177,9 +177,18 @@ def start():
     global recovery_attempts
     global DB_EMPTY
     global DB_RECOVERY_RUNNING
+    global DB_LOADED
+    global DB_ERROR_SLEEP_TIME
+    global DB_UPDATE_DISABLED
+    global RF_STARTED_NOW
 
     DB_EMPTY = False
     DB_RECOVERY_RUNNING = False
+    DB_LOADED = False
+    DB_ERROR_SLEEP_TIME = 300
+    DB_UPDATE_DISABLED = False
+
+    RF_STARTED_NOW = True
 
     timezone = pytz.timezone("Europe/Prague")
     now = datetime.now(timezone)
@@ -233,6 +242,7 @@ def start_periods():
 
 
 async def db_load():
+    global DB_LOADED
     with open('db.json', 'r') as openfile:
         global json_obj
         global srani_list
@@ -240,46 +250,78 @@ async def db_load():
         global bot_data
         global reminder_list
         global DB_EMPTY
+        global DB_UPDATE_DISABLED
         try:
             json_obj = json.load(openfile)
         except Exception as e:
+            DB_UPDATE_DISABLED = True
             channel = bot.get_channel(channel_kgb)
             log_print('[HANDLED EXCEPTION] db_load: ' + str(e))
             await channel.send(
-                "Data v databazi jsou poskozena a je nutne vytvorit novou.")
+                "Databaze je poskozena a je nutne vytvorit novou nebo ji rucne opravit. <@!"
+                + str(OWNER_ID) + "> mas " + str(DB_ERROR_SLEEP_TIME) +
+                " sekund na preruseni automaticke opravy nebo prikaz vypnuti. \nChyba: `"
+                + str(e) + "`\nTip: `admin$interrupt, admin$stop`",
+                file=discord.File("db.json"))
+            await asyncio.sleep(DB_ERROR_SLEEP_TIME)
+            message = await channel.fetch_message(channel.last_message_id)
+            if (message.author.id == OWNER_ID
+                    and "admin$interrupt" == message.content):
+                await channel.send(
+                    "Automaticka obnova prerusena, bot se restartuje. Soubor databaze je nezmenen."
+                )
+                os.kill(1, 1)
+                sys.exit(0)
+            elif (message.author.id == OWNER_ID
+                  and "admin$stop" == message.content):
+                await channel.send("Bot bude vypnut, databazi jsem nezmenil.")
+                await bot.close()
+                bot.destroy()
+            await channel.send(
+                "Databaze smazana, vytvorena nova - muze byt automaticky obnovena, pokud je tak nastaveno."
+            )
             json_obj = {}
             DB_EMPTY = True
             with open('db.json', 'w') as openfile:
-                json.dump(json_obj, openfile)
+                json.dump(json_obj, openfile, indent=1)
         if not "srani" in json_obj.keys():
             json_obj["srani"] = []
             with open('db.json', 'w') as openfile:
-                json.dump(json_obj, openfile)
+                json.dump(json_obj, openfile, indent=1)
         if not "birthday" in json_obj.keys():
             json_obj["birthday"] = []
             with open('db.json', 'w') as openfile:
-                json.dump(json_obj, openfile)
+                json.dump(json_obj, openfile, indent=1)
         if not "bot_data" in json_obj.keys():
-            json_obj["bot_data"] = {"bot_runs": 1, "banned": 0}
+            json_obj["bot_data"] = {
+                "bot_runs": 1,
+                "banned": 0,
+                "welcome_msg": True
+            }
             with open('db.json', 'w') as openfile:
-                json.dump(json_obj, openfile)
+                json.dump(json_obj, openfile, indent=1)
         if not "reminders" in json_obj.keys():
             json_obj["reminders"] = []
             with open('db.json', 'w') as openfile:
-                json.dump(json_obj, openfile)
+                json.dump(json_obj, openfile, indent=1)
+        DB_UPDATE_DISABLED = False
         srani_list = json_obj["srani"]
         birthday_list = json_obj["birthday"]
         bot_data = json_obj["bot_data"]
         reminder_list = json_obj["reminders"]
+        DB_LOADED = True
 
 
 def db_update():
+    if DB_UPDATE_DISABLED:
+        log_print("db_update(): database 'db.json' not updated (disabled)")
+        return
     with open('db.json', 'w') as openfile:
         json_obj["srani"] = srani_list
         json_obj["birthday"] = birthday_list
         json_obj["bot_data"] = bot_data
         json_obj["reminders"] = reminder_list
-        json.dump(json_obj, openfile)
+        json.dump(json_obj, openfile, indent=1)
     log_print("db_update(): updated database 'db.json'")
 
 
@@ -295,6 +337,8 @@ def randfacts_load():
 
 
 def log_print(text):
+    global DB_RECOVERY_RUNNING
+    global DEVMODE
     print(text)
     if DEVMODE or DB_RECOVERY_RUNNING:
         return
@@ -359,7 +403,7 @@ async def addSrani(id):
     await db_member_refresh()
     member_get = getSraniMember(id)
     member_get["count"] = member_get["count"] + 1
-    log_print('addSrani(...): count + 1 to member ' + str(id))
+    log_print('addSrani(): count + 1 to member ' + str(id))
     db_update()
     return
 
@@ -430,7 +474,7 @@ async def db_member_refresh():
                     break
 
             if not found:
-                log_print('new member ' + str(serverMember) + 'added to list')
+                log_print('new member ' + str(serverMember) + ' added to list')
                 await newSraniMember(serverMember.id)
 
 
@@ -812,9 +856,7 @@ async def recoveryBoot():
         log_print(
             "[RECOVERY] Too many attempts (3) to re-run bot mercifully. Attempting to restart 'replit' via killing it."
         )
-        await changeBotActivity(discord.Status.do_not_disturb,
-                                "Disabled! Recovery failed.")
-        subprocess.run("kill", "1")
+        os.kill(1, 1)
         sys.exit(1)
     try:
         log_print(
@@ -837,11 +879,12 @@ async def handleShutdown():
     if (proper_shutdown):
         log_print("[SHUTDOWN] Bot has been shut down properly.")
         exit(0)
+    elif (not proper_shutdown and DB_UPDATE_DISABLED):
+        log_print(
+            "[RECOVERY] db_load(): auto-reboot and auto-recovery cancelled, shutting down."
+        )
+        sys.exit(2)
     else:
-        await changeBotActivity(
-            discord.Status.do_not_disturb,
-            "Disabled! Cautious Auto-Recovery in progress.")
-        log_print("[SHUTDOWN] Unexpected shutdown of bot.")
         result = await recoveryBoot()
         proper_shutdown = False
         if (result != True):
@@ -957,7 +1000,6 @@ async def changeBotActivity(status, string):
 
 @bot.event
 async def on_ready():
-    start()
     additional = ""
     if (development_finished == 1):
         additional = "\n('-------------------------------- UPDATED [" + last_update_message + "]"
@@ -977,13 +1019,14 @@ async def on_ready():
         log_print("[INIT] Message logging into 'message_log.txt' file enabled")
     if not (DEVMODE):
         if (bot_data["banned"] == 0):
-            await messageToChannel(
-                random.choice([
-                    "Priletel ten nejlepsi bot na svete!",
-                    "Uz jsem zase tady!",
-                    "Bee Storm bot je znovu pripraven k pouziti."
-                ]) + "\n(Posledni zmeny: `" + last_update_message + "`)",
-                channel_kgb)
+            if (bot_data["welcome_msg"]):
+                await messageToChannel(
+                    random.choice([
+                        "Priletel ten nejlepsi bot na svete!",
+                        "Uz jsem zase tady!",
+                        "Bee Storm bot je znovu pripraven k pouziti."
+                    ]) + "\n(Posledni zmeny: `" + last_update_message + "`)",
+                    channel_kgb)
         else:
             await messageToChannel(
                 random.choice([
@@ -991,7 +1034,7 @@ async def on_ready():
                     "Uz jsem zase tady!",
                     "Bee Storm bot je znovu pripraven k pouziti."
                 ]) +
-                "\n(`Automaticke obnoveni behu pri vyjimce docasneho zakazu provozu (hosting problem).`)",
+                "\n`Automaticke obnoveni behu pri vyjimce docasneho zakazu provozu (hosting problem).`",
                 channel_kgb)
             log_print('[RECOVERY] Recovery was successful.')
             bot_data["banned"] = 0
@@ -1006,12 +1049,13 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    if message.author == bot.user or DB_UPDATE_DISABLED:
+        return
+
     try:
         message_log(message.channel.name, str(message.author), message.content)
     except:
         pass
-    if message.author == bot.user:
-        return
 
     author_id = message.author.id
     srani_member = getSraniMember(author_id)
@@ -1464,21 +1508,6 @@ async def shutdown(ctx):
     sys.exit(0)
 
 
-# to be done - nezavre session -> shutdown potom nefunguje a bugne bota
-#@bot.command()
-#@commands.is_owner()
-#async def reboot(ctx):
-#    global proper_shutdown
-#    log_print('[REBOOT] Executed command to reboot the bot')
-#    proper_shutdown = True
-#    async with ctx.typing():
-#        bot.clear()
-#        await bot.login(os.environ['TOKEN'])
-#        await on_ready()
-#        log_print('[REBOOT] Bot rebooted!')
-#        await ctx.reply("Restart kompletni!")
-
-
 @bot.command()
 @commands.is_owner()
 async def refreshfacts(ctx):
@@ -1499,10 +1528,17 @@ async def shutdown_error(ctx, error):
         await ctx.send("Pouze muj vlastnik me muze vypnout prikazem.")
 
 
-#@reboot.error
-#async def reboot_error(ctx, error):
-#    if isinstance(error, commands.NotOwner):
-#        await ctx.send("Pouze muj vlastnik me muze restartovat prikazem.")
+@bot.command()
+@commands.is_owner()
+async def reboot(ctx):
+    await ctx.send("Bot bude restartovan.")
+    os.kill(1, 1)
+
+
+@reboot.error
+async def reboot_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("Pouze muj vlastnik me muze restartovat prikazem.")
 
 
 @bot.command()
@@ -1528,6 +1564,103 @@ async def refreshfacts_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send(
             "Pouze muj vlastnik muze aktualizovat seznam nahodnych faktu.")
+
+
+@bot.command()
+@commands.is_owner()
+async def nowelcome(ctx):
+    global bot_data
+    bot_data["welcome_msg"] = not bot_data["welcome_msg"]
+    if (bot_data["welcome_msg"]):
+        log_print("[COMMAND] Welcome messages turned on.")
+        await ctx.send("Uvitaci zpravy zapnuty.")
+    else:
+        log_print("[COMMAND] Welcome messages except recovery turned off.")
+        await ctx.send("Uvitaci zpravy krome oznameni obnoveni vypnuty.")
+
+
+@bot.command()
+@commands.is_owner()
+async def admin(ctx):
+    global bot_data
+    admin_cmds = "**Prikazy vlastnika:**\n\n```C\nshutdown    vypne bota\nrefreshfacts    obnovi seznam nahodnych faktu\nrefreshdata    zacne automatickou obnovu databaze\nnowelcome    vypne uvitaci zpravu pri zapnuti bota\nfiles    odesle na discord pracovni soubory bota\nmsg_remove [count]    smaze poslednich 'count' zprav v kanale\n```"
+    await ctx.send(admin_cmds)
+
+
+@admin.error
+async def admin_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("Seznam prikazu pro admina muze zobrazit jen vlastnik.")
+    print(str(error))
+
+
+@bot.command()
+@commands.is_owner()
+async def msg_remove(ctx, *args):
+    number = 0
+    exception = False
+    if (len(args) != 1):
+        await ctx.send("Spatny pocet argumentu! Cekam jen jedno cislo.")
+        return
+    try:
+        number = int(args[0])
+    except:
+        exception = True
+    if (exception):
+        await ctx.send("CISLO! Ten argument ma byt CELY CISLO!")
+        return
+    if (number < 1):
+        await ctx.send(
+            "Fakt ti musim pripominat, ze to cislo ma byt vetsi jak 0?")
+        return
+    if (number > 100):
+        await ctx.send("Vazne chces po me smazat vic jak 100 zprav?")
+        return
+      
+    i = 0
+    channel = ctx.channel
+    while (i < number):
+        message = await channel.fetch_message(channel.last_message_id)
+        try:
+            message.delete()
+        except:
+            return
+        i = i + 1
+
+    await ctx.send("Smazal jsem " + str(number) + " zprav.")
+
+
+@msg_remove.error
+async def msg_remove_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("Zneuzivat mne na mazani zprav muze jen muj vlastnik!")
+    print(str(error))
+
+
+@bot.command()
+@commands.is_owner()
+async def files(ctx):
+    await ctx.send("Zde jsou vsechny pracovni soubory:",
+                   files=[
+                       discord.File('db.json'),
+                       discord.File('log.txt'),
+                       discord.File('message_log.txt'),
+                       discord.File('randfacts.txt')
+                   ])
+
+
+@files.error
+async def files_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("Obsah pracovnich souboru muze odhalit pouze vlastnik.")
+    print(str(error))
+
+
+@nowelcome.error
+async def nowelcome_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("Pouze muj vlastnik mi muze zakazat oznamovat prichod.")
+    print(str(error))
 
 
 # $reminder {add/remove/list/syntax} {{add: day}{remove: id/all}} {{add:month}[remove: id]} [year] [hour] [minute] [{text/text:} [...]]
@@ -1747,8 +1880,12 @@ async def reminder(ctx, *args):
 @tasks.loop(hours=10)
 async def random_facts_messages():
     global DEVMODE
+    global RF_STARTED_NOW
     time_now = datetime.now(timezone)
     log_print('[TASKS.LOOP] random_facts_messages: looped ')
+    if (RF_STARTED_NOW):
+        RF_STARTED_NOW = False
+        return
     if (int(time_now.hour) > 8 and int(time_now.hour) < 21) and not (DEVMODE):
         channel = bot.get_channel(channel_general)
         await channel.send(random.choice(random_facts))
@@ -1923,12 +2060,12 @@ async def member_name_check():
 
 # bot run
 try:
+    start()
     bot.run(os.environ['TOKEN'])
 except Exception as e:
-    log_print('[HANDLED EXCEPTION] main.py: bot.run: ' + str(e))
-    asyncio.run(
-        changeBotActivity(discord.Status.do_not_disturb,
-                          "Disabled! Process Auto-Recovery in progress"))
+    if not DB_LOADED:
+        asyncio.run(db_load())
+    log_print('[HANDLED EXCEPTION] main.py: in bot.run: ' + str(e))
     log_print(
         "[RECOVERY] Exception raised while running bot - temporary ban. Restarting process ..."
     )
@@ -1937,15 +2074,10 @@ except Exception as e:
         log_print("[RECOVERY] Process has been restarted " +
                   str(bot_data["banned"]) + " times without any success.")
         log_print("[RECOVERY] Recovery failed. Exiting ...")
-        bot_data["banned"] = 0
-        asyncio.run(
-            changeBotActivity(discord.Status.do_not_disturb,
-                              "Disabled! (Process Auto-Recovery failed)"))
         db_update()
         sys.exit(1)
 
     db_update()
-    subprocess.run("kill", "1")
-    sys.exit(1)
-finally:
-    asyncio.run(handleShutdown())
+    os.kill(1, 1)
+
+asyncio.run(handleShutdown())
