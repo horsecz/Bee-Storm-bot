@@ -9,6 +9,7 @@ from datetime import datetime
 import pytz
 import sys
 import subprocess
+import time
 
 # logovani zprav na serveru do souboru
 MESSAGE_LOGGING_ENABLED = True
@@ -181,6 +182,9 @@ def start():
     global DB_ERROR_SLEEP_TIME
     global DB_UPDATE_DISABLED
     global RF_STARTED_NOW
+    global REBOOT_CMD
+
+    REBOOT_CMD = False
 
     DB_EMPTY = False
     DB_RECOVERY_RUNNING = False
@@ -296,7 +300,8 @@ async def db_load():
             json_obj["bot_data"] = {
                 "bot_runs": 1,
                 "banned": 0,
-                "welcome_msg": True
+                "welcome_msg": True,
+                "rebooted": False
             }
             with open('db.json', 'w') as openfile:
                 json.dump(json_obj, openfile, indent=1)
@@ -876,6 +881,7 @@ async def recoveryBoot():
 
 async def handleShutdown():
     global proper_shutdown
+    global REBOOT_CMD
     if (proper_shutdown):
         log_print("[SHUTDOWN] Bot has been shut down properly.")
         exit(0)
@@ -884,6 +890,8 @@ async def handleShutdown():
             "[RECOVERY] db_load(): auto-reboot and auto-recovery cancelled, shutting down."
         )
         sys.exit(2)
+    elif (not proper_shutdown and REBOOT_CMD):
+        os.kill(1, 1)
     else:
         result = await recoveryBoot()
         proper_shutdown = False
@@ -1027,6 +1035,10 @@ async def on_ready():
                         "Bee Storm bot je znovu pripraven k pouziti."
                     ]) + "\n(Posledni zmeny: `" + last_update_message + "`)",
                     channel_kgb)
+            elif (bot_data["rebooted"]):
+                bot_data["rebooted"] = False
+                db_update()
+                await messageToChannel("Restart probehl uspesne.", channel_kgb)
         else:
             await messageToChannel(
                 random.choice([
@@ -1531,8 +1543,14 @@ async def shutdown_error(ctx, error):
 @bot.command()
 @commands.is_owner()
 async def reboot(ctx):
-    await ctx.send("Bot bude restartovan.")
-    os.kill(1, 1)
+    global bot_data
+    global REBOOT_CMD
+    await ctx.send("Bot bude restartovan!")
+    bot_data["rebooted"] = True
+    REBOOT_CMD = True
+    db_update()
+    await bot.close()
+    bot.destroy()
 
 
 @reboot.error
@@ -1583,7 +1601,7 @@ async def nowelcome(ctx):
 @commands.is_owner()
 async def admin(ctx):
     global bot_data
-    admin_cmds = "**Prikazy vlastnika:**\n\n```C\nshutdown    vypne bota\nrefreshfacts    obnovi seznam nahodnych faktu\nrefreshdata    zacne automatickou obnovu databaze\nnowelcome    vypne uvitaci zpravu pri zapnuti bota\nfiles    odesle na discord pracovni soubory bota\nmsg_remove [count]    smaze poslednich 'count' zprav v kanale\n```"
+    admin_cmds = "**Prikazy vlastnika:**\n\n```C\nshutdown        (opatrne) vypne bota\nreboot      restartuje bota (nasilnou cestou)\nrefreshfacts    obnovi seznam nahodnych faktu\nrefreshdata      zacne automatickou obnovu databaze\nnowelcome        vypne uvitaci zpravu pri zapnuti bota\nfiles          odesle na discord pracovni soubory bota\nmsg_remove [count]        smaze poslednich 'count' zprav v kanale\n```"
     await ctx.send(admin_cmds)
 
 
@@ -1616,18 +1634,16 @@ async def msg_remove(ctx, *args):
     if (number > 100):
         await ctx.send("Vazne chces po me smazat vic jak 100 zprav?")
         return
-      
+
     i = 0
     channel = ctx.channel
-    while (i < number):
-        message = await channel.fetch_message(channel.last_message_id)
-        try:
-            message.delete()
-        except:
-            return
+    number = number + 1
+    async for msg in channel.history(limit=number):
+        await msg.delete()
+        await asyncio.sleep(1)
         i = i + 1
 
-    await ctx.send("Smazal jsem " + str(number) + " zprav.")
+    await ctx.send("Smazal jsem " + str(number - 1) + " zprav.")
 
 
 @msg_remove.error
