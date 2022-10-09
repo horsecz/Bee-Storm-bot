@@ -1,0 +1,228 @@
+{
+ "srani": [
+  {
+   "id": 134363417870860288,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 148444865158447104,
+   "count": 6,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 155149108183695360,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 169678500893163520,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 174224111688482816,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 180654870951493632,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 228528654420803584,
+   "count": 11,
+   "multikills": 3,
+   "pentakills": 1,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 270904126974590976,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 272418988959465472,
+   "count": 4,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 295555620613128192,
+   "count": 2,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 382626617593167883,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 398609553748525067,
+   "count": 5,
+   "multikills": 1,
+   "pentakills": 1,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 406957608889745409,
+   "count": 28,
+   "multikills": 5,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 466614661349900288,
+   "count": 86,
+   "multikills": 43,
+   "pentakills": 10,
+   "hexakills": 2,
+   "legendary kills": 0
+  },
+  {
+   "id": 471347637304426506,
+   "count": 4,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 484312328204976129,
+   "count": 21,
+   "multikills": 1,
+   "pentakills": 1,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 490484221639524362,
+   "count": 19,
+   "multikills": 1,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 504095380166803466,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 550613223733329920,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 560917571663298568,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 591619738208043038,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 591643151668871168,
+   "count": 411,
+   "multikills": 130,
+   "pentakills": 13,
+   "hexakills": 1,
+   "legendary kills": 0
+  },
+  {
+   "id": 594938129278959646,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 617762922088628230,
+   "count": 265,
+   "multikills": 67,
+   "pentakills": 3,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 663804301474267167,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 688490378264969313,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  },
+  {
+   "id": 1023637883283841094,
+   "count": 0,
+   "multikills": 0,
+   "pentakills": 0,
+   "hexakills": 0,
+   "legendary kills": 0
+  }
+ ],
+ "birthday": [],
+ "bot_data": {
+  "bot_runs": 27,
+  "banned": 0,
+  "welcome_msg": false,
+  "rebooted": false
+ },
+ "reminders": []
+}

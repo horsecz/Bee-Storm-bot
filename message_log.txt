@@ -1,0 +1,1770 @@
+[01/10/2022 21:41.40] [#general] Bee Storm#6087 <<'[Random Fact no. 889] Iceland was chosen as the training ground for Apollo astronauts because it was the most “moonlike” surface.'>>
+[01/10/2022 21:41.40] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[01/10/2022 21:44.47] [#karantena] Beelanda#7108 <<'$help'>>
+[01/10/2022 21:44.47] [#karantena] Bee Storm#6087 <<'** **
+ Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.
+
+Pokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).
+
+
+**Reaguji na tyto zpravy:**
+```C
+uh oh      [pouze na zacatku zpravy]
+69         
+gdebody    
+oznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik
+oznaceni bota (@Bee Storm)
+```
+
+**Momentalne rozumim temto prikazum**:
+```C
+help        zobrazi tuto zpravu
+
+hello       <no comment>
+repeat text text2 text3 ...     zopakuje text
+randomfact    napise nahodny fakt
+tagy        pocet oznaceni bota od posledniho spusteni
+
+srani       pocet srani od posledni aktualizace dat
+sraniboard  leaderboard clenu serveru ve srani
+pentaboard  zebricek pentakilleru
+multiboard  zebricek vsech, co dali Double Kill a vetsi
+sranistats  statistiky uzivatele
+
+runtime     datum a cas posledniho spusteni bota
+time        soucasne datum a cas
+svatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek
+birthdays    vypise narozeniny clenu serveru, kteri si je zapsali
+birthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek
+
+reminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```
+
+**Automaticky delam tyto veci:**
+```C
+Nahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt
+Denni zprava    kazdy den kolem obeda napisu:
+  v beznem dni jeho datum a kdo ma svatek
+  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim
+  neco navic v pripade, ze jsou Vanoce nebo Silvestr
+Novy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok
+Obnova stats    v pripade ztraty obnovim veskere statistiky```'>>
+[01/10/2022 21:52.23] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[01/10/2022 21:52.23] [#general] Bee Storm#6087 <<'[Random Fact no. 633] The atomic number of zinc is 30.'>>
+[01/10/2022 21:52.30] [#karantena] Beelanda#7108 <<'$git'>>
+[01/10/2022 21:52.31] [#karantena] Bee Storm#6087 <<'Muj zdrojovy kod je open source a najdes ho zde: https://github.com/horsecz/Bee-Storm-bot'>>
+[01/10/2022 21:52.31] [#karantena] Bee Storm#6087 <<'Takovy prikaz urcite umet nemam. Co takhle zkusit $help?'>>
+[01/10/2022 21:53.49] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[01/10/2022 21:53.49] [#general] Bee Storm#6087 <<'[Random Fact no. 694] Eminem’s mother filed an $11 million defamation lawsuit against him because of his lyrics about her. She settled for $25,000, and $23,354.25 of that went to her lawyer.'>>
+[01/10/2022 21:53.55] [#karantena] Beelanda#7108 <<'$git'>>
+[01/10/2022 21:54.11] [#general] Bee Storm#6087 <<'[Random Fact no. 1176] Of the 70% of water covering the Earth, only 3% of it is fresh, and the other 97% of it is salted.'>>
+[01/10/2022 21:54.12] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[01/10/2022 21:54.16] [#karantena] Beelanda#7108 <<'$git'>>
+[01/10/2022 21:54.17] [#karantena] Bee Storm#6087 <<'Muj zdrojovy kod je open source a najdes ho zde: https://github.com/horsecz/Bee-Storm-bot'>>
+[01/10/2022 21:54.19] [#karantena] Beelanda#7108 <<'$github'>>
+[01/10/2022 21:54.19] [#karantena] Bee Storm#6087 <<'Muj zdrojovy kod je open source a najdes ho zde: https://github.com/horsecz/Bee-Storm-bot'>>
+[01/10/2022 21:54.46] [#karantena] Beelanda#7108 <<'$tagy'>>
+[01/10/2022 21:54.47] [#karantena] Bee Storm#6087 <<'Pocet otravnych tagu: 0'>>
+[01/10/2022 21:55.18] [#karantena] Beelanda#7108 <<'** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\nrandomfact    napise nahodny fakt\ngit    github bota (lze taky pouzit: $github)\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsrani       pocet srani od posledni aktualizace dat\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky```\n'>>
+[01/10/2022 21:55.18] [#karantena] Bee Storm#6087 <<'nice'>>
+[01/10/2022 21:55.18] [#karantena] Rubbergod#3509 <<'uh oh'>>
+[01/10/2022 21:55.19] [#karantena] Bee Storm#6087 <<'body nigde'>>
+[01/10/2022 23:46.20] [#world-war-3] Beelanda#7108 <<'https://twitter.com/visegrad24/status/1576280381476569091?t=Ha-TcQ-qlbqQxJUnigEM5g&s=19'>>
+[02/10/2022 00:17.43] [#world-war-3] Beelanda#7108 <<'https://twitter.com/SamRamani2/status/1576332896733757440?t=Y0mGqFyTmltE_K97wj9bBg&s=19'>>
+[02/10/2022 00:44.23] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[02/10/2022 11:44.23] [#general] Bee Storm#6087 <<'Dnes je 2. 10. a svatek ma Olivie, Oliver.'>>
+[02/10/2022 12:18.22] [#general] Beelanda#7108 <<'jsem ted koukal na stary fotky'>>
+[02/10/2022 12:18.23] [#general] Beelanda#7108 <<'(2014)'>>
+[02/10/2022 12:18.29] [#general] Beelanda#7108 <<'a tam jen vidim nejaky decko'>>
+[02/10/2022 12:18.36] [#general] Beelanda#7108 <<'a ted proste nevim vubec kdo to je'>>
+[02/10/2022 12:18.41] [#general] Beelanda#7108 <<'se divam dal a pak jen'>>
+[02/10/2022 12:18.43] [#general] Beelanda#7108 <<'aha to je segra'>>
+[02/10/2022 12:18.47] [#general] Beelanda#7108 <<'6 let'>>
+[02/10/2022 12:18.48] [#general] Beelanda#7108 <<'<:KEKW:668585621945712673>'>>
+[02/10/2022 12:34.39] [#world-war-3] Beelanda#7108 <<'https://twitter.com/DzamilaStehlik/status/1576318567703752704?s=20&t=a-avYMVyiZtRieaOD2uAHg'>>
+[02/10/2022 13:32.56] [#kgb] Community Updates#0000 <<'Hey Admins and Mods,
+
+Y’all ready for some of that ~ juicy ~ product news?
+
+After a bunch of testing, we’re excited to begin rolling out Forum Channels across Community servers!
+
+Forum Channels are a new type of channel that provide a dedicated, organized space for conversations. Since conversations are contained in individual posts, your members can browse topics before jumping in—without worrying about breaking up or getting in the way of other on-going conversations.
+
+If you’ve been waiting for this news in anticipation and are ready to dive right in, go right ahead and click that Create Channel button. You should see that forum channels are now an option for you. If it’s not, you may be part of a small group of users who will have to wait just a little longer. (<:soontm:842462475340218421>)
+
+Want to do a bit more deep thonking and research around how to best use Forum Channels before diving in? The following article on our Community Resources site will guide you on your journey to reaching forum Valhalla: <https://discord.com/community/creating-value-with-conversation>
+
+https://www.youtube.com/watch?v=y4MxuHNIIg0'>>
+[02/10/2022 14:44.23] [#general] Bee Storm#6087 <<'[Random Fact no. 166] Brendan Fraser almost died while filming The Mummy (he passed out while filming a scene). Pretty scary, right?'>>
+[02/10/2022 16:28.58] [#world-war-3] Beelanda#7108 <<'https://twitter.com/TpyxaNews/status/1576537933787828226?t=VdP5_xbGlUez3jTTB42QDw&s=19'>>
+[02/10/2022 16:29.04] [#world-war-3] Beelanda#7108 <<'<:KEKW:668585621945712673>'>>
+[02/10/2022 16:29.19] [#world-war-3] Beelanda#7108 <<'12 z 28 zemi uz podporilo clenstvi Ukrajiny v NATO'>>
+[02/10/2022 17:04.36] [#general] Beelanda#7108 <<'jsem minuly tyden nemel hlad ty dva dny'>>
+[02/10/2022 17:04.44] [#general] Beelanda#7108 <<'se mi tam udelal 600 vetsi deficit nez mel byt'>>
+[02/10/2022 17:04.52] [#general] Beelanda#7108 <<'vcera 100'>>
+[02/10/2022 17:05.04] [#general] Beelanda#7108 <<'a vcera jsem se dozvedel ze dnes bude oslava'>>
+[02/10/2022 17:05.05] [#general] Beelanda#7108 <<'<:KEKW:668585621945712673>'>>
+[02/10/2022 17:05.26] [#general] Beelanda#7108 <<'tak dnes to bude poprve po 2 mesicich co mam vic jak 2000 kcal'>>
+[02/10/2022 17:09.17] [#general] Beelanda#7108 <<'ale tak 11 kilo dole, jeden kousek dortu neublizi a je zaslouzeny :kalm:'>>
+[02/10/2022 17:11.50] [#general] Beelanda#7108 <<'a aspon se doplni ten extremni deficit'>>
+[02/10/2022 17:11.58] [#general] Beelanda#7108 <<'kterej bych jinak nedoplnil <:KEKW:668585621945712673>'>>
+[02/10/2022 17:14.59] [#general] Beelanda#7108 <<'ok first difference'>>
+[02/10/2022 17:15.10] [#general] Beelanda#7108 <<'pred dvema mesici bych si dal dalsi kousek'>>
+[02/10/2022 17:15.26] [#general] Beelanda#7108 <<'TED JE MI KURVA BLBE PROTOZE JSEM HO NEJEDL 20 MINUT ALE JEN 15'>>
+[02/10/2022 17:15.40] [#general] Beelanda#7108 <<'[driv bych ho sezral za 2 minuty]'>>
+[02/10/2022 18:11.03] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[02/10/2022 18:11.03] [#general] Bee Storm#6087 <<'[Random Fact no. 277] Alfred Hitchcock was scared of... eggs. Let's all be thankful he didn't create a horror film about eggs.'>>
+[02/10/2022 21:41.15] [#world-war-3] Beelanda#7108 <<'https://twitter.com/Biz_Ukraine_Mag/status/1576643785609531393?t=-xpc8nryEzsL0V2UX9itYQ&s=19'>>
+[02/10/2022 22:18.02] [#general] Pupienus#6973 <<'menzac si nasel novou obet'>>
+[02/10/2022 22:18.04] [#general] Pupienus#6973 <<'<:KEKW:668585621945712673>'>>
+[02/10/2022 22:25.52] [#general] Beelanda#7108 <<'<:KEKW:668585621945712673>'>>
+[02/10/2022 22:46.22] [#general] louda#7658 <<'<:KEKW:668585621945712673>'>>
+[02/10/2022 22:46.33] [#general] louda#7658 <<'taky sem koukal <:pepeLaugh:622808862960910336>'>>
+[02/10/2022 22:53.20] [#general] Stormed#2528 <<'bohaaaaaaa'>>
+[02/10/2022 22:53.25] [#general] Stormed#2528 <<'už tady 15 minut řve alarm'>>
+[03/10/2022 04:34.37] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[03/10/2022 08:10.04] [#general] Stormed#2528 <<'Holka předemnou na přednášce kupuje kondomy'>>
+[03/10/2022 08:10.08] [#general] Stormed#2528 <<'<:okayChamp:668585210140426256>'>>
+[03/10/2022 08:25.58] [#general] Pupienus#6973 <<'mam 2 levy dolny osmicky <:pog:622808862562451497>'>>
+[03/10/2022 09:02.35] [#general] dAjvid#2284 <<'Well, why not? <:rtzW:622808862805852169>'>>
+[03/10/2022 09:03.14] [#general] dAjvid#2284 <<'Třeba se mu jen líbí to kolečko z nohou. <:pepeLa:787339472861790208>'>>
+[03/10/2022 09:04.20] [#general] Stormed#2528 <<'Během přednášky?? <:LULW:622808863011504129>'>>
+[03/10/2022 09:04.57] [#general] dAjvid#2284 <<'Asi potřebuje aby přišly co nejdřív. <:LULW:622808863011504129>'>>
+[03/10/2022 09:25.56] [#world-war-3] Beelanda#7108 <<'https://twitter.com/KyivIndependent/status/1576672003330695168?t=LaUPPrHDPDsjmABB5iICVg&s=19'>>
+[03/10/2022 09:31.20] [#world-war-3] Beelanda#7108 <<'https://twitter.com/TpyxaNews/status/1576819403043110912?t=jEZQ_bNv7zztMDpE1E-oLw&s=19'>>
+[03/10/2022 09:31.24] [#world-war-3] Beelanda#7108 <<'Here we go'>>
+[03/10/2022 11:34.37] [#general] Bee Storm#6087 <<'[Random Fact no. 653] Justin Bieber’s first tweet was at 8:27 pm on May 11, 2009.'>>
+[03/10/2022 11:34.37] [#general] Bee Storm#6087 <<'Dnes je 3. 10. a svatek ma Bohumil.'>>
+[03/10/2022 14:10.40] [#general] Drevokocúr#6969 <<'<@&633366955855970343>'>>
+[03/10/2022 15:09.18] [#general] Beelanda | Анти-руск#7108 <<'ah, zas nejaky curak spamuje svyho bota a zabanovali kvuli tomu myho'>>
+[03/10/2022 15:10.42] [#general] Bee Storm#6087 <<'[Random Fact no. 328] Cats only meow as a way to communicate with humans.'>>
+[03/10/2022 15:10.42] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[03/10/2022 15:10.54] [#general] Beelanda | Анти-руск#7108 <<'thank you'>>
+[03/10/2022 15:13.42] [#general] Beelanda | Анти-руск#7108 <<'jo proc jsem tu sel vubec'>>
+[03/10/2022 15:13.53] [#general] Beelanda | Анти-руск#7108 <<'<@617762922088628230> <@466614661349900288> budete psat bp anglicky nebo cesky? <:monkaHmm:622809371574927366>'>>
+[03/10/2022 16:13.44] [#general] Beelanda | Анти-руск#7108 <<'jsem si rikal ze dnes zacnu cvicit rano pravidelne'>>
+[03/10/2022 16:13.59] [#general] Beelanda | Анти-руск#7108 <<'ale ze vlastne dnes ne, ze tak zitra pozitri, az budu uplne v klidu'>>
+[03/10/2022 16:14.04] [#general] Beelanda | Анти-руск#7108 <<'zajdu k doktorovi'>>
+[03/10/2022 16:14.07] [#general] Beelanda | Анти-руск#7108 <<'a dostanu na tyden atb'>>
+[03/10/2022 16:14.10] [#general] Beelanda | Анти-руск#7108 <<'<:pepeLa:787339472861790208>'>>
+[03/10/2022 16:14.23] [#general] Beelanda | Анти-руск#7108 <<'no tak guess zacatek az za tyden'>>
+[03/10/2022 16:15.55] [#general] Drevokocúr#6969 <<'Cz'>>
+[03/10/2022 16:16.03] [#general] Drevokocúr#6969 <<'Není důvod se do nohy střílet ještě víc'>>
+[03/10/2022 16:16.44] [#general] Beelanda | Анти-руск#7108 <<'Ja prave nevim no'>>
+[03/10/2022 16:16.45] [#general] Beelanda | Анти-руск#7108 <<'<:pepeLa:787339472861790208>'>>
+[03/10/2022 16:16.57] [#general] Beelanda | Анти-руск#7108 <<'pockame na anicku a uvidime jaky bude verdikt'>>
+[03/10/2022 16:16.58] [#general] Beelanda | Анти-руск#7108 <<'<:monkaHmm:622809371574927366>'>>
+[03/10/2022 16:18.06] [#general] Beelanda | Анти-руск#7108 <<'Me prijde ze se strelis uplne stejne v cestine i anglictine'>>
+[03/10/2022 16:18.18] [#general] Beelanda | Анти-руск#7108 <<'jeste v praci v oboru kde se pouziva hodne anglickych vyrazu'>>
+[03/10/2022 16:20.13] [#general] Beelanda | Анти-руск#7108 <<'akorat moje englando neni tak dobry <:KEKW:668585621945712673> by byla plna bakalarka 'was were is there' apod'>>
+[03/10/2022 16:49.00] [#general] Drevokocúr#6969 <<'Jako anglicky umím dobře'>>
+[03/10/2022 16:49.05] [#general] Drevokocúr#6969 <<'Ale česky líp'>>
+[03/10/2022 16:49.16] [#general] Drevokocúr#6969 <<'<:shrunk:666401312266518539>'>>
+[03/10/2022 16:49.51] [#general] Beelanda | Анти-руск#7108 <<'tru no'>>
+[03/10/2022 16:51.02] [#general] Drevokocúr#6969 <<'<@&821810379952226396>'>>
+[03/10/2022 16:51.03] [#general] Bee Storm#6087 <<'Doublekill!'>>
+[03/10/2022 16:51.19] [#general] Beelanda | Анти-руск#7108 <<'$sraniboard'>>
+[03/10/2022 16:51.20] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda#7108 (407 srani)
+ **2.** Drevokocúr#6969 (256 srani)
+ **3.** Pupienus#6973 (86 srani)
+ **4.** Bc. ReBeL#5797 (28 srani)
+ **5.** Stormed#2528 (21 srani)'>>
+[03/10/2022 16:51.25] [#general] Drevokocúr#6969 <<''>>
+[03/10/2022 16:51.26] [#general] Beelanda | Анти-руск#7108 <<'prestan me okamzite dohanet'>>
+[03/10/2022 16:51.38] [#general] Beelanda | Анти-руск#7108 <<'awww'>>
+[03/10/2022 16:51.48] [#general] Beelanda | Анти-руск#7108 <<'to je aspon pravej sraci kamos'>>
+[03/10/2022 16:52.20] [#general] Drevokocúr#6969 <<'<:yep:758428717583171626>'>>
+[03/10/2022 16:52.37] [#general] Beelanda | Анти-руск#7108 <<'Bee Stormovi jsem pridal 20 dalsich random hlasek'>>
+[03/10/2022 16:52.49] [#general] Beelanda | Анти-руск#7108 <<'(k normalnimu srani tho)'>>
+[03/10/2022 16:52.53] [#general] Beelanda | Анти-руск#7108 <<'a v jedne z nich se k tobe prida'>>
+[03/10/2022 16:52.56] [#general] Beelanda | Анти-руск#7108 <<':schemingpepe:'>>
+[03/10/2022 17:09.19] [#general] Pupienus#6973 <<'Češky'>>
+[03/10/2022 17:09.23] [#general] Pupienus#6973 <<'xd'>>
+[03/10/2022 17:19.10] [#general] Stormed#2528 <<'Wtf'>>
+[03/10/2022 17:19.18] [#general] Stormed#2528 <<'Jen si stojím na skacelce'>>
+[03/10/2022 17:19.24] [#general] Stormed#2528 <<'A najebe do mě kokot na kolobce'>>
+[03/10/2022 17:19.27] [#general] Stormed#2528 <<'Jebe mu'>>
+[03/10/2022 17:22.33] [#general] Beelanda | Анти-руск#7108 <<'headclass'>>
+[03/10/2022 17:22.34] [#general] Beelanda | Анти-руск#7108 <<'<:kappa:622827221077196803>'>>
+[03/10/2022 17:29.33] [#general] Precla#0001 <<'Asi tě neviděl'>>
+[03/10/2022 17:29.36] [#general] Precla#0001 <<'<:KappaLul:827833315851501598>'>>
+[03/10/2022 17:57.15] [#general] Beelanda | Анти-руск#7108 <<'to je dost pravdepodobne'>>
+[03/10/2022 18:38.25] [#general] Bee Storm#6087 <<'[Random Fact no. 793] Italy built an entire courthouse to prosecute the Mafia. They charged 474 members in a trial that lasted from 1986-1992. To date, it was the biggest trial in the world.'>>
+[03/10/2022 18:38.25] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[03/10/2022 19:14.45] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/Victor_Tovikrov'>>
+[03/10/2022 19:14.49] [#world-war-3] Beelanda | Анти-руск#7108 <<'Slava Kaliningradu'>>
+[03/10/2022 19:14.58] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/Victor_Tovikrov/status/1576965793929388032?s=20&t=h4Eu0_vNalmhVkpLEBw70A'>>
+[03/10/2022 21:09.55] [#world-war-3] Beelanda | Анти-руск#7108 <<''>>
+[03/10/2022 21:11.31] [#world-war-3] Beelanda | Анти-руск#7108 <<''>>
+[03/10/2022 23:24.42] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/mrsorokaa/status/1576885708920623104?t=CIhRXtIWa6LZeTdNVnCPLQ&s=19'>>
+[03/10/2022 23:40.07] [#general] Drevokocúr#6969 <<'<@&809477809772560435>'>>
+[03/10/2022 23:40.07] [#general] Bee Storm#6087 <<'Party zacina!'>>
+[03/10/2022 23:51.06] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[04/10/2022 00:55.01] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[04/10/2022 07:37.47] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/AFP/status/1577159317694054400?t=SUR6p_C4l7lCQJ2prDZCGw&s=19'>>
+[04/10/2022 10:26.16] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/BBCWorld/status/1577090958168129537?t=qrBJBuKJZhpMUVJVss3r8A&s=19'>>
+[04/10/2022 10:26.42] [#world-war-3] Beelanda | Анти-руск#7108 <<'Casually si jdeš lehnout a najednou musíš běžet do úkrytu protože nad tebou letí raketa a nevíš jestli náhodou nespadne na tebe'>>
+[04/10/2022 12:11.05] [#world-war-3] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 12:12.46] [#world-war-3] Drevokocúr#6969 <<'<:mnkaHmmmm:835934148493180958>'>>
+[04/10/2022 12:20.00] [#general] Drevokocúr#6969 <<'Wait'>>
+[04/10/2022 12:20.06] [#general] Drevokocúr#6969 <<'Oni změnili ty cvičící'>>
+[04/10/2022 12:20.12] [#general] Drevokocúr#6969 <<'Já tam mám Jeřábka teďka'>>
+[04/10/2022 12:20.22] [#general] Drevokocúr#6969 <<'<:OMEGALUL:622808862885412875> <:vutEZ:650288381476995102>'>>
+[04/10/2022 12:20.25] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 12:20.39] [#general] Drevokocúr#6969 <<''>>
+[04/10/2022 12:21.03] [#general] Drevokocúr#6969 <<'Teď už jen doufám že to bude totální kokot'>>
+[04/10/2022 12:21.34] [#general] Beelanda | Анти-руск#7108 <<'no porad muzes jit se mnou v pondeli'>>
+[04/10/2022 12:21.36] [#general] Beelanda | Анти-руск#7108 <<':scheming:'>>
+[04/10/2022 12:21.46] [#general] Beelanda | Анти-руск#7108 <<'ja mam Zavrela'>>
+[04/10/2022 12:21.48] [#general] Beelanda | Анти-руск#7108 <<'nevim kdo to je'>>
+[04/10/2022 12:22.00] [#general] Drevokocúr#6969 <<'<:PepeLa:751183558126731274>'>>
+[04/10/2022 12:23.18] [#general] Drevokocúr#6969 <<'Jako říkám si že by to mohlo být trochu jednodušší než loni'>>
+[04/10/2022 12:23.19] [#general] Beelanda | Анти-руск#7108 <<'iis prednasky jsou yes or no'>>
+[04/10/2022 12:23.25] [#general] Drevokocúr#6969 <<'Když už jsem teď dal to IPK'>>
+[04/10/2022 12:23.29] [#general] Beelanda | Анти-руск#7108 <<'ja si nedelam iluze, bude to stejne v pici'>>
+[04/10/2022 12:23.35] [#general] Drevokocúr#6969 <<'dal jsem to bez přednášek'>>
+[04/10/2022 12:23.44] [#general] Drevokocúr#6969 <<'A se skipem projektu'>>
+[04/10/2022 12:23.45] [#general] Beelanda | Анти-руск#7108 <<'<:ez:787349410228076604>'>>
+[04/10/2022 12:23.48] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 12:23.59] [#general] Drevokocúr#6969 <<'Jako reálně mi ten předmět přišel jako IDS'>>
+[04/10/2022 12:24.15] [#general] Drevokocúr#6969 <<'A podobně useless jako IPP'>>
+[04/10/2022 12:24.25] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 12:24.33] [#general] Beelanda | Анти-руск#7108 <<'nojo 3bit'>>
+[04/10/2022 12:24.50] [#general] Beelanda | Анти-руск#7108 <<'to nejlepsi na konec'>>
+[04/10/2022 12:25.31] [#general] Drevokocúr#6969 <<'<:yep:758428717583171626>'>>
+[04/10/2022 12:26.12] [#general] Beelanda | Анти-руск#7108 <<'jezis ten hruby je takovej meh'>>
+[04/10/2022 12:26.23] [#general] Beelanda | Анти-руск#7108 <<'na tom ims'>>
+[04/10/2022 12:26.34] [#general] Beelanda | Анти-руск#7108 <<'to co vykladal pepe tomu jsem aspon chapal'>>
+[04/10/2022 12:26.52] [#general] Beelanda | Анти-руск#7108 <<'tendle pulku slajdu preskoci a frci uplne'>>
+[04/10/2022 12:26.56] [#general] Drevokocúr#6969 <<'Hruby je takovej special no <:PepeLa:751183558126731274>'>>
+[04/10/2022 12:59.40] [#world-war-3] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 12:59.45] [#world-war-3] Beelanda | Анти-руск#7108 <<'druhe nejvetsi mesto jiz neni Brno, ale Kralovec <:HYPERS:622808860905701376>'>>
+[04/10/2022 13:07.00] [#general] Beelanda | Анти-руск#7108 <<'bot down zas ?'>>
+[04/10/2022 13:07.01] [#general] Beelanda | Анти-руск#7108 <<'<:Vojtisek:622808861400760350>'>>
+[04/10/2022 13:07.03] [#general] Beelanda | Анти-руск#7108 <<'$hello'>>
+[04/10/2022 13:07.53] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem?`)'>>
+[04/10/2022 13:07.53] [#general] Bee Storm#6087 <<'[Random Fact no. 957] Mickey Mouse was the first-ever cartoon character to talk. In the 1929 episode, The Karnival Kid, Mickey’s first words were “Hot dogs!”'>>
+[04/10/2022 13:08.53] [#general] Beelanda | Анти-руск#7108 <<'curaci'>>
+[04/10/2022 13:08.59] [#general] Beelanda | Анти-руск#7108 <<'furt spamuji a zabiji mi bota'>>
+[04/10/2022 13:09.01] [#general] Beelanda | Анти-руск#7108 <<'<:peepoProtest:803916301349027851>'>>
+[04/10/2022 13:19.04] [#general] Bee Storm#6087 <<'[Random Fact no. 1216] If a snake has its head chopped off – that chopped-off head can still bite and unleash a huge amount of venom.'>>
+[04/10/2022 13:19.50] [#general] Bee Storm#6087 <<'[Random Fact no. 276] Originally, vacuum cleaners were horse-drawn. The horse-drawn buggy would announce to all your neighbors that you were having a special treatment done. Great advertising!'>>
+[04/10/2022 13:21.28] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(`Automaticke obnoveni behu pri vyjimce docasneho zakazu provozu (hosting problem).`)'>>
+[04/10/2022 13:21.28] [#general] Bee Storm#6087 <<'[Random Fact no. 1097] When you remember a past event, you are actually remembering the last time you remembered it, not the event itself.'>>
+[04/10/2022 13:21.56] [#general] Beelanda | Анти-руск#7108 <<'tak snad se to ted bude delat automaticky <:feelsWowMan:627880078973599772>'>>
+[04/10/2022 13:31.53] [#general] Beelanda | Анти-руск#7108 <<'nuclear alert'>>
+[04/10/2022 13:32.51] [#general] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 13:33.36] [#world-war-3] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 13:34.44] [#general] Beelanda | Анти-руск#7108 <<'__V pripade nuklearniho vybuchu bude radiace i ve vzduchu a podle vetru zalezi, kam se odnese, ale nedoporucuje se vychazet ven__'>>
+[04/10/2022 13:36.28] [#general] Beelanda | Анти-руск#7108 <<'Kdyz nastal Cernobyl, tak Sovetsky Svaz vybuch priznal az hodne dni po vybuchu, tim padem cely Vychodni blok nemel vubec tuseni a zivot byl uplne v normalu - az na to ze lidi dostavali radiaci, ktera muze zpusobit rakoviny apod'>>
+[04/10/2022 13:38.13] [#general] Beelanda | Анти-руск#7108 <<'zatim je to teda jen dalsi eskalace, nic nepada a neleti, ale vzhledem k situaci (pro Rusko velmi spatna) je ted ta pravdepodobnost ze neblafuje hodne vysoko <:haHAA:622808860713025536>'>>
+[04/10/2022 13:39.47] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/KyivIndependent/status/1577250812249579526?s=20&t=kXJAEDT7feIWXVVlW3dGwA'>>
+[04/10/2022 13:55.52] [#general] dAjvid#2284 <<'Dneska to zatím jde na to kolik je hodin. <:rtzW:622808862805852169>'>>
+[04/10/2022 13:56.21] [#general] Beelanda | Анти-руск#7108 <<'mezitim ja s 600'>>
+[04/10/2022 13:56.23] [#general] Beelanda | Анти-руск#7108 <<'<:pepeLa:787339472861790208>'>>
+[04/10/2022 14:45.56] [#general] Drevokocúr#6969 <<'No tak ten Jeřábek bude v píči'>>
+[04/10/2022 14:46.25] [#general] Drevokocúr#6969 <<'On si to vybírá ty papíry'>>
+[04/10/2022 14:46.35] [#general] Drevokocúr#6969 <<'A zněl fakt důsledně'>>
+[04/10/2022 14:47.22] [#general] Drevokocúr#6969 <<'Jsem rád že už jsem to cviko jednou dělal, jinak bych byl celkem v prdeli <:PepeLa:751183558126731274>'>>
+[04/10/2022 14:56.49] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 14:57.03] [#general] Beelanda | Анти-руск#7108 <<'kolik lidi jsi zamestnal ?'>>
+[04/10/2022 15:01.07] [#general] Drevokocúr#6969 <<'0'>>
+[04/10/2022 15:01.10] [#general] Drevokocúr#6969 <<'Jsem jel solo'>>
+[04/10/2022 15:01.55] [#general] Beelanda | Анти-руск#7108 <<'<:pog:622808862562451497>'>>
+[04/10/2022 15:01.59] [#general] Beelanda | Анти-руск#7108 <<'nice'>>
+[04/10/2022 15:02.40] [#general] Drevokocúr#6969 <<'No ještě nevím kolik z toho bude bodů <:KEKW:827833315808509983>'>>
+[04/10/2022 15:02.45] [#general] Drevokocúr#6969 <<'Se bojím že bude naz8'>>
+[04/10/2022 15:03.55] [#general] Beelanda | Анти-руск#7108 <<'v pripade ze bude tak staci na nej poslat par ukrajincu'>>
+[04/10/2022 15:03.57] [#general] Beelanda | Анти-руск#7108 <<'<:kappa:622827221077196803>'>>
+[04/10/2022 15:04.32] [#general] Drevokocúr#6969 <<'Matoušek prej bude na 3. a 4. cviko akorát'>>
+[04/10/2022 15:04.41] [#general] Drevokocúr#6969 <<'<:feelsOkayMan:589472434147688480> <:vutEZ:650288381476995102>'>>
+[04/10/2022 15:05.25] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 15:05.32] [#general] Beelanda | Анти-руск#7108 <<'dobrej bait no'>>
+[04/10/2022 15:10.47] [#general] Drevokocúr#6969 <<'kokoti'>>
+[04/10/2022 15:12.29] [#general] Pupienus#6973 <<'me bavily v ims jenom hrubeho prednasky'>>
+[04/10/2022 15:13.02] [#general] Drevokocúr#6969 <<'Tak on ten výběr není zas tak hvězdnej <:xdd:951041341683544094>'>>
+[04/10/2022 15:35.02] [#general] Beelanda | Анти-руск#7108 <<'ja mam rad pepeho'>>
+[04/10/2022 15:35.05] [#general] Beelanda | Анти-руск#7108 <<'<:nepSmug:803916421817171978>'>>
+[04/10/2022 15:52.13] [#general] Beelanda | Анти-руск#7108 <<':vut'>>
+[04/10/2022 15:52.17] [#general] Beelanda | Анти-руск#7108 <<'uz mam 15 stran bp'>>
+[04/10/2022 15:52.23] [#general] Beelanda | Анти-руск#7108 <<'takze pozitri odevzdavam'>>
+[04/10/2022 15:52.23] [#general] Beelanda | Анти-руск#7108 <<'<:kappa:622827221077196803>'>>
+[04/10/2022 15:56.36] [#general] Drevokocúr#6969 <<'Send source'>>
+[04/10/2022 15:56.56] [#general] Drevokocúr#6969 <<'Z toho se dá něco yoinknout'>>
+[04/10/2022 15:59.07] [#general] Beelanda | Анти-руск#7108 <<'source je sablona'>>
+[04/10/2022 15:59.11] [#general] Beelanda | Анти-руск#7108 <<'kterou jsem nasel nekde na googlu'>>
+[04/10/2022 15:59.46] [#general] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 16:01.17] [#general] Beelanda | Анти-руск#7108 <<'okay dnes jsem videl druhou prednasku ims a podelal osnovu v bp a castecne zjistil co mam delat'>>
+[04/10/2022 16:01.28] [#general] Beelanda | Анти-руск#7108 <<'todle povazuji za produktivni den'>>
+[04/10/2022 16:01.34] [#general] Beelanda | Анти-руск#7108 <<'cas na pauzu'>>
+[04/10/2022 16:02.35] [#general] Beelanda | Анти-руск#7108 <<'tvl 7 hodin v kuse skola'>>
+[04/10/2022 16:02.38] [#general] Beelanda | Анти-руск#7108 <<'<:monkaS:622825371644985394>'>>
+[04/10/2022 16:04.35] [#general] Beelanda | Анти-руск#7108 <<'ok'>>
+[04/10/2022 16:04.41] [#general] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 16:04.45] [#general] Beelanda | Анти-руск#7108 <<'ja vim ze to patri do world war 3'>>
+[04/10/2022 16:04.47] [#general] Beelanda | Анти-руск#7108 <<'but'>>
+[04/10/2022 16:04.49] [#general] Beelanda | Анти-руск#7108 <<'<:monkaS:622825371644985394> <:monkaS:622825371644985394> <:monkaS:622825371644985394> <:monkaS:622825371644985394>'>>
+[04/10/2022 16:04.57] [#general] Beelanda | Анти-руск#7108 <<'so close'>>
+[04/10/2022 16:49.04] [#general] Drevokocúr#6969 <<'super tvl'>>
+[04/10/2022 16:49.10] [#general] Drevokocúr#6969 <<'Smrž mi poslal práci co si mám přečíst'>>
+[04/10/2022 16:49.15] [#general] Drevokocúr#6969 <<'a to je strašnej trash zatím'>>
+[04/10/2022 16:49.27] [#general] Drevokocúr#6969 <<'týpek asi neměl ITY <:PepeLa:751183558126731274>'>>
+[04/10/2022 16:49.33] [#general] Drevokocúr#6969 <<'ale dostal E <:vutEZ:650288381476995102>'>>
+[04/10/2022 16:50.24] [#general] Beelanda | Анти-руск#7108 <<'me strnadel rikal ze se mam jen kouknout, ze urcite nemam cist cely'>>
+[04/10/2022 16:50.26] [#general] Beelanda | Анти-руск#7108 <<'<:pepeLaugh:622808862960910336>'>>
+[04/10/2022 16:50.58] [#general] Beelanda | Анти-руск#7108 <<'a vzorova BP co mi ukazal tak ze je spis vzor jak to nedelat (F)'>>
+[04/10/2022 16:54.06] [#general] Drevokocúr#6969 <<'<:KEKW:827833315808509983>'>>
+[04/10/2022 16:54.24] [#general] Drevokocúr#6969 <<'well já tam mám napsaný "podívat se" <:PepeLa:751183558126731274>'>>
+[04/10/2022 16:58.07] [#general] Drevokocúr#6969 <<'ale týpek prostě ani neumí česky'>>
+[04/10/2022 17:02.09] [#general] Beelanda | Анти-руск#7108 <<'petice za svobodu <:peepoProtest:803916301349027851> <:feelsWowMan:627880078973599772>'>>
+[04/10/2022 17:16.33] [#karantena] Beelanda | Анти-руск#7108 <<'$hello'>>
+[04/10/2022 17:16.33] [#karantena] Bee Storm#6087 <<'Stormec'>>
+[04/10/2022 17:17.57] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[04/10/2022 17:17.57] [#general] Bee Storm#6087 <<'[Random Fact no. 1251] The last picture taken of John Lennon while he was alive had his killer in the frame.'>>
+[04/10/2022 17:19.29] [#general] Bee Storm#6087 <<'[Random Fact no. 847] The “Lost” pilot was so expensive (over $10 million) that the Chairman of ABC was fired for green-lighting the project.'>>
+[04/10/2022 17:19.29] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[04/10/2022 17:31.33] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[04/10/2022 17:31.33] [#general] Bee Storm#6087 <<'[Random Fact no. 240] Strawberries are not actually berries. They're actually "a multiple fruit which consists of many tiny individual fruits embedded in a fleshy receptacle," according to the Carnegie Museum. It's kind of a disturbing way to describe a strawberry but accurate nonetheless.'>>
+[04/10/2022 17:32.48] [#karantena] Beelanda | Анти-руск#7108 <<'$hello'>>
+[04/10/2022 17:32.48] [#karantena] Bee Storm#6087 <<'Tahni'>>
+[04/10/2022 17:38.59] [#general] Bee Storm#6087 <<'[Random Fact no. 764] The odds of being born on February 29th are 1 in 1461.'>>
+[04/10/2022 17:38.59] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[04/10/2022 17:41.03] [#general] Beelanda | Анти-руск#7108 <<'status bota done <:ez:787349410228076604>'>>
+[04/10/2022 18:24.13] [#general] Drevokocúr#6969 <<'<:PepeLa:751183558126731274>'>>
+[04/10/2022 18:24.24] [#general] Drevokocúr#6969 <<'se docela bojim co bude nasledovat'>>
+[04/10/2022 18:25.19] [#general] Beelanda | Анти-руск#7108 <<'co to je'>>
+[04/10/2022 18:25.20] [#general] Beelanda | Анти-руск#7108 <<'<:monkaHmm:622809371574927366>'>>
+[04/10/2022 18:25.33] [#general] Drevokocúr#6969 <<'apollo? to je doggo <:PepeLa:751183558126731274>'>>
+[04/10/2022 18:25.45] [#general] Drevokocúr#6969 <<'a to píše náš spolubydla'>>
+[04/10/2022 18:27.21] [#general] Beelanda | Анти-руск#7108 <<'ah'>>
+[04/10/2022 18:27.22] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 18:27.41] [#general] Drevokocúr#6969 <<'pořád neodpověděl <a:AWARE:908745023611351131>'>>
+[04/10/2022 18:30.50] [#general] Drevokocúr#6969 <<'<:PauseChamp:760566672586309693>'>>
+[04/10/2022 18:30.57] [#general] Drevokocúr#6969 <<'naštěstí oba přežili snad'>>
+[04/10/2022 18:31.17] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 18:32.04] [#general] Drevokocúr#6969 <<'tvl co to je za brain damage'>>
+[04/10/2022 18:32.09] [#general] Drevokocúr#6969 <<'vzít cizího psa na procházku'>>
+[04/10/2022 18:32.24] [#general] Drevokocúr#6969 <<'jako je super že se znají ale to chce trošku skillu <:PepeLa:751183558126731274>'>>
+[04/10/2022 18:32.35] [#general] Drevokocúr#6969 <<'zvlášť když ten pes je takovej kokot'>>
+[04/10/2022 18:33.51] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 18:33.52] [#general] Beelanda | Анти-руск#7108 <<'chudak pes'>>
+[04/10/2022 18:34.25] [#general] Drevokocúr#6969 <<'spis je mi lito sary'>>
+[04/10/2022 18:34.53] [#general] Drevokocúr#6969 <<'protože ona vždycky nesnáší když s ním chodí její rodiče, protože jí vždycky zkazí jeho reakce a idk co ještě'>>
+[04/10/2022 18:35.09] [#general] Beelanda | Анти-руск#7108 <<'ty podpisy v te petici pekne leti :pausechamp:'>>
+[04/10/2022 18:35.14] [#general] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 18:35.19] [#general] Beelanda | Анти-руск#7108 <<'pred chvili 8 000'>>
+[04/10/2022 18:35.20] [#general] Drevokocúr#6969 <<'jsem úplně out of the loop'>>
+[04/10/2022 18:35.21] [#general] Drevokocúr#6969 <<'lore pls'>>
+[04/10/2022 18:35.27] [#general] Beelanda | Анти-руск#7108 <<'`Petice za vyhlášení referenda o připojení Kaliningradu k České republice`'>>
+[04/10/2022 18:35.53] [#general] Beelanda | Анти-руск#7108 <<'Polak na twitteru zavtipkoval ze obsadi Kaliningrad a nam daji pulku at mame more'>>
+[04/10/2022 18:36.05] [#general] Beelanda | Анти-руск#7108 <<'dalsi den o tom mluvili nejaci officials v Rusku'>>
+[04/10/2022 18:36.26] [#general] Beelanda | Анти-руск#7108 <<'no a od te doby zacalo KaliningradIsCzechia meme'>>
+[04/10/2022 18:36.27] [#general] Drevokocúr#6969 <<'<:OMEGALUL:827833315922542593>'>>
+[04/10/2022 18:36.34] [#general] Beelanda | Анти-руск#7108 <<'ale tentokrat ne pulka ale cely <:objection:622809372229238794>'>>
+[04/10/2022 18:36.52] [#general] Drevokocúr#6969 <<'<a:AWARE:908745023611351131>'>>
+[04/10/2022 18:38.02] [#general] Beelanda | Анти-руск#7108 <<'https://www.petice.com/petice_za_vyhlaeni_referenda_o_pipojeni_kaliningradu_k_eske_republice'>>
+[04/10/2022 18:38.07] [#general] Beelanda | Анти-руск#7108 <<'<:feelsWowMan:627880078973599772>'>>
+[04/10/2022 18:47.04] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/ZdenekKlouda74/status/1577049050314321920?s=20&t=7Y7-ocqhuLTc993GxzId1A'>>
+[04/10/2022 18:50.31] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://charter97-org.translate.goog/ru/news/2022/10/1/518035/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp'>>
+[04/10/2022 19:18.40] [#general] Beelanda | Анти-руск#7108 <<'<@466614661349900288> nemelas ty problem s isa cvikama minuly rok ? nebo s nejakyma cvikama ze sis je chtela nahradit a oni ti rekli nelze <:monkaHmm:622809371574927366>'>>
+[04/10/2022 19:19.13] [#general] Drevokocúr#6969 <<'taky mám pocit že to byla Anička no'>>
+[04/10/2022 19:21.40] [#general] Drevokocúr#6969 <<'oh ony tam jsou vlastně desetiny'>>
+[04/10/2022 19:36.39] [#general] Pupienus#6973 <<'Yep'>>
+[04/10/2022 19:36.51] [#general] Pupienus#6973 <<'Řekl mi, že to nejde'>>
+[04/10/2022 19:37.02] [#general] Drevokocúr#6969 <<'<:PepeLa:751183558126731274>'>>
+[04/10/2022 19:37.12] [#general] Pupienus#6973 <<'A pak na konci roku se udělalo 1 náhradní cviko'>>
+[04/10/2022 19:38.51] [#general] Pupienus#6973 <<'Ale o tom informoval až na konci roku ofc <:pepeLa:787339472861790208>'>>
+[04/10/2022 19:42.05] [#general] Pupienus#6973 <<'Ja dnes: ouje celý den volný po škole, tak budu produktivní'>>
+[04/10/2022 19:42.19] [#general] Pupienus#6973 <<'... Tak jsem přišla ze školy a celou dobu jsem spala...'>>
+[04/10/2022 19:42.25] [#general] Pupienus#6973 <<'Škola končila ve 2'>>
+[04/10/2022 19:43.25] [#general] Drevokocúr#6969 <<'<:okge:908711206175526932>'>>
+[04/10/2022 20:31.50] [#general] Stormed#2528 <<'<:pepeLa:787339472861790208>'>>
+[04/10/2022 20:32.18] [#general] Stormed#2528 <<''>>
+[04/10/2022 20:35.44] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/ArmadaCR/status/1577319228163719170?t=rzS9jBln0-3Wl3BbTpWbSQ&s=19'>>
+[04/10/2022 20:54.44] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://www.petice.com/petice_za_vyhlaeni_referenda_o_pipojeni_kaliningradu_k_eske_republice'>>
+[04/10/2022 21:12.36] [#world-war-3] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 21:14.17] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/HankaSexy/status/1576926704467148800?t=kt7o5v2EIgCmGv58871fIA&s=19'>>
+[04/10/2022 21:21.33] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/PaulTLevin/status/1577200347352731648?t=NZ8T16-k7dK6t9_n3m08Fg&s=19'>>
+[04/10/2022 21:49.40] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/DominikTemny/status/1577244029682843648?t=Pn6MlIyRZXwCxxESbgFGsw&s=19'>>
+[04/10/2022 21:49.44] [#world-war-3] Beelanda | Анти-руск#7108 <<'Oficiální petice'>>
+[04/10/2022 21:49.46] [#world-war-3] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[04/10/2022 22:05.02] [#world-war-3] Beelanda | Анти-руск#7108 <<''>>
+[04/10/2022 22:19.06] [#general] dAjvid#2284 <<'4k se zdají být dosažitelné, a to v tom nemám jednu colu. <:pepeLa:787339472861790208>'>>
+[04/10/2022 22:19.47] [#general] Drevokocúr#6969 <<'složka na ISA projekt vytvořena <:EZ:842444488839790663>'>>
+[04/10/2022 22:20.31] [#general] dAjvid#2284 <<'Většinou mám málo tuků, ale teď mám upečené hrozně dobré brownies a jeden kousek má 330 kcal s 23 g tuku. <:pepeLa:787339472861790208>'>>
+[04/10/2022 22:20.52] [#general] dAjvid#2284 <<'Tak to už máš vlastně půl hotovo. <:ez:787349410228076604>'>>
+[04/10/2022 22:21.17] [#general] Drevokocúr#6969 <<'ještě bych mohl dneska stihnout vytvořit .c a .h soubory'>>
+[04/10/2022 22:21.29] [#general] Beelanda | Анти-руск#7108 <<'Jakoby pokud jíst sračky tak je 4k celkem pohoda hodnota'>>
+[04/10/2022 22:21.37] [#general] Beelanda | Анти-руск#7108 <<'S normálním jídlem už je to těžší'>>
+[04/10/2022 22:21.40] [#general] Beelanda | Анти-руск#7108 <<'<:pepeLa:787339472861790208>'>>
+[04/10/2022 22:22.07] [#general] dAjvid#2284 <<'Jj, ty 3 kousky brownies nebo kolik to bylo ty kalorie celkem tahaj. <:KEKW:668585621945712673>'>>
+[04/10/2022 22:22.13] [#general] Beelanda | Анти-руск#7108 <<'Jep'>>
+[04/10/2022 22:22.23] [#general] Beelanda | Анти-руск#7108 <<'Taková buchta může mít na kousek 400+'>>
+[04/10/2022 22:22.27] [#general] Beelanda | Анти-руск#7108 <<'Běžná, žádná speciální'>>
+[04/10/2022 22:22.28] [#general] dAjvid#2284 <<'To je skoro 1k kalorií tvle. <:pepeLa:787339472861790208>'>>
+[04/10/2022 22:22.38] [#general] Beelanda | Анти-руск#7108 <<'Dort jsem měl v neděli'>>
+[04/10/2022 22:22.41] [#general] Beelanda | Анти-руск#7108 <<'Kousek 400 kcal'>>
+[04/10/2022 22:23.18] [#general] Beelanda | Анти-руск#7108 <<'S chlastem to jde taky rychle, dáš si panáka a šup 100 kcal'>>
+[05/10/2022 09:01.57] [#general] Pupienus#6973 <<'První gym po 2 měsících za mnou'>>
+[05/10/2022 09:02.04] [#general] Pupienus#6973 <<'To je pain se do toho zas dostat'>>
+[05/10/2022 10:02.02] [#general] Beelanda | Анти-руск#7108 <<'ja ted vynechal tak mesic a pul cviceni doma'>>
+[05/10/2022 10:02.02] [#general] Beelanda | Анти-руск#7108 <<'xd'>>
+[05/10/2022 10:02.12] [#general] Beelanda | Анти-руск#7108 <<'jsem si rikal ze zacnu tento tyden ale pri atb not best idea'>>
+[05/10/2022 10:02.15] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 10:02.35] [#general] Beelanda | Анти-руск#7108 <<'when cheat day turns into cheat year <:kappa:622827221077196803>'>>
+[05/10/2022 10:05.44] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/FoxNews/status/1577563703817506817?s=20&t=a8EX9tQmTfhwU_JP6yKuqw'>>
+[05/10/2022 10:05.59] [#world-war-3] Beelanda | Анти-руск#7108 <<'another: maybe now he will use nuclears ? <:monkaHmm:622809371574927366>'>>
+[05/10/2022 10:13.26] [#world-war-3] Beelanda | Анти-руск#7108 <<'doufam ze se toho chytnou a zitra budu v Americe <:feelsWowMan:627880078973599772>'>>
+[05/10/2022 10:18.25] [#world-war-3] Beelanda | Анти-руск#7108 <<''>>
+[05/10/2022 10:22.36] [#general] Beelanda | Анти-руск#7108 <<''>>
+[05/10/2022 10:22.38] [#general] Beelanda | Анти-руск#7108 <<'Slava Kralovci <:HYPERS:622808860905701376>'>>
+[05/10/2022 10:24.40] [#general] Stormed#2528 <<'wtf, kdo psovi po procházce utírá zadek'>>
+[05/10/2022 10:24.47] [#general] Stormed#2528 <<'to slyším snad prvně <:KEKW:668585621945712673>'>>
+[05/10/2022 10:24.58] [#general] Drevokocúr#6969 <<'Nevím <:PepeLa:751183558126731274>'>>
+[05/10/2022 10:26.57] [#general] Drevokocúr#6969 <<'<@&633366955855970343>'>>
+[05/10/2022 10:26.57] [#general] Bee Storm#6087 <<'Doufam, ze na zachode ...'>>
+[05/10/2022 10:29.07] [#general] louda#7658 <<'už jsem slyšel o tom že aj kočkám <:YEP:679361407619170305>'>>
+[05/10/2022 10:29.13] [#general] louda#7658 <<'od nějaké hygieničky'>>
+[05/10/2022 10:29.20] [#general] Stormed#2528 <<'huh <:monkaHmm:622809371574927366>'>>
+[05/10/2022 10:29.25] [#general] louda#7658 <<'ale nevím o nikom kdo by to dělal <:PepeLa:751183558126731274>'>>
+[05/10/2022 10:29.29] [#general] louda#7658 <<'no když kočka dojde z venku'>>
+[05/10/2022 10:29.29] [#general] Stormed#2528 <<'jako kocourovi jsme utírali zadek jen, když měl srajdu'>>
+[05/10/2022 10:29.34] [#general] Stormed#2528 <<'a posral si chlupy na zadku'>>
+[05/10/2022 10:29.36] [#general] louda#7658 <<'<:kek:499119654053347329>'>>
+[05/10/2022 10:29.37] [#general] Stormed#2528 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 10:29.38] [#general] louda#7658 <<'happens'>>
+[05/10/2022 10:32.47] [#general] Beelanda | Анти-руск#7108 <<'nezapomente za hodinu a pul slavit s narodem pripojeni Kralovce <:objection:622809372229238794>'>>
+[05/10/2022 10:33.08] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/KyivIndependent/status/1577570261666353153?s=20&t=l9CDTTLd-yHDID4ywdNP7Q'>>
+[05/10/2022 10:41.48] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/USEmbassyPrague/status/1577575200098766848?s=20&t=l9CDTTLd-yHDID4ywdNP7Q'>>
+[05/10/2022 11:12.03] [#general] dAjvid#2284 <<'Kam chodíš? 🤔'>>
+[05/10/2022 11:14.06] [#general] Beelanda | Анти-руск#7108 <<'<@&633366955855970343>'>>
+[05/10/2022 11:14.07] [#general] Bee Storm#6087 <<'Bude i dalsi?'>>
+[05/10/2022 11:14.11] [#general] Beelanda | Анти-руск#7108 <<'asi ne'>>
+[05/10/2022 11:14.24] [#general] Beelanda | Анти-руск#7108 <<'to furt zapominam tagovat'>>
+[05/10/2022 11:14.34] [#general] Beelanda | Анти-руск#7108 <<'davam prostor vojtovi aby me dohnal <:kappa:622827221077196803>'>>
+[05/10/2022 11:14.36] [#general] Beelanda | Анти-руск#7108 <<'$sraniboard'>>
+[05/10/2022 11:14.36] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda#7108 (407 srani)
+ **2.** Drevokocúr#6969 (258 srani)
+ **3.** Pupienus#6973 (86 srani)
+ **4.** Bc. ReBeL#5797 (28 srani)
+ **5.** Stormed#2528 (21 srani)'>>
+[05/10/2022 11:17.49] [#general] Drevokocúr#6969 <<'Poslední dobou nic moc'>>
+[05/10/2022 11:17.58] [#general] Drevokocúr#6969 <<'Najizdim na normální stravu <:Sadge:842445007758557184>'>>
+[05/10/2022 11:20.42] [#general] Beelanda | Анти-руск#7108 <<'na te uz jsem dlouho'>>
+[05/10/2022 11:20.46] [#general] Beelanda | Анти-руск#7108 <<'proto je to tak slabe'>>
+[05/10/2022 11:20.47] [#general] Beelanda | Анти-руск#7108 <<'<:sadge:787364783460188161>'>>
+[05/10/2022 11:21.22] [#general] Beelanda | Анти-руск#7108 <<'jeste navic 1700 kcal denne oproti 3000 - 4500, to se pak tezko sere'>>
+[05/10/2022 11:21.37] [#general] Beelanda | Анти-руск#7108 <<'$multiboard'>>
+[05/10/2022 11:21.38] [#general] Bee Storm#6087 <<'** **
+**MULTIBOARD** - top 5 nejvetsich multikilleru:
+
+ **1.** Beelanda#7108 (130 multikillu)
+ **2.** Drevokocúr#6969 (63 multikillu)
+ **3.** Pupienus#6973 (43 multikillu)
+ **4.** Bc. ReBeL#5797 (5 multikillu)
+ **5.** Terlanius#4846 (3 multikillu)'>>
+[05/10/2022 11:21.44] [#general] Beelanda | Анти-руск#7108 <<'$pentaboard'>>
+[05/10/2022 11:21.44] [#general] Bee Storm#6087 <<'** **
+**PENTABOARD** - top 5 nejvetsich pentakilleru:
+
+ **1.** Beelanda#7108 (13 pentakillu)
+ **2.** Pupienus#6973 (10 pentakillu)
+ **3.** Drevokocúr#6969 (3 pentakillu)
+ **4.** Terlanius#4846 (1 pentakillu)
+ **5.** Ferenc hop na kredenc#9631 (1 pentakillu)'>>
+[05/10/2022 11:21.49] [#general] Beelanda | Анти-руск#7108 <<'<:monkaS:622825371644985394>'>>
+[05/10/2022 11:21.54] [#general] Beelanda | Анти-руск#7108 <<'tady to vypada celkem nebezpecne'>>
+[05/10/2022 11:23.11] [#general] Drevokocúr#6969 <<'<@466614661349900288> pod pod'>>
+[05/10/2022 11:23.22] [#general] Drevokocúr#6969 <<'Zaber trochu'>>
+[05/10/2022 11:36.11] [#general] Beelanda | Анти-руск#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 11:36.26] [#general] Beelanda | Анти-руск#7108 <<'to je nebezpecne'>>
+[05/10/2022 11:36.32] [#general] Beelanda | Анти-руск#7108 <<'jeste bych ztratil dominanci <:monkaS:622825371644985394>'>>
+[05/10/2022 11:37.09] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/KyivIndependent/status/1577593125870108673?s=20&t=l9CDTTLd-yHDID4ywdNP7Q'>>
+[05/10/2022 11:37.16] [#world-war-3] Beelanda | Анти-руск#7108 <<'https://twitter.com/KyivIndependent/status/1577593128130838528?s=20&t=l9CDTTLd-yHDID4ywdNP7Q'>>
+[05/10/2022 11:37.42] [#world-war-3] Beelanda | Анти-руск#7108 <<'another: nuclear war closer than ever before'>>
+[05/10/2022 11:38.59] [#general] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 11:49.09] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[05/10/2022 11:49.09] [#world-war-3] Bee Storm#6087 <<'Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]'>>
+[05/10/2022 11:49.14] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'huh'>>
+[05/10/2022 11:49.15] [#world-war-3] Bee Storm#6087 <<'Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]'>>
+[05/10/2022 11:49.21] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'co ti jebe'>>
+[05/10/2022 11:49.22] [#world-war-3] Bee Storm#6087 <<'Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]'>>
+[05/10/2022 11:49.36] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'?'>>
+[05/10/2022 11:49.36] [#karantena] Bee Storm#6087 <<'Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]'>>
+[05/10/2022 11:49.57] [#world-war-3] louda#7658 <<'<:PepeLa:751183558126731274>'>>
+[05/10/2022 11:50.04] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'aha ja si zmenil jmeno'>>
+[05/10/2022 11:50.05] [#world-war-3] Bee Storm#6087 <<'Nepodarilo se te vystalkovat v databazi. [UNKN_MEMB]'>>
+[05/10/2022 11:50.48] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 11:50.48] [#general] Bee Storm#6087 <<'[Random Fact no. 703] The only difference between kosher salt and table salt is the grain size. Kosher salt is smaller, and they both come from underground salt deposits.'>>
+[05/10/2022 11:50.49] [#general] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 11:53.57] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 11:53.57] [#general] Bee Storm#6087 <<'[Random Fact no. 873] 35,000 hectares of peas are grown in the UK in a single year.'>>
+[05/10/2022 11:53.57] [#general] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 11:56.09] [#world-war-3] Drevokocúr#6969 <<'<:PepeLa:751183558126731274>'>>
+[05/10/2022 11:58.06] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'zatim to jenom nebude silet z kazde zpravy a proste te prida jako novyho usera do db no'>>
+[05/10/2022 11:58.09] [#world-war-3] the_leteron#7777 <<'Ber podle userid ne? <:Hmmm:810269764580409416>'>>
+[05/10/2022 11:58.18] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'<:monkaHmm:622809371574927366>'>>
+[05/10/2022 11:58.24] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'591643151668871168 ?'>>
+[05/10/2022 11:58.26] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'jakoze this ?'>>
+[05/10/2022 11:58.39] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'kdyz tam das <@ x> tak to hodi tag na me'>>
+[05/10/2022 11:58.41] [#world-war-3] the_leteron#7777 <<'Yes'>>
+[05/10/2022 11:58.46] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'to je furt stejne jo ?'>>
+[05/10/2022 11:58.47] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'<:monkaHmm:622809371574927366>'>>
+[05/10/2022 11:58.51] [#world-war-3] the_leteron#7777 <<'Jj'>>
+[05/10/2022 11:58.56] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'nice'>>
+[05/10/2022 11:59.06] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'tak snad to bude hnedka hotove'>>
+[05/10/2022 11:59.07] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'xd'>>
+[05/10/2022 12:47.32] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'hm'>>
+[05/10/2022 12:47.35] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'zatim not bad'>>
+[05/10/2022 12:47.51] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 12:47.52] [#karantena] Bee Storm#6087 <<'Nikdo jeste nesral.'>>
+[05/10/2022 12:47.55] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 12:47.55] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 0
+ Poradi: 22.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 12:48.02] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$pentaboard'>>
+[05/10/2022 12:48.02] [#karantena] Bee Storm#6087 <<'Nikdo jeste neudelal pentakill.'>>
+[05/10/2022 12:48.05] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$multiboard'>>
+[05/10/2022 12:48.05] [#karantena] Bee Storm#6087 <<'Nikdo jeste nezvladl dat DoubleKill nebo vetsi.'>>
+[05/10/2022 12:48.09] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$help'>>
+[05/10/2022 12:48.09] [#karantena] Bee Storm#6087 <<'** **
+ Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.
+
+Pokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).
+
+
+**Reaguji na tyto zpravy:**
+```C
+uh oh      [pouze na zacatku zpravy]
+69         
+gdebody    
+oznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik
+oznaceni bota (@Bee Storm)
+```
+
+**Momentalne rozumim temto prikazum**:
+```C
+help        zobrazi tuto zpravu
+
+hello       <no comment>
+repeat text text2 text3 ...     zopakuje text
+randomfact    napise nahodny fakt
+git    github bota (lze taky pouzit: $github)
+tagy        pocet oznaceni bota od posledniho spusteni
+
+srani       pocet srani od posledni aktualizace dat
+sraniboard  leaderboard clenu serveru ve srani
+pentaboard  zebricek pentakilleru
+multiboard  zebricek vsech, co dali Double Kill a vetsi
+sranistats  statistiky uzivatele
+
+runtime     datum a cas posledniho spusteni bota
+time        soucasne datum a cas
+svatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek
+birthdays    vypise narozeniny clenu serveru, kteri si je zapsali
+birthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek
+
+reminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```
+
+**Automaticky delam tyto veci:**
+```C
+Nahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt
+Denni zprava    kazdy den kolem obeda napisu:
+  v beznem dni jeho datum a kdo ma svatek
+  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim
+  neco navic v pripade, ze jsou Vanoce nebo Silvestr
+Novy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok
+Obnova stats    v pripade ztraty obnovim veskere statistiky```'>>
+[05/10/2022 12:48.34] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$srani'>>
+[05/10/2022 12:48.34] [#karantena] Bee Storm#6087 <<'Neznamy prikaz! Zkus $help.'>>
+[05/10/2022 12:48.40] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$tagy'>>
+[05/10/2022 12:48.40] [#karantena] Bee Storm#6087 <<'Pocet otravnych tagu: 0'>>
+[05/10/2022 12:48.56] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$runtime'>>
+[05/10/2022 12:48.56] [#karantena] Bee Storm#6087 <<'Naposledy jsem byl spusten 5. 10. 2022 v 12 hodin a 47 minut.'>>
+[05/10/2022 12:48.58] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$time'>>
+[05/10/2022 12:48.58] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. 2022, 12 hodin a 48 minut.'>>
+[05/10/2022 12:49.02] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$svatek'>>
+[05/10/2022 12:49.02] [#karantena] Bee Storm#6087 <<'Dnes ma svatek Eliška.'>>
+[05/10/2022 12:49.13] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthdays'>>
+[05/10/2022 12:49.13] [#karantena] Bee Storm#6087 <<'Zatim si nikdo narozeniny pomoci prikazu `$birthday add` nezapsal.'>>
+[05/10/2022 12:49.21] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder list'>>
+[05/10/2022 12:49.21] [#karantena] Bee Storm#6087 <<'Uzivatel Beelanda | KaliningradIsCzechia#7108 nema nastavene zadne upominky.'>>
+[05/10/2022 12:49.49] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder add 5 10 2022 12:50'>>
+[05/10/2022 12:49.49] [#karantena] Bee Storm#6087 <<'Pripominka k dnesnimu dni muze byt nejdrive minutu od soucasneho casu.'>>
+[05/10/2022 12:49.58] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder add 5 10 2022 12:51'>>
+[05/10/2022 12:49.58] [#karantena] Bee Storm#6087 <<'Pripominka k dnesnimu dni muze byt nejdrive minutu od soucasneho casu.'>>
+[05/10/2022 12:50.16] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder add 5 10 2022 12 51'>>
+[05/10/2022 12:50.17] [#karantena] Bee Storm#6087 <<'Pripominka byla uspesne pridana. Upozorneni probehne 05.10.2022 v 12:51 v kanalu `#general`'>>
+[05/10/2022 12:50.22] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder list'>>
+[05/10/2022 12:50.22] [#karantena] Bee Storm#6087 <<'** **
+**Seznam upominek pro uzivatele Beelanda | KaliningradIsCzechia#7108**
+
+5/10/2022 (12:51) **ID 0**: [Pripominka]'>>
+[05/10/2022 12:50.35] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder remove 0'>>
+[05/10/2022 12:50.35] [#karantena] Bee Storm#6087 <<'Spatne pouziti $reminder remove - pri dvou argumentech ocekavam pouze `all`.'>>
+[05/10/2022 12:50.39] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder remove all'>>
+[05/10/2022 12:50.39] [#karantena] Bee Storm#6087 <<'Smazany vsechny (1) pripominky uzivatele Beelanda | KaliningradIsCzechia#7108'>>
+[05/10/2022 12:50.48] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder add 5 10 2022 12 55'>>
+[05/10/2022 12:50.48] [#karantena] Bee Storm#6087 <<'Pripominka byla uspesne pridana. Upozorneni probehne 05.10.2022 v 12:55 v kanalu `#general`'>>
+[05/10/2022 12:50.59] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder add 6 10 2023 text: storno bude'>>
+[05/10/2022 12:51.00] [#karantena] Bee Storm#6087 <<'Pripominka byla uspesne pridana. Upozorneni probehne 06.10.2023 v 12:00 v kanalu `#general`'>>
+[05/10/2022 12:51.02] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder list'>>
+[05/10/2022 12:51.03] [#karantena] Bee Storm#6087 <<'** **
+**Seznam upominek pro uzivatele Beelanda | KaliningradIsCzechia#7108**
+
+5/10/2022 (12:55) **ID 0**: [Pripominka]
+6/10/2023 (12:0) **ID 1**:  storno bude'>>
+[05/10/2022 12:51.09] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder remove id 1'>>
+[05/10/2022 12:51.09] [#karantena] Bee Storm#6087 <<'Pripominka (id 1) uspesna smazana.'>>
+[05/10/2022 12:51.12] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder list'>>
+[05/10/2022 12:51.12] [#karantena] Bee Storm#6087 <<'** **
+**Seznam upominek pro uzivatele Beelanda | KaliningradIsCzechia#7108**
+
+5/10/2022 (12:55) **ID 0**: [Pripominka]'>>
+[05/10/2022 12:51.15] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'#reminder remove all'>>
+[05/10/2022 12:51.18] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder remove all'>>
+[05/10/2022 12:51.19] [#karantena] Bee Storm#6087 <<'Smazany vsechny (1) pripominky uzivatele Beelanda | KaliningradIsCzechia#7108'>>
+[05/10/2022 12:51.31] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday lis'>>
+[05/10/2022 12:51.31] [#karantena] Bee Storm#6087 <<'Druhy argument ma byt bud `add` nebo `remove`, nic jineho!'>>
+[05/10/2022 12:51.36] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthdays'>>
+[05/10/2022 12:51.36] [#karantena] Bee Storm#6087 <<'Zatim si nikdo narozeniny pomoci prikazu `$birthday add` nezapsal.'>>
+[05/10/2022 12:51.43] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7 1999'>>
+[05/10/2022 12:53.12] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7 1999'>>
+[05/10/2022 12:54.19] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7 1999'>>
+[05/10/2022 12:55.27] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7 1999'>>
+[05/10/2022 12:56.50] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7 1999'>>
+[05/10/2022 12:57.12] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7'>>
+[05/10/2022 12:57.39] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7'>>
+[05/10/2022 12:58.15] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7'>>
+[05/10/2022 12:58.15] [#karantena] Bee Storm#6087 <<'Narozeniny pridany. V den narozenin budou ostatni upozorneni v kanalu `#general`.'>>
+[05/10/2022 12:58.23] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday list'>>
+[05/10/2022 12:58.23] [#karantena] Bee Storm#6087 <<'Druhy argument ma byt bud `add` nebo `remove`, nic jineho!'>>
+[05/10/2022 12:58.28] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthdays'>>
+[05/10/2022 12:58.28] [#karantena] Bee Storm#6087 <<'Zatim si nikdo narozeniny pomoci prikazu `$birthday add` nezapsal.'>>
+[05/10/2022 12:59.15] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7 1999'>>
+[05/10/2022 12:59.15] [#karantena] Bee Storm#6087 <<'Narozeniny pridany. V den narozenin budou ostatni upozorneni v kanalu `#general`.'>>
+[05/10/2022 12:59.20] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthdays'>>
+[05/10/2022 12:59.20] [#karantena] Bee Storm#6087 <<'** **
+**Seznam zapsanych narozenin**
+
+Beelanda | KaliningradIsCzechia dne 30. 7. 1999.'>>
+[05/10/2022 12:59.32] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 1 9'>>
+[05/10/2022 12:59.32] [#karantena] Bee Storm#6087 <<'Narozeniny byly upraveny.'>>
+[05/10/2022 12:59.35] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthdays'>>
+[05/10/2022 12:59.35] [#karantena] Bee Storm#6087 <<'** **
+**Seznam zapsanych narozenin**
+
+Beelanda | KaliningradIsCzechia dne 1. 9 (rok neuveden).'>>
+[05/10/2022 12:59.44] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7 1999'>>
+[05/10/2022 12:59.44] [#karantena] Bee Storm#6087 <<'Narozeniny byly upraveny.'>>
+[05/10/2022 13:01.34] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthdays'>>
+[05/10/2022 13:01.34] [#karantena] Bee Storm#6087 <<'** **
+**Seznam zapsanych narozenin**
+
+Beelanda | KaliningradIsCzechia dne 30. 7. 1999.'>>
+[05/10/2022 13:02.05] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:02.39] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:02.49] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:03.15] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:03.25] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:05.17] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:05.22] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'😦'>>
+[05/10/2022 13:05.27] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:06.18] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:06.28] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:06.38] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:06.48] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:07.39] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:07.49] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:08.25] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:08.35] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:08.51] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:08.53] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'demente'>>
+[05/10/2022 13:10.13] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:10.23] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a podle mych informaci ma 23. narozeniny Beelanda | KaliningradIsCzechia!'>>
+[05/10/2022 13:17.08] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:17.37] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:17.47] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:18.10] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:18.20] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a podle mych informaci ma 23. narozeniny Beelanda | KaliningradIsCzechia!'>>
+[05/10/2022 13:19.42] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:19.47] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:19.47] [#karantena] Bee Storm#6087 <<'Nikdo jeste nesral.'>>
+[05/10/2022 13:19.50] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:19.50] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 0
+ Poradi: 22.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:19.54] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'<@1023637883283841094>'>>
+[05/10/2022 13:19.54] [#karantena] Bee Storm#6087 <<'Co takhle tagnout toho pravyho a vcelu nechat byt?'>>
+[05/10/2022 13:21.41] [#karantena] Bee Storm#6087 <<'Dnes je 5. 10. a svatek ma Eliška.'>>
+[05/10/2022 13:21.44] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:21.44] [#karantena] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (1 srani)
+ **2.** Luppo (0 srani)
+ **3.** the_leteron (0 srani)
+ **4.** Dyno (0 srani)
+ **5.** Erisly (0 srani)'>>
+[05/10/2022 13:21.51] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:21.52] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 1
+ Poradi: 1.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:21.58] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'<@1023637883283841094>'>>
+[05/10/2022 13:21.58] [#karantena] Bee Storm#6087 <<'Netaguj mne ty zmrde!'>>
+[05/10/2022 13:22.05] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:22.05] [#karantena] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (2 srani)
+ **2.** Luppo (0 srani)
+ **3.** the_leteron (0 srani)
+ **4.** Dyno (0 srani)
+ **5.** Erisly (0 srani)'>>
+[05/10/2022 13:22.09] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:22.09] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 2
+ Poradi: 1.
+
+ Multikilly: 1
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:36.32] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:36.37] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:36.38] [#karantena] Bee Storm#6087 <<'Nikdo jeste nesral.'>>
+[05/10/2022 13:36.40] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:37.26] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:37.29] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:37.29] [#karantena] Bee Storm#6087 <<'Nikdo jeste nesral.'>>
+[05/10/2022 13:37.57] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:37.59] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 0
+ Poradi: 22.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:38.35] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:38.37] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 0
+ Poradi: 22.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:39.47] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:43.10] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'a'>>
+[05/10/2022 13:43.14] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'b'>>
+[05/10/2022 13:43.17] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:43.20] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 0
+ Poradi: 22.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:43.23] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:43.23] [#karantena] Bee Storm#6087 <<'Nikdo jeste nesral.'>>
+[05/10/2022 13:43.27] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$pentaboard'>>
+[05/10/2022 13:43.27] [#karantena] Bee Storm#6087 <<'Nikdo jeste neudelal pentakill.'>>
+[05/10/2022 13:44.03] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'<@1023637883283841094>'>>
+[05/10/2022 13:44.04] [#karantena] Bee Storm#6087 <<'Nemas nic lepsiho na praci nez tagovat bezbranneho bota?'>>
+[05/10/2022 13:47.07] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'<@1023637883283841094>'>>
+[05/10/2022 13:47.08] [#karantena] Bee Storm#6087 <<'*activating ignore mode ...*'>>
+[05/10/2022 13:52.18] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'<@1023637883283841094>'>>
+[05/10/2022 13:52.18] [#karantena] Bee Storm#6087 <<'Nemas nic lepsiho na praci nez tagovat bezbranneho bota?'>>
+[05/10/2022 13:54.49] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou.'>>
+[05/10/2022 13:55.07] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:55.10] [#general] Drevokocúr#6969 <<'<@&821810379952226396>'>>
+[05/10/2022 13:55.11] [#general] Bee Storm#6087 <<'A je to tam!'>>
+[05/10/2022 13:55.22] [#general] Drevokocúr#6969 <<'Dneska by to mohlo jít dobře'>>
+[05/10/2022 13:55.50] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 0
+ Poradi: 23.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:56.00] [#general] Beelanda | KaliningradIsCzechia#7108 <<'mohlo, akorat ze bot je z toho ted naprosto v pici'>>
+[05/10/2022 13:56.01] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 13:56.08] [#general] Beelanda | KaliningradIsCzechia#7108 <<'posrany jmena'>>
+[05/10/2022 13:56.10] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:peepoProtest:803916301349027851>'>>
+[05/10/2022 13:56.15] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:56.22] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Drevokocúr (1 srani)
+ **2.** Luppo (0 srani)
+ **3.** the_leteron (0 srani)
+ **4.** Dyno (0 srani)
+ **5.** Erisly (0 srani)'>>
+[05/10/2022 13:56.34] [#general] Beelanda | KaliningradIsCzechia#7108 <<'no pak jak udelam refresh tak to tam bude vsechno stejne'>>
+[05/10/2022 13:56.36] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pepeLa:787339472861790208>'>>
+[05/10/2022 13:56.37] [#general] Drevokocúr#6969 <<'<:EZ:842444488839790663>'>>
+[05/10/2022 13:58.20] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou.'>>
+[05/10/2022 13:58.30] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:58.30] [#karantena] Bee Storm#6087 <<'Nikdo jeste nesral.'>>
+[05/10/2022 13:58.34] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:58.35] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 0
+ Poradi: 22.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:58.41] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$pentaboard'>>
+[05/10/2022 13:58.42] [#karantena] Bee Storm#6087 <<'Nikdo jeste neudelal pentakill.'>>
+[05/10/2022 13:58.46] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'<@1023637883283841094>'>>
+[05/10/2022 13:58.46] [#karantena] Bee Storm#6087 <<'Nemas nic lepsiho na praci nez tagovat bezbranneho bota?'>>
+[05/10/2022 13:58.46] [#general] Bee Storm#6087 <<'V zebricku ($sraniboard) se 'Beelanda | KaliningradIsCzechia#7108' posunul z **22. mista** na **1.**!'>>
+[05/10/2022 13:58.59] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nice aspon vim ze tato vec funguje'>>
+[05/10/2022 13:59.00] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pepeLa:787339472861790208>'>>
+[05/10/2022 13:59.10] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 13:59.11] [#karantena] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (1 srani)
+ **2.** Luppo (0 srani)
+ **3.** the_leteron (0 srani)
+ **4.** Dyno (0 srani)
+ **5.** Erisly (0 srani)'>>
+[05/10/2022 13:59.13] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 13:59.13] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 1
+ Poradi: 1.
+
+ Multikilly: 1
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 13:59.20] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jmena jsou v pici a bot zase stiha <:ez:787349410228076604>'>>
+[05/10/2022 14:00.27] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 14:00.27] [#general] Bee Storm#6087 <<'[Random Fact no. 131] There's a fruit that tastes like chocolate pudding. Can we get in on this? Apparently, there's a fruit native to Central and South America called black sapote that tastes like chocolate and sweet custard.'>>
+[05/10/2022 14:00.56] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 14:00.57] [#general] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 1
+ Poradi: 1.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 14:01.10] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdb'>>
+[05/10/2022 14:01.20] [#general] Beelanda | KaliningradIsCzechia#7108 <<'co zas lol'>>
+[05/10/2022 14:01.24] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:peepoProtest:803916301349027851>'>>
+[05/10/2022 14:03.05] [#general] Bee Storm#6087 <<'[Random Fact no. 943] According to Biblical Scholars, Jesus was more than likely born in a cave, not a stable, as the tale says.'>>
+[05/10/2022 14:03.06] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 14:03.12] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdb'>>
+[05/10/2022 14:03.34] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 14:03.34] [#general] Bee Storm#6087 <<'[Random Fact no. 463] Times Square was originally called Longacre Square until it was renamed in 1904 after The New York Times moved its headquarters to the newly built Times Building.'>>
+[05/10/2022 14:03.44] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdb'>>
+[05/10/2022 14:03.48] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jebaaaa'>>
+[05/10/2022 14:05.09] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 14:05.09] [#general] Bee Storm#6087 <<'[Random Fact no. 71] In ancient Rome, it was considered a sign of leadership to be born with a crooked nose.'>>
+[05/10/2022 14:05.14] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdb'>>
+[05/10/2022 14:05.18] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$a'>>
+[05/10/2022 14:05.18] [#karantena] Bee Storm#6087 <<'Neznamy prikaz! Zkus $help.'>>
+[05/10/2022 14:05.36] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 14:05.37] [#general] Bee Storm#6087 <<'[Random Fact no. 503] In Japan, Domino’s started testing pizza delivery via reindeer in 2016.'>>
+[05/10/2022 14:05.38] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 14:06.49] [#general] Bee Storm#6087 <<'[Random Fact no. 175] Another literary fact for you: It took Leo Tolstoy six years to finish his novel War and Peace.'>>
+[05/10/2022 14:06.49] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 14:06.54] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 14:07.29] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 14:07.29] [#general] Bee Storm#6087 <<'[Random Fact no. 287] “Jay” was slang for “foolish person.” So when a pedestrian ignored street signs, he was a “jaywalker.”'>>
+[05/10/2022 14:07.40] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 14:07.41] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zrhuba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[05/10/2022 14:07.50] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:Vojtisek:622808861400760350>'>>
+[05/10/2022 14:07.53] [#general] Beelanda | KaliningradIsCzechia#7108 <<'konecne ty kundo'>>
+[05/10/2022 14:08.42] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 14:08.43] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Drevokocúr (21 srani)
+ **2.** Beelanda | KaliningradIsCzechia (11 srani)
+ **3.** dAjvid (1 srani)
+ **4.** Stormed (1 srani)
+ **5.** Luppo (0 srani)'>>
+[05/10/2022 14:08.44] [#general] Bee Storm#6087 <<'Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.'>>
+[05/10/2022 14:10.06] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$birthday add 30 7 1999'>>
+[05/10/2022 14:10.07] [#general] Bee Storm#6087 <<'Narozeniny pridany. V den narozenin budou ostatni upozorneni v kanalu `#general`.'>>
+[05/10/2022 14:10.10] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$birthdays'>>
+[05/10/2022 14:10.10] [#general] Bee Storm#6087 <<'** **
+**Seznam zapsanych narozenin**
+
+Beelanda | KaliningradIsCzechia dne 30. 7. 1999.'>>
+[05/10/2022 14:10.11] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:ez:787349410228076604>'>>
+[05/10/2022 14:12.33] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$help'>>
+[05/10/2022 14:12.34] [#karantena] Bee Storm#6087 <<'** **
+ Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.
+
+Pokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).
+
+
+**Reaguji na tyto zpravy:**
+```C
+uh oh      [pouze na zacatku zpravy]
+69         
+gdebody    
+oznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik
+oznaceni bota (@Bee Storm)
+```
+
+**Momentalne rozumim temto prikazum**:
+```C
+help        zobrazi tuto zpravu
+
+hello       <no comment>
+repeat text text2 text3 ...     zopakuje text
+randomfact    napise nahodny fakt
+git    github bota (lze taky pouzit: $github)
+tagy        pocet oznaceni bota od posledniho spusteni
+
+sraniboard  leaderboard clenu serveru ve srani
+pentaboard  zebricek pentakilleru
+multiboard  zebricek vsech, co dali Double Kill a vetsi
+sranistats  statistiky uzivatele
+
+runtime     datum a cas posledniho spusteni bota
+time        soucasne datum a cas
+svatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek
+birthdays    vypise narozeniny clenu serveru, kteri si je zapsali
+birthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek
+
+reminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```
+
+**Automaticky delam tyto veci:**
+```C
+Nahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt
+Denni zprava    kazdy den kolem obeda napisu:
+  v beznem dni jeho datum a kdo ma svatek
+  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim
+  neco navic v pripade, ze jsou Vanoce nebo Silvestr
+Novy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok
+Obnova stats    v pripade ztraty obnovim veskere statistiky```'>>
+[05/10/2022 14:16.57] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$reminder add 5 10 2022 14 17 text horse je ultimatni kokot co by mel zacit bp'>>
+[05/10/2022 14:16.57] [#karantena] Bee Storm#6087 <<'Pripominka byla uspesne pridana. Upozorneni probehne 05.10.2022 v 14:17 v kanalu `#general`'>>
+[05/10/2022 14:17.29] [#general] Bee Storm#6087 <<'Pripomenuti pro uzivatele <@!591643151668871168>:  horse je ultimatni kokot co by mel zacit bp'>>
+[05/10/2022 14:17.37] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nice vsechny funguje <:HYPERS:622808860905701376>'>>
+[05/10/2022 14:22.34] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/brnomycity/status/1577566611829047298?s=20&t=r4orHIv5JHrneCVcQHQi8w'>>
+[05/10/2022 14:23.02] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://cdn.discordapp.com/attachments/461548343160733716/1027174629971853353/received_1456746004815747.webp'>>
+[05/10/2022 15:19.35] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'jak modlitba vypada v Rusku'>>
+[05/10/2022 15:34.02] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[05/10/2022 15:35.42] [#general] Stormed#2528 <<'Měl bych jít na favu'>>
+[05/10/2022 15:38.43] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 15:38.43] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (376 srani)
+ **2.** Drevokocúr (239 srani)
+ **3.** Pupienus (79 srani)
+ **4.** Bc. ReBeL (22 srani)
+ **5.** jogme (18 srani)'>>
+[05/10/2022 15:38.44] [#general] Bee Storm#6087 <<'Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.'>>
+[05/10/2022 15:44.18] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 15:44.18] [#general] Bee Storm#6087 <<'[Random Fact no. 550] It is thought by Russians that eating ice cream will keep you warm.'>>
+[05/10/2022 15:44.29] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshstats'>>
+[05/10/2022 15:44.30] [#karantena] Bee Storm#6087 <<'Takovy prikaz urcite umet nemam. Co takhle zkusit $help?'>>
+[05/10/2022 15:44.33] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 15:44.34] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zrhuba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[05/10/2022 15:44.58] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sranistats'>>
+[05/10/2022 15:44.58] [#karantena] Bee Storm#6087 <<'** **
+ **Statistiky uzivatele Beelanda | KaliningradIsCzechia#7108:**
+
+ Pocet srani: 5
+ Poradi: 2.
+
+ Multikilly: 0
+ Pentakilly: 0
+ Hexakilly: 0
+ Legendary killy: 0'>>
+[05/10/2022 15:44.59] [#karantena] Bee Storm#6087 <<'Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.'>>
+[05/10/2022 15:45.02] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 15:45.03] [#karantena] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Drevokocúr (19 srani)
+ **2.** Beelanda | KaliningradIsCzechia (6 srani)
+ **3.** dAjvid (1 srani)
+ **4.** Stormed (1 srani)
+ **5.** Luppo (0 srani)'>>
+[05/10/2022 15:45.03] [#karantena] Bee Storm#6087 <<'Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.'>>
+[05/10/2022 15:49.22] [#general] Bee Storm#6087 <<'[Random Fact no. 588] Garlic is known to attract leeches.'>>
+[05/10/2022 15:49.23] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 15:49.34] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 15:49.34] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[05/10/2022 15:59.55] [#general] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[05/10/2022 15:59.56] [#general] Beelanda | KaliningradIsCzechia#7108 <<'proste klasicky FIT nelze'>>
+[05/10/2022 15:59.58] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pepeLa:787339472861790208>'>>
+[05/10/2022 16:02.27] [#general] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[05/10/2022 16:02.35] [#general] Beelanda | KaliningradIsCzechia#7108 <<'zadani jsou verejne na internetu ale nelze protoze nelze tisknout 😦'>>
+[05/10/2022 16:06.57] [#general] Drevokocúr#6969 <<'<:OMEGALUL:827833315922542593>'>>
+[05/10/2022 16:10.01] [#general] Bee Storm#6087 <<'[Random Fact no. 790] Red pandas have no living relatives – they aren’t even related to giant pandas.'>>
+[05/10/2022 16:10.02] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 16:10.58] [#general] Beelanda | KaliningradIsCzechia#7108 <<'curaci zasrani'>>
+[05/10/2022 16:10.59] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:reeee:622828179324665856>'>>
+[05/10/2022 16:11.07] [#general] Beelanda | KaliningradIsCzechia#7108 <<'restartovat mi bota kdyz restoruju'>>
+[05/10/2022 16:11.40] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 16:11.40] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[05/10/2022 16:11.59] [#general] Beelanda | KaliningradIsCzechia#7108 <<'to bude trvat 200 let s takovou <:Vojtisek:622808861400760350>'>>
+[05/10/2022 16:23.36] [#general] Drevokocúr#6969 <<'Btw neměls tam předtím 400+?'>>
+[05/10/2022 16:23.59] [#general] Drevokocúr#6969 <<'Here'>>
+[05/10/2022 16:24.10] [#general] Beelanda | KaliningradIsCzechia#7108 <<'working on it'>>
+[05/10/2022 16:24.19] [#general] Beelanda | KaliningradIsCzechia#7108 <<'prochazeni historie je fucking slow'>>
+[05/10/2022 16:24.33] [#general] Beelanda | KaliningradIsCzechia#7108 <<'92 zprav za minutu'>>
+[05/10/2022 16:25.07] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ono se to dogrcalo jak jsem z tama odstranil data vazana na jmena a pridal tam id <:rtzW:622808862805852169>'>>
+[05/10/2022 16:29.06] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://ct24.ceskatelevize.cz/specialy/rusko-ukrajinsky-konflikt/3534322-polsko-jedna-s-usa-o-ucasti-na-programu-sdileni-jadernych'>>
+[05/10/2022 16:56.20] [#general] Drevokocúr#6969 <<'Potkám Dytrycha a Veigenda jak se baví'>>
+[05/10/2022 16:56.36] [#general] Drevokocúr#6969 <<'A jenom že "nevím co tam napíšu aby to nebyl trestnej čin"'>>
+[05/10/2022 16:56.40] [#general] Drevokocúr#6969 <<'<a:AWARE:908745023611351131>'>>
+[05/10/2022 16:56.50] [#general] Drevokocúr#6969 <<'Něco o vydírání říká'>>
+[05/10/2022 16:58.03] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 17:29.04] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/vnitro/status/1577633132710330369?s=20&t=Pe9cf8_9VEIvzbNlRE1nDQ'>>
+[05/10/2022 18:09.20] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/ceskedrahy_/status/1577668554035535878?s=20&t=XQ6H6hS5iAvmlPGZdhiJXQ'>>
+[05/10/2022 18:11.52] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/Ceska_posta_sp/status/1577616377430548482?s=20&t=XQ6H6hS5iAvmlPGZdhiJXQ'>>
+[05/10/2022 18:28.37] [#general] Beelanda | KaliningradIsCzechia#7108 <<'oh to furt restoruje'>>
+[05/10/2022 18:28.39] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jsem na to zapomnel'>>
+[05/10/2022 18:28.54] [#general] the_leteron#7777 <<'Looks stuck'>>
+[05/10/2022 18:31.47] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nope'>>
+[05/10/2022 18:31.56] [#general] Beelanda | KaliningradIsCzechia#7108 <<'tam byl error ale nevedel jsem jaky tak jsem to pustil znova'>>
+[05/10/2022 18:32.01] [#general] Beelanda | KaliningradIsCzechia#7108 <<'a zapomnel na to'>>
+[05/10/2022 18:32.02] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 18:32.14] [#general] Beelanda | KaliningradIsCzechia#7108 <<'neni stuck, skoncilo to ale ne jak melo'>>
+[05/10/2022 18:33.33] [#general] the_leteron#7777 <<'<@1023637883283841094> you stuck? <:nepsmug:834126079345164299>'>>
+[05/10/2022 18:33.33] [#general] Bee Storm#6087 <<'Zrovna na necem delam, neslo by to pozdeji?'>>
+[05/10/2022 18:33.40] [#general] the_leteron#7777 <<'<:peepoCantBelieveThisShit:654408167555465256>'>>
+[05/10/2022 18:43.13] [#general] Bee Storm#6087 <<'[Random Fact no. 223] Only 5% of the ocean has been explored. The intense pressure at the deepest depths of the ocean makes it virtually impossible to navigate.'>>
+[05/10/2022 18:43.13] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 18:43.24] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pepeLaugh:622808862960910336>'>>
+[05/10/2022 18:43.29] [#general] Beelanda | KaliningradIsCzechia#7108 <<'he unstuck'>>
+[05/10/2022 18:43.31] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 18:43.32] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[05/10/2022 18:43.45] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale problem nevyresen protoze nevim kde je'>>
+[05/10/2022 18:43.46] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 18:44.14] [#general] Beelanda | KaliningradIsCzechia#7108 <<'exception mi tak reklo ze neco je tam nonetype <:Vojtisek:622808861400760350> ale nevim kde pico'>>
+[05/10/2022 18:44.23] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jsem tam pridal debug data tak se uvidi'>>
+[05/10/2022 18:44.27] [#general] Beelanda | KaliningradIsCzechia#7108 <<'tak za 40 minut ...'>>
+[05/10/2022 18:44.28] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 18:44.47] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 18:44.48] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (709 srani)
+ **2.** Drevokocúr (445 srani)
+ **3.** Pupienus (145 srani)
+ **4.** Bc. ReBeL (43 srani)
+ **5.** jogme (31 srani)'>>
+[05/10/2022 18:44.48] [#general] Bee Storm#6087 <<'Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.'>>
+[05/10/2022 18:45.03] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jo tak ted jich budu mit mega hodne protoze se to nesmazalo <:pepeLa:787339472861790208>'>>
+[05/10/2022 18:53.25] [#general] the_leteron#7777 <<'<:giggle_FB:633095779560718336>'>>
+[05/10/2022 18:53.39] [#general] Beelanda | KaliningradIsCzechia#7108 <<'hlavne se to objevi az u te 200+k zpravy'>>
+[05/10/2022 18:53.41] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 18:53.53] [#general] Beelanda | KaliningradIsCzechia#7108 <<'mozna to bude nejaky user co leavnul'>>
+[05/10/2022 18:53.56] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nebo neexistuje'>>
+[05/10/2022 18:53.57] [#general] Beelanda | KaliningradIsCzechia#7108 <<'bych tipl'>>
+[05/10/2022 18:53.58] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:monkaHmm:622809371574927366>'>>
+[05/10/2022 18:54.50] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale to by nemelo mit problem s id <:monkaHmm:622809371574927366>'>>
+[05/10/2022 18:55.50] [#general] the_leteron#7777 <<'Id by mělo byt fajn a nedelat problem nikde myslim <:Hmmm:810269764580409416>'>>
+[05/10/2022 18:56.02] [#general] the_leteron#7777 <<'Ale idk s discordem sem si nehral uz dlouho'>>
+[05/10/2022 18:56.04] [#general] the_leteron#7777 <<'<:PepeLa:751183558126731274>'>>
+[05/10/2022 18:56.18] [#general] Beelanda | KaliningradIsCzechia#7108 <<'no taky si myslim'>>
+[05/10/2022 18:56.29] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale asi to bude souvislost s ID protoze kdyz tam byly jmena tak to slo'>>
+[05/10/2022 18:56.30] [#general] Beelanda | KaliningradIsCzechia#7108 <<'xd'>>
+[05/10/2022 18:56.43] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nebo s poslednimi zmenami ktere souvisely s id'>>
+[05/10/2022 18:57.16] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale vsechno funguje normalne krome toho a to recovery nedela nic jineho nez ze probira zpravu po zprave a pak se dela ta stejna vec co by delal bot normalne <:rtzW:622808862805852169>'>>
+[05/10/2022 18:57.27] [#general] Beelanda | KaliningradIsCzechia#7108 <<'a ty veci funguji'>>
+[05/10/2022 18:58.29] [#general] Beelanda | KaliningradIsCzechia#7108 <<'za chvili bude 100k a pak uz jen 20 minut'>>
+[05/10/2022 18:58.31] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:feelsWowMan:627880078973599772>'>>
+[05/10/2022 18:59.32] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale uz se tesim az bot spadne / bude zabanovany kvuli hostingu a otestuje se auto-recovery / auto-reboot :scheming:'>>
+[05/10/2022 19:01.18] [#general] Beelanda | KaliningradIsCzechia#7108 <<'100k <:HYPERS:622808860905701376>'>>
+[05/10/2022 19:09.17] [#general] Beelanda | KaliningradIsCzechia#7108 <<'libi se mi jak v nejzatizenejsi situace bot vypada furt takhle <:feelsWowMan:627880078973599772>'>>
+[05/10/2022 19:11.04] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/KralovecCzechia/status/1577692187223023624?s=20&t=girHGDpcJ1Oou-N9FN31yw'>>
+[05/10/2022 19:19.14] [#general] Beelanda | KaliningradIsCzechia#7108 <<'here we go'>>
+[05/10/2022 19:19.15] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:feelsWowMan:627880078973599772>'>>
+[05/10/2022 19:22.25] [#kgb] Bee Storm#6087 <<'[Chyba] Pri obnovovani databaze nastala vyjimka a obnoveni bylo preruseno! (<@!591643151668871168>): 'NoneType' object is not subscriptable'>>
+[05/10/2022 19:23.09] [#general] Beelanda | KaliningradIsCzechia#7108 <<'oh ja to fixnul'>>
+[05/10/2022 19:23.19] [#general] Beelanda | KaliningradIsCzechia#7108 <<'tim ze handluju tu exception tak to neumrelo ale pokracuje'>>
+[05/10/2022 19:23.20] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 19:31.33] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 19:31.33] [#general] Bee Storm#6087 <<'[Random Fact no. 1175] There are more stars in space than there are grains of sand on every beach in the world.'>>
+[05/10/2022 19:31.39] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 19:31.40] [#karantena] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (1074 srani)
+ **2.** Drevokocúr (663 srani)
+ **3.** Pupienus (224 srani)
+ **4.** Bc. ReBeL (65 srani)
+ **5.** jogme (50 srani)'>>
+[05/10/2022 19:31.45] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 19:31.45] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[05/10/2022 19:31.48] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 19:31.49] [#karantena] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Drevokocúr (4 srani)
+ **2.** Beelanda | KaliningradIsCzechia (1 srani)
+ **3.** Luppo (0 srani)
+ **4.** the_leteron (0 srani)
+ **5.** Dyno (0 srani)'>>
+[05/10/2022 19:31.50] [#karantena] Bee Storm#6087 <<'Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.'>>
+[05/10/2022 19:32.02] [#general] Beelanda | KaliningradIsCzechia#7108 <<'fixed <:ez:787349410228076604>'>>
+[05/10/2022 19:44.39] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 19:44.41] [#karantena] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (207 srani)
+ **2.** Drevokocúr (109 srani)
+ **3.** Pupienus (38 srani)
+ **4.** Bc. ReBeL (21 srani)
+ **5.** jogme (8 srani)'>>
+[05/10/2022 19:44.41] [#karantena] Bee Storm#6087 <<'Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.'>>
+[05/10/2022 19:44.56] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$birthdays'>>
+[05/10/2022 19:44.57] [#karantena] Bee Storm#6087 <<'** **
+**Seznam zapsanych narozenin**
+
+Beelanda | KaliningradIsCzechia dne 30. 7. 1999.'>>
+[05/10/2022 19:57.14] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/MpPardubice/status/1577525237393997824?s=20&t=RBlGiXKUC35s_2gaj5IJsA'>>
+[05/10/2022 20:00.38] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Kralovec uz byl i v televiznich novinach na TV Nova'>>
+[05/10/2022 20:00.38] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'<:feelsWowMan:627880078973599772>'>>
+[05/10/2022 20:06.31] [#general] Bee Storm#6087 <<'[Random Fact no. 1337] The earliest mention of the mythical creature, the Unicorn, dates back as far as 2700 BC in Asia and was described as a creature of great power and wisdom.'>>
+[05/10/2022 20:06.32] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[05/10/2022 20:13.07] [#general] Beelanda | KaliningradIsCzechia#7108 <<'mrdko'>>
+[05/10/2022 20:13.08] [#general] Beelanda | KaliningradIsCzechia#7108 <<'zasrana'>>
+[05/10/2022 20:13.10] [#general] Beelanda | KaliningradIsCzechia#7108 <<'zas to rebootli'>>
+[05/10/2022 20:13.17] [#kgb] Beelanda | KaliningradIsCzechia#7108 <<'$refreshdata'>>
+[05/10/2022 20:13.17] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[05/10/2022 20:13.23] [#general] Beelanda | KaliningradIsCzechia#7108 <<'to budu delat do smrti'>>
+[05/10/2022 20:13.23] [#general] Beelanda | KaliningradIsCzechia#7108 <<'xd'>>
+[05/10/2022 20:44.37] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://www.alza.cz/alzabox-153722-ps.htm'>>
+[05/10/2022 20:52.08] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Pri obnovovani databaze nastala vyjimka! Vyjimka:
+`'NoneType' object is not subscriptable`
+Vypis chyby:
+ `Nebyla zapocitana zprava 220803 od Storm (ID: 308321941721186307)`
+URL zpravy: https://discord.com/channels/605688831215271937/663806194598805504/731792936701788250'>>
+[05/10/2022 20:58.35] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[05/10/2022 20:58.48] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Uz je to i součástí počasí'>>
+[05/10/2022 21:00.58] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Když jsem teď viděl to počasí v tv nova tak ze mě skoro ukáplo'>>
+[05/10/2022 21:01.05] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[05/10/2022 21:01.11] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Já z toho nemůžu vůbec'>>
+[05/10/2022 21:12.31] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Pri obnovovani databaze nastala vyjimka! Vyjimka:
+`'NoneType' object is not subscriptable`
+Vypis chyby:
+ `Nebyla zapocitana zprava 336468 od Don Megonasayit (ID: 186561099225759744)`
+URL zpravy: https://discord.com/channels/605688831215271937/663806194598805504/673058857869901826'>>
+[05/10/2022 21:20.40] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Operace uspesne dokoncena.'>>
+[05/10/2022 21:25.15] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[05/10/2022 21:25.16] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (408 srani)
+ **2.** Drevokocúr (259 srani)
+ **3.** Pupienus (86 srani)
+ **4.** Bc. ReBeL (28 srani)
+ **5.** Stormed (21 srani)'>>
+[05/10/2022 21:25.22] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:ez:787349410228076604>'>>
+[05/10/2022 21:52.58] [#general] Drevokocúr#6969 <<'<:sweats:638453421044924427>'>>
+[05/10/2022 21:53.03] [#general] Drevokocúr#6969 <<'Kachna tak po roce'>>
+[05/10/2022 22:14.41] [#general] Stormed#2528 <<'<:pepeLa:787339472861790208>'>>
+[05/10/2022 22:14.45] [#general] Stormed#2528 <<'viděl jsem kocura'>>
+[05/10/2022 22:14.47] [#general] Stormed#2528 <<'tak po 2 letech'>>
+[05/10/2022 22:38.08] [#general] Drevokocúr#6969 <<'<:okge:908711206175526932>'>>
+[05/10/2022 22:38.15] [#general] Drevokocúr#6969 <<'<@&809477809772560435>'>>
+[05/10/2022 22:38.15] [#general] Bee Storm#6087 <<'Bude dnes penta?'>>
+[05/10/2022 22:38.23] [#general] Drevokocúr#6969 <<'To už asi nezvládnu'>>
+[06/10/2022 08:20.40] [#general] Pupienus#6973 <<'3bit izp'>>
+[06/10/2022 08:38.44] [#general] Drevokocúr#6969 <<'Pessimist is back <:pog:649733686635397121>'>>
+[06/10/2022 08:38.54] [#general] Drevokocúr#6969 <<'Ve fousech'>>
+[06/10/2022 09:04.54] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Dnes mi je blbé'>>
+[06/10/2022 09:04.59] [#general] Beelanda | KaliningradIsCzechia#7108 <<'V pondělí mám dobrat atb'>>
+[06/10/2022 09:05.08] [#general] Beelanda | KaliningradIsCzechia#7108 <<'V pondělí je Isa cvičení'>>
+[06/10/2022 09:05.40] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Horse půjde pravdepodobne zdrogovanej v pondělí na cvičení'>>
+[06/10/2022 10:08.04] [#general] Beelanda | KaliningradIsCzechia#7108 <<'1)'>>
+[06/10/2022 10:08.07] [#general] Beelanda | KaliningradIsCzechia#7108 <<'dej si prasky'>>
+[06/10/2022 10:08.08] [#general] Beelanda | KaliningradIsCzechia#7108 <<'2)'>>
+[06/10/2022 10:08.17] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jdi dat zvraceni triplekill'>>
+[06/10/2022 10:08.19] [#general] Beelanda | KaliningradIsCzechia#7108 <<'3)'>>
+[06/10/2022 10:08.27] [#general] Beelanda | KaliningradIsCzechia#7108 <<'=> za nemoc muzou ty prasky'>>
+[06/10/2022 10:08.30] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:ez:787349410228076604> <:kappa:622827221077196803>'>>
+[06/10/2022 10:10.09] [#general] Stormed#2528 <<'Jsem v cvt'>>
+[06/10/2022 10:10.12] [#general] Stormed#2528 <<'<:pog:622808862562451497>'>>
+[06/10/2022 10:10.17] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:feelsNotSureMan:787360514475819009>'>>
+[06/10/2022 10:10.18] [#general] Stormed#2528 <<''>>
+[06/10/2022 10:10.27] [#general] Beelanda | KaliningradIsCzechia#7108 <<'a mas s sebou bagetu ?'>>
+[06/10/2022 10:10.34] [#general] Stormed#2528 <<'Ne'>>
+[06/10/2022 10:10.36] [#general] Beelanda | KaliningradIsCzechia#7108 <<'skoda'>>
+[06/10/2022 10:42.46] [#general] Pupienus#6973 <<'Po druhé za 3 dny revizor v 53'>>
+[06/10/2022 11:19.25] [#general] dAjvid#2284 <<'Ale umí dobře kreslit a streamuje. <:weSmart:622929732090200072>'>>
+[06/10/2022 12:06.31] [#general] Bee Storm#6087 <<'Dnes je 6. 10. a svatek ma Hanuš.'>>
+[06/10/2022 12:08.01] [#general] Stormed#2528 <<'<@272418988959465472> prošvihl jsi fpačky v cvt'>>
+[06/10/2022 12:08.15] [#general] Stormed#2528 <<'Příští čtvrtek nás třeba stihneš <:pepeLa:787339472861790208>'>>
+[06/10/2022 12:08.38] [#general] dAjvid#2284 <<'Stejně by z nich beztak byla nejzajímavější Stormína.'>>
+[06/10/2022 12:08.48] [#general] Stormed#2528 <<'To nepopírám'>>
+[06/10/2022 12:09.26] [#general] Stormed#2528 <<'Ale když na ně pokukuješ v knihovně, tak teď jsi mohl mít výhodu domácí půdy'>>
+[06/10/2022 12:09.46] [#general] Stormed#2528 <<'Takhle jsem jim já ukazoval kam se má jít <:rtzW:622808862805852169>'>>
+[06/10/2022 12:10.04] [#general] Stormed#2528 <<'Pak je můžeš vzít do kachničky <:pepeLa:787339472861790208> <:pepeLa:787339472861790208> <:pepeLa:787339472861790208>'>>
+[06/10/2022 12:11.08] [#general] dAjvid#2284 <<'Ale v knihovně mám vůči nim dominantní pozici, když se nebudou usmívat, tak jim nepůjčím skripta. <:kappa:622827221077196803>'>>
+[06/10/2022 12:11.44] [#general] Stormed#2528 <<'Tak jim zamkneš boty v cvt'>>
+[06/10/2022 12:11.57] [#general] Stormed#2528 <<'Ať poznají zlobu ropuchy na vrátnici <:OMEGALUL:622808862885412875>'>>
+[06/10/2022 12:45.31] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/ZuzanaCaputova'>>
+[06/10/2022 12:45.45] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'prezidentka Slovenske republiky se chysta na navstevu noveho ceskeho uzemi'>>
+[06/10/2022 13:19.10] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<@&633366955855970343>'>>
+[06/10/2022 13:19.11] [#general] Bee Storm#6087 <<'Kdyz mi nekdo rekl, ze dnes budou padat hovna, tak jsem fakt necekal, ze to myslel doslova.'>>
+[06/10/2022 13:19.20] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Hajzle'>>
+[06/10/2022 13:19.36] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Takový hlášky si nechávaš na svýho boha?'>>
+[06/10/2022 13:19.38] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:peepoProtest:803916301349027851>'>>
+[06/10/2022 13:23.05] [#karantena] Beelanda | KaliningradIsCzechia#7108 <<'$runtime'>>
+[06/10/2022 13:23.06] [#karantena] Bee Storm#6087 <<'Naposledy jsem byl spusten 5. 10. 2022 v 20 hodin a 6 minut.'>>
+[06/10/2022 14:14.20] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[06/10/2022 14:31.11] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'uz mi zablokovali ucet na VK'>>
+[06/10/2022 14:31.16] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'<:sadKek:751407684112351282>'>>
+[06/10/2022 14:38.19] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'chtej po me uplnou identifikaci s fotkou a doklady <:KEKW:668585621945712673>'>>
+[06/10/2022 14:38.22] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'si mysli ze jsem kokot <:KEKW:668585621945712673>'>>
+[06/10/2022 14:39.41] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/MacheathK/status/1577939548696465413?s=20&t=vw64mFvDqacXOK7Pu-44Ng'>>
+[06/10/2022 15:50.43] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[06/10/2022 15:50.43] [#general] Bee Storm#6087 <<'[Random Fact no. 33] 1 in 5,000 north Atlantic lobsters are born bright blue.'>>
+[06/10/2022 16:06.20] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Petriho site zatim nevypadaji tak bad'>>
+[06/10/2022 16:06.38] [#general] Beelanda | KaliningradIsCzechia#7108 <<'cekam kdy prijde bod X od ktereho z toho zacne byt neco ultra hard <:pepeLa:787339472861790208>'>>
+[06/10/2022 17:04.52] [#general] Drevokocúr#6969 <<'Možná <@&800082002434195496> soon'>>
+[06/10/2022 17:04.59] [#general] Drevokocúr#6969 <<'V diskusi s akademiky'>>
+[06/10/2022 17:05.21] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pog:622808862562451497>'>>
+[06/10/2022 17:05.30] [#general] Beelanda | KaliningradIsCzechia#7108 <<'tvl bot by mel pocitat dramata taky'>>
+[06/10/2022 17:05.39] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nebo verne dramalidi'>>
+[06/10/2022 17:05.51] [#general] Beelanda | KaliningradIsCzechia#7108 <<'a pri urcitem poctu ti da vernostni poukazku <:kappa:622827221077196803>'>>
+[06/10/2022 17:06.10] [#general] Beelanda | KaliningradIsCzechia#7108 <<'kurva nemuzu drama ted'>>
+[06/10/2022 17:06.14] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jeste 14 minut ims'>>
+[06/10/2022 17:07.04] [#general] Drevokocúr#6969 <<'Zatím nic moc'>>
+[06/10/2022 17:07.11] [#general] Beelanda | KaliningradIsCzechia#7108 <<':kalm:'>>
+[06/10/2022 17:31.03] [#general] the_leteron#7777 <<'Spíš uchovavat odkazy na ne <:giggle_FB:633095779560718336>'>>
+[06/10/2022 17:33.41] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nebo'>>
+[06/10/2022 18:01.56] [#general] Beelanda | KaliningradIsCzechia#7108 <<'musim rict ze kdyz piju podle tohoto tak furt chodim chcat'>>
+[06/10/2022 18:01.57] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:Vojtisek:622808861400760350>'>>
+[06/10/2022 18:17.05] [#general] Drevokocúr#6969 <<'<@&633366955855970343>'>>
+[06/10/2022 18:17.05] [#general] Bee Storm#6087 <<'Bude i dalsi?'>>
+[06/10/2022 18:17.17] [#general] Drevokocúr#6969 <<'Už nevím kde dneska jsem'>>
+[06/10/2022 18:48.59] [#general] Beelanda | KaliningradIsCzechia#7108 <<'https://discord.com/channels/461541385204400138/899990267321520148/1027619895367712819'>>
+[06/10/2022 18:49.02] [#general] Beelanda | KaliningradIsCzechia#7108 <<'uz se i rozdalo unverify'>>
+[06/10/2022 18:49.04] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pog:622808862562451497>'>>
+[06/10/2022 18:49.49] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale nic moc'>>
+[06/10/2022 18:49.50] [#general] Beelanda | KaliningradIsCzechia#7108 <<'takove slabe'>>
+[06/10/2022 19:06.56] [#general] Stormed#2528 <<'co to je za roomku'>>
+[06/10/2022 19:11.59] [#general] Pupienus#6973 <<'Diskuze s akademiky'>>
+[06/10/2022 19:12.33] [#general] Stormed#2528 <<'proč to nikde nevidím v add roles'>>
+[06/10/2022 19:13.21] [#general] Stormed#2528 <<'w8. odtamtud jsem myslím dostal kick'>>
+[06/10/2022 19:13.23] [#general] Stormed#2528 <<'<:KEKW:668585621945712673>'>>
+[06/10/2022 19:15.12] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[06/10/2022 20:38.00] [#general] Stormed#2528 <<'hoďte nějaké screeny z té dramy'>>
+[06/10/2022 20:38.43] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Nic velkýho'>>
+[06/10/2022 20:38.51] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Takový melodrama spíš'>>
+[06/10/2022 20:40.27] [#general] Stormed#2528 <<'to jsem rád, že jsem o nic nepřišel'>>
+[06/10/2022 20:40.30] [#general] Stormed#2528 <<'<:pepeLa:787339472861790208>'>>
+[06/10/2022 20:46.04] [#memes] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[06/10/2022 20:48.04] [#memes] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[06/10/2022 20:48.33] [#memes] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[06/10/2022 21:24.49] [#memes] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[06/10/2022 21:40.48] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<@466614661349900288>'>>
+[06/10/2022 21:40.55] [#general] Beelanda | KaliningradIsCzechia#7108 <<'isa room'>>
+[06/10/2022 21:41.02] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Téma 2 je volne'>>
+[06/10/2022 21:41.06] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[06/10/2022 21:49.23] [#general] Pupienus#6973 <<'say no more'>>
+[06/10/2022 21:50.35] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Maybe late tho'>>
+[06/10/2022 21:52.35] [#general] Pupienus#6973 <<'ved tam vidis ze'>>
+[06/10/2022 21:52.37] [#general] Pupienus#6973 <<'odhlasit'>>
+[06/10/2022 22:15.09] [#general] Drevokocúr#6969 <<'<:pogMan:832707819295866880>'>>
+[06/10/2022 22:15.22] [#general] Drevokocúr#6969 <<'Tymovy projekt <:feelsOkayMan:589472434147688480>'>>
+[06/10/2022 22:16.29] [#general] Stormed#2528 <<''>>
+[06/10/2022 22:16.29] [#general] Stormed#2528 <<'<:OMEGALUL:622808862885412875>'>>
+[06/10/2022 22:18.58] [#general] Drevokocúr#6969 <<'<:OMEGALUL:827833315922542593>'>>
+[06/10/2022 22:26.23] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Jsem odpovídal přes notifikace xd'>>
+[06/10/2022 22:26.29] [#general] Beelanda | KaliningradIsCzechia#7108 <<'a bylo to celkem late'>>
+[06/10/2022 22:26.44] [#general] Beelanda | KaliningradIsCzechia#7108 <<'chudák týpek teď má to nejhorší zadání'>>
+[06/10/2022 22:26.49] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[06/10/2022 22:26.57] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Team > Everyone else'>>
+[06/10/2022 22:27.00] [#general] Beelanda | KaliningradIsCzechia#7108 <<'🤷‍♀️'>>
+[06/10/2022 22:27.42] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Ještě chybí jedno místo pro mě'>>
+[07/10/2022 02:34.51] [#general] dAjvid#2284 <<'Já ti říkal že mám splněno i přes tím kebabem. <:pepeLaugh:622808862960910336> <@295555620613128192>'>>
+[07/10/2022 02:34.59] [#general] louda#7658 <<'<:OMEGALUL:827833315922542593>'>>
+[07/10/2022 02:35.11] [#general] louda#7658 <<'kebab good <:feelsHappyMan:728192563605012601>'>>
+[07/10/2022 02:35.31] [#general] dAjvid#2284 <<'S tím souhlasím, celkem jsem si ho užil. <:rtzW:622808862805852169>'>>
+[07/10/2022 02:35.46] [#general] louda#7658 <<'same <:wicked:951162142550282251>'>>
+[07/10/2022 02:35.59] [#general] louda#7658 <<'já půjdu fakt asi pracovat'>>
+[07/10/2022 02:36.08] [#general] dAjvid#2284 <<'A zjistil jsem že kousek odemě bydlí dvě architekty. <:rtzW:622808862805852169>'>>
+[07/10/2022 02:36.25] [#general] louda#7658 <<'nemaji chuť ještě kalit? 😏'>>
+[07/10/2022 02:36.26] [#general] dAjvid#2284 <<'Jsme měli stejnou skoro celou cestu od toho rozjezdu.'>>
+[07/10/2022 03:08.19] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[07/10/2022 08:52.05] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/TpyxaNews/status/1578260648303427584?t=FDajKP9CWfD1AldZBelrbA&s=19'>>
+[07/10/2022 08:52.12] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/AFP/status/1578211835408691202?t=Z-vUSokz93zmfWQiB67wDg&s=19'>>
+[07/10/2022 08:53.16] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/KyivIndependent/status/1578251465331703812?t=Ug-4ORT88yzX8l_eQhpbGw&s=19'>>
+[07/10/2022 09:05.08] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Risk nukleární války je dnes na úrovni Kubánské krize v 1962. 
+
+V té době stačil jeden špatný moment a začala by jaderná válka, která byla téměř jistá. Jenže narozdíl od tehdejší krize, dnes je to válka, kterou Rusko těžce prohrává a z které se nelze "tak jednoduše" dostat, jak tehdy.'>>
+[07/10/2022 10:31.14] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/dzamilastehlik/status/1578297363059605504?s=46&t=oALU6_0CAJi4zjP8NL1kiA'>>
+[07/10/2022 10:32.15] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'První plánovaná demonstrace síly jaderných zbraní od Ruska od 24/2'>>
+[07/10/2022 10:32.38] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Jak jeden pravil, nejdříve bude chtít demonstrovat sílu jejich testem a potom je použije'>>
+[07/10/2022 10:32.48] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Nuclear War again closer'>>
+[07/10/2022 10:38.39] [#general] Beelanda | KaliningradIsCzechia#7108 <<'neni to tak davno co jsem stoupl na vahu a mel jsem tam 91.6'>>
+[07/10/2022 10:38.48] [#general] Beelanda | KaliningradIsCzechia#7108 <<'dneska jsem tak z prdele zkusil'>>
+[07/10/2022 10:38.53] [#general] Beelanda | KaliningradIsCzechia#7108 <<'(zadny vazny/pravidelny vazeni)'>>
+[07/10/2022 10:39.17] [#general] Beelanda | KaliningradIsCzechia#7108 <<'proste chce se mi mega srat, mam na sobe tezkej zupan, jsem po snidani atd <:pepeLa:787339472861790208>'>>
+[07/10/2022 10:39.50] [#general] Beelanda | KaliningradIsCzechia#7108 <<'takze proste hrozny podminky a vsechno a navic to neni ve spravnou dobu (tydne -> pondeli)'>>
+[07/10/2022 10:39.54] [#general] Beelanda | KaliningradIsCzechia#7108 <<'a tam 79.0'>>
+[07/10/2022 10:41.16] [#general] Beelanda | KaliningradIsCzechia#7108 <<'basically teda se uz na 80 nedostanu i pres kilo obleceni na sobe a kilo sezranyho zradla'>>
+[07/10/2022 10:41.17] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pepeLa:787339472861790208>'>>
+[07/10/2022 10:42.16] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nyni mi teda zbyva otazka, proc takovy dementni random vazeni delaji lidi a pak se zhrouti, ze "po bagete jsem pribral/a 1 kilo"'>>
+[07/10/2022 10:43.22] [#general] Beelanda | KaliningradIsCzechia#7108 <<'[i kdyz teda zrovna v mym pripade jsem mel v sobotu 79.0, tudiz s touto logikou jsem snedl bagetu a nepribral ani gram <:ez:787349410228076604> ]'>>
+[07/10/2022 10:44.19] [#general] Beelanda | KaliningradIsCzechia#7108 <<'me vzdycky zajimalo jak moc velkej rozdil to udela kdyz se vazim random tak jsem to proste musel dnes zkusit <:pepeLa:787339472861790208>'>>
+[07/10/2022 10:44.54] [#general] Beelanda | KaliningradIsCzechia#7108 <<'to mi pripomina'>>
+[07/10/2022 10:44.55] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<@&633366955855970343>'>>
+[07/10/2022 10:44.56] [#general] Bee Storm#6087 <<'At se dari!'>>
+[07/10/2022 10:47.11] [#general] Drevokocúr#6969 <<'<:pog:649733686635397121> <@&633366955855970343>'>>
+[07/10/2022 10:47.11] [#general] Bee Storm#6087 <<'Zrovna jdu taky!'>>
+[07/10/2022 10:47.21] [#general] Drevokocúr#6969 <<'To už jsme 3 <:POGGERS:422564972543868939>'>>
+[07/10/2022 10:47.25] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:feelsWowMan:627880078973599772>'>>
+[07/10/2022 10:47.49] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jako fakt nepochopim tu logiku ze si dam obed a pak se jdu okamzite zvazit'>>
+[07/10/2022 10:48.01] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale guess not my problem <:pepeLa:787339472861790208>'>>
+[07/10/2022 10:57.25] [#general] Beelanda | KaliningradIsCzechia#7108 <<'me se tak nechce dnes koukat na ims'>>
+[07/10/2022 10:57.33] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ze mozna i zacnu na bp'>>
+[07/10/2022 11:06.28] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[07/10/2022 11:32.27] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<@617762922088628230> <@466614661349900288> chci netflow nebo si mam dat taky 2 <:monkaHmm:622809371574927366>'>>
+[07/10/2022 11:32.57] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nebo jakoze jsou 2 volna mista u myho'>>
+[07/10/2022 11:32.59] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:nepSmug:803916421817171978>'>>
+[07/10/2022 11:45.35] [#general] Drevokocúr#6969 <<'<:mnkaHmmmm:835934148493180958>'>>
+[07/10/2022 11:46.54] [#general] Beelanda | KaliningradIsCzechia#7108 <<'now refreshed <:objection:622809372229238794>'>>
+[07/10/2022 11:47.52] [#general] Drevokocúr#6969 <<'Tak to abych si šel pročíst zadání'>>
+[07/10/2022 11:48.04] [#general] Beelanda | KaliningradIsCzechia#7108 <<'to budes mit stejne jak u tvyho'>>
+[07/10/2022 11:48.08] [#general] Beelanda | KaliningradIsCzechia#7108 <<'taky nebudes vedet co se deje'>>
+[07/10/2022 11:48.09] [#general] Beelanda | KaliningradIsCzechia#7108 <<'xd'>>
+[07/10/2022 11:50.31] [#general] Drevokocúr#6969 <<'<:KEKW:668585621945712673> yeah tak nějak'>>
+[07/10/2022 11:50.50] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale pisou ze netflow je nejvic ez'>>
+[07/10/2022 11:50.51] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:monkaHmm:622809371574927366>'>>
+[07/10/2022 11:51.01] [#general] Drevokocúr#6969 <<'Právě'>>
+[07/10/2022 11:51.14] [#general] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[07/10/2022 11:51.18] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pepeLa:787339472861790208>'>>
+[07/10/2022 11:51.25] [#general] Drevokocúr#6969 <<'Tak já nevím'>>
+[07/10/2022 11:51.44] [#general] Beelanda | KaliningradIsCzechia#7108 <<'idk kdyztak me tagnete jestli budete chtit zmenu, at se muzu kouknout jestli tam je misto'>>
+[07/10/2022 11:51.47] [#general] Beelanda | KaliningradIsCzechia#7108 <<'at neriskujete'>>
+[07/10/2022 11:52.20] [#general] Drevokocúr#6969 <<'Já si dám ten Netflow asi'>>
+[07/10/2022 11:52.52] [#general] Beelanda | KaliningradIsCzechia#7108 <<'2 mista \'>>
+[07/10/2022 11:52.54] [#general] Beelanda | KaliningradIsCzechia#7108 <<'porad'>>
+[07/10/2022 11:53.03] [#general] Beelanda | KaliningradIsCzechia#7108 <<'mely by teda byt 2 mista vsude'>>
+[07/10/2022 11:53.21] [#general] Drevokocúr#6969 <<'Už jen jedno'>>
+[07/10/2022 11:54.51] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:feelsWowMan:627880078973599772>'>>
+[07/10/2022 11:54.54] [#general] Beelanda | KaliningradIsCzechia#7108 <<'tymoveZadani'>>
+[07/10/2022 11:55.02] [#general] Beelanda | KaliningradIsCzechia#7108 <<'mozna zacnu o vikendu'>>
+[07/10/2022 11:55.03] [#general] Beelanda | KaliningradIsCzechia#7108 <<'xd'>>
+[07/10/2022 11:55.12] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nebo uz i dnes'>>
+[07/10/2022 11:55.21] [#general] Beelanda | KaliningradIsCzechia#7108 <<'aspon s necim basic co zvladnu'>>
+[07/10/2022 11:56.05] [#general] Drevokocúr#6969 <<'No já už začal'>>
+[07/10/2022 11:56.11] [#general] Drevokocúr#6969 <<'Akorát s jiným zadáním no'>>
+[07/10/2022 11:56.14] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[07/10/2022 11:56.14] [#general] Drevokocúr#6969 <<'<:PepeLa:751183558126731274>'>>
+[07/10/2022 11:56.18] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ale tak to mas jen parsing ne'>>
+[07/10/2022 11:56.25] [#general] Drevokocúr#6969 <<'Jenom check'>>
+[07/10/2022 11:56.25] [#general] Beelanda | KaliningradIsCzechia#7108 <<'beztak ani to ne'>>
+[07/10/2022 11:56.30] [#general] Beelanda | KaliningradIsCzechia#7108 <<'tak to bude stejny'>>
+[07/10/2022 11:56.31] [#general] Beelanda | KaliningradIsCzechia#7108 <<'xd'>>
+[07/10/2022 11:56.36] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nebo pozmenis nazvy no'>>
+[07/10/2022 11:56.36] [#general] Drevokocúr#6969 <<'Yeah'>>
+[07/10/2022 11:59.37] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ja uz mam zacatek <:ez:787349410228076604>'>>
+[07/10/2022 12:00.09] [#general] Beelanda | KaliningradIsCzechia#7108 <<'netflow uz jen jedno misto <:objection:622809372229238794>'>>
+[07/10/2022 12:00.16] [#general] Beelanda | KaliningradIsCzechia#7108 <<'anicka by si mela pohnout a prestat kourit jurajovi'>>
+[07/10/2022 12:00.35] [#general] Beelanda | KaliningradIsCzechia#7108 <<'fajka pocka, site nikoliv'>>
+[07/10/2022 12:08.19] [#general] Bee Storm#6087 <<'Dnes je 7. 10. a svatek ma Justýna.'>>
+[07/10/2022 12:22.22] [#world-war-3] Drevokocúr#6969 <<'<a:Aware:889021591776817172> *změna místa vyhrazena*'>>
+[07/10/2022 12:40.48] [#general] Beelanda | KaliningradIsCzechia#7108 <<'myslim ze dobry ne <:kappa:622827221077196803>'>>
+[07/10/2022 13:08.19] [#general] Bee Storm#6087 <<'[Random Fact no. 828] The island in Lake Bled is the only natural island in Slovenia.'>>
+[07/10/2022 14:55.22] [#general] Pupienus#6973 <<'dnes na prednasce rikal, ze netflow je podle nej nejtezsi projekt <:rtzW:622808862805852169>'>>
+[07/10/2022 14:59.52] [#general] Beelanda | KaliningradIsCzechia#7108 <<'i horsi jak trojka jo'>>
+[07/10/2022 14:59.57] [#general] Beelanda | KaliningradIsCzechia#7108 <<'na kterou vsichni plivou'>>
+[07/10/2022 15:00.13] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Kronny zase rikal ze je jeho projekt nejtezsi'>>
+[07/10/2022 15:00.14] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[07/10/2022 15:19.29] [#general] Drevokocúr#6969 <<'Vole tak si to mám přehodit zpátky nebo co'>>
+[07/10/2022 15:19.40] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[07/10/2022 15:19.45] [#general] Beelanda | KaliningradIsCzechia#7108 <<'tak ja nevim co teda'>>
+[07/10/2022 15:20.40] [#general] Drevokocúr#6969 <<'Hm tak Kronnyho je teď plný'>>
+[07/10/2022 15:20.43] [#general] Drevokocúr#6969 <<'Co už'>>
+[07/10/2022 15:21.13] [#general] Beelanda | KaliningradIsCzechia#7108 <<'aha'>>
+[07/10/2022 15:21.17] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[07/10/2022 15:21.19] [#general] Beelanda | KaliningradIsCzechia#7108 <<'kurva'>>
+[07/10/2022 15:41.58] [#general] Beelanda | KaliningradIsCzechia#7108 <<'2.5 stranky textu done, ja myslim ze dnes uz staci <:monkaS:622825371644985394>'>>
+[07/10/2022 15:42.23] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ja doufam ze na konci to trochu zredukuju <:KEKW:668585621945712673>'>>
+[07/10/2022 15:42.31] [#general] Beelanda | KaliningradIsCzechia#7108 <<'ze budu z tech informaci vybirat <:KEKW:668585621945712673>'>>
+[07/10/2022 15:42.36] [#general] Beelanda | KaliningradIsCzechia#7108 <<'jinak to bude roman'>>
+[07/10/2022 16:41.07] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pog:622808862562451497>'>>
+[07/10/2022 16:41.09] [#general] Beelanda | KaliningradIsCzechia#7108 <<'URF'>>
+[07/10/2022 16:41.21] [#general] Beelanda | KaliningradIsCzechia#7108 <<'cas jit mlatit do klavesnice'>>
+[07/10/2022 16:41.23] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:pog:622808862562451497> <:pog:622808862562451497> <:pog:622808862562451497>'>>
+[07/10/2022 21:50.59] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(`Automaticke obnoveni behu pri vyjimce docasneho zakazu provozu (hosting problem).`)'>>
+[07/10/2022 21:55.07] [#general] Beelanda | KaliningradIsCzechia#7108 <<'nice konecne se nemusim o smrada starat kdyz spadne'>>
+[07/10/2022 21:55.08] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:ez:787349410228076604>'>>
+[07/10/2022 22:17.44] [#general] Drevokocúr#6969 <<'wtf'>>
+[07/10/2022 22:17.46] [#general] Drevokocúr#6969 <<'<:HUH:974943225339064320>'>>
+[07/10/2022 22:18.01] [#general] Drevokocúr#6969 <<'sounds like a murder'>>
+[07/10/2022 22:40.21] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[07/10/2022 22:41.03] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Well'>>
+[07/10/2022 22:41.08] [#general] Beelanda | KaliningradIsCzechia#7108 <<'Prakticky jo'>>
+[07/10/2022 22:41.22] [#general] Beelanda | KaliningradIsCzechia#7108 <<'I když on to dělá sám podle svého kódu takže to je vlastne sebevražda'>>
+[08/10/2022 01:18.35] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[08/10/2022 01:56.01] [#general] Drevokocúr#6969 <<'<@&633366955855970343>'>>
+[08/10/2022 01:56.01] [#general] Bee Storm#6087 <<'Nezapomen splachnout.'>>
+[08/10/2022 04:07.58] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[08/10/2022 08:17.40] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://vxtwitter.com/jan_h_cz/status/1578616371961028609?s=46&t=3ZlAnGkTh1Og-vhC-jsp_Q'>>
+[08/10/2022 08:17.56] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[08/10/2022 08:18.02] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Krymský most on fire'>>
+[08/10/2022 08:29.45] [#world-war-3] louda#7658 <<'nějakej článek/galerie?'>>
+[08/10/2022 08:34.44] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Zatím moc ne, je to new'>>
+[08/10/2022 08:36.33] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/Osinttechnical/status/1578632284173131776?t=cQ0K2osUyxs8Ps02yDXVGg&s=19'>>
+[08/10/2022 08:37.04] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/choochichoo/status/1578590235323404290?t=I6PxT5ehbJyGF5DtR7vjwQ&s=19'>>
+[08/10/2022 08:37.18] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Asi krymský most hrdinně provádí taktický ústup do moře'>>
+[08/10/2022 08:39.50] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[08/10/2022 08:47.33] [#world-war-3] louda#7658 <<'to je docela brutální wtf <:forsenScoots:690564876787122196>'>>
+[08/10/2022 08:47.56] [#world-war-3] louda#7658 <<'to jaká puma'>>
+[08/10/2022 08:52.26] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/Ukraine/status/1578634825417650176?t=pyBDu3aTot14VvuluHdCvg&s=19'>>
+[08/10/2022 08:55.47] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/Tendar/status/1578638215434866688?t=yUnfwX8aryHvMmbuZBzUxA&s=19'>>
+[08/10/2022 08:55.48] [#world-war-3] louda#7658 <<'yeah <:PepeLa:751183558126731274>'>>
+[08/10/2022 08:55.50] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<''>>
+[08/10/2022 08:56.17] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'*not a significant damage, which will be soon repaired*'>>
+[08/10/2022 08:56.52] [#world-war-3] louda#7658 <<'zas idk jak je dlouhej ten most'>>
+[08/10/2022 08:57.35] [#world-war-3] louda#7658 <<'jestli stačí rebuildnout jenom pár procent délky mostu tak to třeba nebude tak šílená škoda'>>
+[08/10/2022 08:58.07] [#world-war-3] louda#7658 <<'ale nevím jak daleko od těch míst on fire může být narušená statika třeba <:PepeLa:751183558126731274>'>>
+[08/10/2022 09:22.11] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'No každopádně jim to ale trochu zpomalí jejich operace'>>
+[08/10/2022 09:22.18] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'Když tam budou opravovat most'>>
+[08/10/2022 09:40.38] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/BaltTweetuje/status/1578636711453544448?s=20&t=I829sxc9Qe460ulu6JEsNw'>>
+[08/10/2022 09:40.49] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'pachatele co pravdepodobne znicili krymsky most byli odhaleni na fotografii'>>
+[08/10/2022 09:45.19] [#world-war-3] louda#7658 <<'jo to určitě'>>
+[08/10/2022 09:45.24] [#world-war-3] louda#7658 <<'pro ně je to strategický místo?'>>
+[08/10/2022 09:45.38] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'naprosto'>>
+[08/10/2022 09:45.40] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'<:haHAA:622808860713025536>'>>
+[08/10/2022 09:45.46] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'bez toho mostu je Krym bez supply'>>
+[08/10/2022 09:45.55] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'diky tomu mostu v prvni rade mohli najet na Ukrajinu a invadnout'>>
+[08/10/2022 09:46.03] [#world-war-3] louda#7658 <<'<:forsenScoots:690564876787122196>'>>
+[08/10/2022 09:46.10] [#world-war-3] louda#7658 <<'se divím že až teď'>>
+[08/10/2022 09:46.11] [#world-war-3] louda#7658 <<'<:bigSmile:961979508318162955>'>>
+[08/10/2022 09:46.17] [#world-war-3] louda#7658 <<'to někdo odpálil'>>
+[08/10/2022 09:47.05] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'asi driv nemeli techniku'>>
+[08/10/2022 09:47.09] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'a moznost, je to celkem daleko'>>
+[08/10/2022 09:47.12] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'<:monkaHmm:622809371574927366>'>>
+[08/10/2022 09:47.49] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'a oni si ten most celkem hlidaji a je hard to jen tak znicit <:rtzW:622808862805852169>'>>
+[08/10/2022 09:48.13] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'jako jeste maji Luhansk'>>
+[08/10/2022 09:48.30] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'jenze v nem ukrajincum staci par km a ani ten uz jim nebude davat supply'>>
+[08/10/2022 09:48.30] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'<:KEKW:668585621945712673>'>>
+[08/10/2022 10:07.51] [#general] Beelanda | KaliningradIsCzechia#7108 <<'<@&633366955855970343>'>>
+[08/10/2022 10:07.51] [#general] Bee Storm#6087 <<'Ja uz myslel, ze dnes nepujdes.'>>
+[08/10/2022 10:08.21] [#general] Beelanda | KaliningradIsCzechia#7108 <<'$sraniboard'>>
+[08/10/2022 10:08.22] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | KaliningradIsCzechia (411 srani)
+ **2.** Drevokocúr (263 srani)
+ **3.** Pupienus (86 srani)
+ **4.** Bc. ReBeL (28 srani)
+ **5.** Stormed (21 srani)'>>
+[08/10/2022 10:38.30] [#world-war-3] dAjvid#2284 <<'Pak jim ještě znovu zastaví i přívod vody na Krym, tam to bude za pár měsíců hrozně fajn. <:kappa:622827221077196803>'>>
+[08/10/2022 11:01.21] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/KyivIndependent/status/1578667658513289217?s=20&t=3gRTc2430cMV48TSZVS5Wg'>>
+[08/10/2022 11:09.40] [#world-war-3] Beelanda | KaliningradIsCzechia#7108 <<'https://twitter.com/MilTuc/status/1578115628182945793?s=20'>>
+[08/10/2022 11:37.24] [#world-war-3] louda#7658 <<'já jenom čekám až si rusko tyhle vtípečky vezme osobně <:clueless:934852984062488626>'>>
+[08/10/2022 12:04.48] [#general] Beelanda | supporting K#7108 <<'will it die now ?'>>
+[08/10/2022 12:04.53] [#general] Beelanda | supporting K#7108 <<'$sraniboard'>>
+[08/10/2022 12:04.54] [#general] Bee Storm#6087 <<'** **
+**SRANIBOARD** - top 5 nejvetsich sracu:
+
+ **1.** Beelanda | supporting K (411 srani)
+ **2.** Drevokocúr (263 srani)
+ **3.** Pupienus (86 srani)
+ **4.** Bc. ReBeL (28 srani)
+ **5.** Stormed (21 srani)'>>
+[08/10/2022 12:04.56] [#general] Beelanda | supporting K#7108 <<'<:HYPERS:622808860905701376>'>>
+[08/10/2022 12:07.58] [#general] Bee Storm#6087 <<'Dnes je 8. 10. a svatek ma Věra.'>>
+[08/10/2022 12:17.56] [#world-war-3] dAjvid#2284 <<'Už k tomu měli nějaký statement. <:pepeLaugh:622808862960910336>'>>
+[08/10/2022 12:20.17] [#world-war-3] Beelanda | supporting K#7108 <<'meli'>>
+[08/10/2022 12:20.20] [#world-war-3] Beelanda | supporting K#7108 <<'proto to cely zaclo'>>
+[08/10/2022 12:20.23] [#world-war-3] Beelanda | supporting K#7108 <<'od te doby zatim nic'>>
+[08/10/2022 12:20.25] [#world-war-3] Beelanda | supporting K#7108 <<'<:sadKek:751407684112351282>'>>
+[08/10/2022 13:10.36] [#world-war-3] Beelanda | supporting K#7108 <<'https://twitter.com/fbeyeee/status/1578700900494761990?s=46&t=nPP_x1ci4ZMSya1oYerKaA'>>
+[08/10/2022 13:12.54] [#world-war-3] louda#7658 <<'pěkná pfp <:kek:499119654053347329>'>>
+[08/10/2022 13:14.38] [#world-war-3] Beelanda | supporting K#7108 <<'<:feelsWowMan:627880078973599772>'>>
+[08/10/2022 13:14.44] [#world-war-3] Beelanda | supporting K#7108 <<'podporuji vlast <:objection:622809372229238794>'>>
+[08/10/2022 14:07.58] [#general] Bee Storm#6087 <<'[Random Fact no. 996] The maximum recommended consumption for Monster Energy Drink is 16oz in Australia, but 48oz in the U.S.A.'>>
+[08/10/2022 14:57.00] [#general] Beelanda | supporting K#7108 <<'Story time'>>
+[08/10/2022 14:57.04] [#general] Beelanda | supporting K#7108 <<'jsem u doktora'>>
+[08/10/2022 14:57.07] [#general] Beelanda | supporting K#7108 <<'odchazim'>>
+[08/10/2022 14:57.13] [#general] Beelanda | supporting K#7108 <<'je tam lekarna, tak jdu tam a pak z ni'>>
+[08/10/2022 14:57.17] [#general] Beelanda | supporting K#7108 <<'a venku tehotna borka'>>
+[08/10/2022 14:57.20] [#general] Beelanda | supporting K#7108 <<'a uplne ze'>>
+[08/10/2022 14:57.27] [#general] Beelanda | supporting K#7108 <<'*pane prosim muzete pomoct*'>>
+[08/10/2022 14:57.41] [#general] Beelanda | supporting K#7108 <<'a uplne ze ji nejde telefon, ze ji nejde volat, ze to jeste vcera slo'>>
+[08/10/2022 14:57.52] [#general] Beelanda | supporting K#7108 <<'ze si i dobijela ale nic'>>
+[08/10/2022 14:58.02] [#general] Beelanda | supporting K#7108 <<'(problem: no signal, jen tisnova volani)'>>
+[08/10/2022 14:58.08] [#general] Beelanda | supporting K#7108 <<'tak to tam resim tak 10 minut'>>
+[08/10/2022 14:58.21] [#general] Beelanda | supporting K#7108 <<'pak to proste vezmu, simku odeberu a vratim'>>
+[08/10/2022 14:58.25] [#general] Beelanda | supporting K#7108 <<'oala'>>
+[08/10/2022 14:58.26] [#general] Beelanda | supporting K#7108 <<'fixed'>>
+[08/10/2022 14:58.30] [#general] Beelanda | supporting K#7108 <<'technik jak hovado'>>
+[08/10/2022 14:58.31] [#general] Beelanda | supporting K#7108 <<'<:KEKW:668585621945712673>'>>
+[08/10/2022 14:59.17] [#general] Drevokocúr#6969 <<'<@&633366955855970343>'>>
+[08/10/2022 14:59.18] [#general] Bee Storm#6087 <<'Preji mnoho uspechu!'>>
+[08/10/2022 14:59.26] [#general] Beelanda | supporting K#7108 <<'pritom ta simka tam byla v poradku <:haHAA:622808860713025536>'>>
+[08/10/2022 14:59.34] [#general] louda#7658 <<'tím líp ještě že jsi to řešil těch 10 minut'>>
+[08/10/2022 14:59.43] [#general] louda#7658 <<'takhle vypadáš ještě víc profi'>>
+[08/10/2022 14:59.48] [#general] louda#7658 <<'<:WICKED:961981857258418266>'>>
+[08/10/2022 14:59.48] [#general] Beelanda | supporting K#7108 <<'<:OMEGALUL:622808862885412875>'>>
+[08/10/2022 14:59.53] [#general] Beelanda | supporting K#7108 <<'pritom jsem vubec nevedel co mam delat'>>
+[08/10/2022 14:59.59] [#general] Beelanda | supporting K#7108 <<'to byl nejakej uplne old samsung'>>
+[08/10/2022 15:00.24] [#general] Beelanda | supporting K#7108 <<'jeste s vyndavaci baterkou'>>
+[08/10/2022 17:58.52] [#world-war-3] Beelanda | supporting K#7108 <<''>>
+[08/10/2022 18:11.17] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou.'>>
+[08/10/2022 18:11.17] [#general] Bee Storm#6087 <<'[Random Fact no. 755] There’s a reply to the saying “Liar, liar, pants on fire” – It’s “I don’t care, I don’t care, I can buy another pair”.'>>
+[08/10/2022 18:11.17] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[08/10/2022 18:11.17] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[08/10/2022 18:13.16] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[08/10/2022 18:13.16] [#general] Bee Storm#6087 <<'[Random Fact no. 583] Until 2007, slavery was legal in Mauritania. Even still, 1-4% of the population is still living as slaves.'>>
+[08/10/2022 18:24.14] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou.'>>
+[08/10/2022 18:24.15] [#kgb] Bee Storm#6087 <<'Uz jsem zase tady!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[08/10/2022 18:24.15] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[08/10/2022 18:27.05] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou.'>>
+[08/10/2022 18:27.05] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[08/10/2022 18:27.05] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[08/10/2022 18:28.20] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou.'>>
+[08/10/2022 18:29.32] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou.\Chyba:`Expecting value: line 1 column 1 (char 0)`'>>
+[08/10/2022 18:29.32] [#kgb] Bee Storm#6087 <<'Priletel ten nejlepsi bot na svete!
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[08/10/2022 18:29.32] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[08/10/2022 18:39.10] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou nebo ji rucne opravit. <@!591643151668871168> mas 150 sekund na preruseni automaticke opravy. 
+Chyba: `Expecting value: line 5 column 1 (char 46)`'>>
+[08/10/2022 18:39.11] [#kgb] Bee Storm#6087 <<'Bee Storm bot je znovu pripraven k pouziti.
+(Posledni zmeny: `zadne zmeny, tento restart nebyl proveden adminem`)'>>
+[08/10/2022 18:39.11] [#kgb] Bee Storm#6087 <<'[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'>>
+[08/10/2022 18:39.37] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou nebo ji rucne opravit. <@!591643151668871168> mas 150 sekund na preruseni automaticke opravy. 
+Chyba: `Invalid control character at: line 216 column 5 (char 3643)`'>>
+[08/10/2022 18:39.44] [#kgb] Beelanda | supporting K#7108 <<'$interrupt'>>
+[08/10/2022 18:39.45] [#kgb] Bee Storm#6087 <<'Databaze se automaticky neobnovi.'>>
+[08/10/2022 18:58.33] [#kgb] Bee Storm#6087 <<'Data v databazi jsou poskozena a je nutne vytvorit novou nebo ji rucne opravit. <@!591643151668871168> mas 120 sekund na preruseni automaticke opravy. 
+Chyba: `Expecting ',' delimiter: line 20 column 2 (char 234)`
+Tip: `$interrupt, $interrupt_extend, $reboot`'>>
+[08/10/2022 18:58.51] [#karantena] Beelanda | supporting K#7108 <<'$interrupt'>>
+[08/10/2022 18:58.51] [#karantena] Bee Storm#6087 <<'Databaze se automaticky neobnovi.'>>
+[08/10/2022 19:50.19] [#karantena] Beelanda | supporting K#7108 <<'$admin'>>
+[08/10/2022 19:50.33] [#karantena] Beelanda | supporting K#7108 <<'$nowelcome'>>
+[08/10/2022 19:52.23] [#general] Drevokocúr#6969 <<'<@&633366955855970343>'>>
+[08/10/2022 19:52.31] [#general] Beelanda | supporting K#7108 <<'<:KEKW:668585621945712673>'>>
+[08/10/2022 19:52.46] [#general] Beelanda | supporting K#7108 <<'konecne neni takovej jen na me'>>
+[08/10/2022 20:05.24] [#karantena] Beelanda | supporting K#7108 <<'$git'>>
+[08/10/2022 20:31.27] [#karantena] Beelanda | supporting K#7108 <<'$files'>>
+[08/10/2022 20:42.11] [#karantena] Beelanda | supporting K#7108 <<'$sraniboard'>>
+[08/10/2022 20:45.41] [#world-war-3] Beelanda | supporting K#7108 <<''>>
+[08/10/2022 20:47.30] [#world-war-3] Beelanda | supporting K#7108 <<'si tak strili pres to japonsko az to jednou fakt trefi do nich'>>
+[08/10/2022 20:47.31] [#world-war-3] Beelanda | supporting K#7108 <<'<:KEKW:668585621945712673>'>>
+[08/10/2022 20:53.33] [#world-war-3] Beelanda | supporting K#7108 <<'https://twitter.com/visegrad24/status/1578699222601244673?s=20&t=3ammJpWdgnWF-EC9vRS_gw'>>
+[08/10/2022 20:58.16] [#kgb] Beelanda | supporting K#7108 <<'$reboot'>>
+[08/10/2022 21:08.42] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 1200'>>
+[08/10/2022 21:08.46] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 5'>>
+[08/10/2022 21:09.48] [#kgb] Beelanda | supporting K#7108 <<'nesmazal'>>
+[08/10/2022 21:09.52] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 5'>>
+[08/10/2022 21:10.33] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 3'>>
+[08/10/2022 21:10.38] [#kgb] Beelanda | supporting K#7108 <<'ze o tom nevim'>>
+[08/10/2022 21:10.42] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 3'>>
+[08/10/2022 21:14.09] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 5'>>
+[08/10/2022 21:14.24] [#kgb] Beelanda | supporting K#7108 <<'$hello'>>
+[08/10/2022 21:14.28] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 1'>>
+[08/10/2022 21:15.23] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 3'>>
+[08/10/2022 21:18.04] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 5'>>
+[08/10/2022 21:18.17] [#kgb] Beelanda | supporting K#7108 <<'$hello'>>
+[08/10/2022 21:18.19] [#kgb] Beelanda | supporting K#7108 <<'a'>>
+[08/10/2022 21:18.24] [#kgb] Beelanda | supporting K#7108 <<'$hi'>>
+[08/10/2022 21:18.27] [#kgb] Beelanda | supporting K#7108 <<'w'>>
+[08/10/2022 21:18.29] [#kgb] Beelanda | supporting K#7108 <<'ut'>>
+[08/10/2022 21:18.32] [#kgb] Beelanda | supporting K#7108 <<'wah'>>
+[08/10/2022 21:18.37] [#kgb] Beelanda | supporting K#7108 <<'co ti jebe'>>
+[08/10/2022 21:18.42] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 3'>>
+[08/10/2022 21:18.47] [#kgb] Beelanda | supporting K#7108 <<'5'>>
+[08/10/2022 21:18.51] [#kgb] Beelanda | supporting K#7108 <<'p'>>
+[08/10/2022 21:18.53] [#kgb] Beelanda | supporting K#7108 <<'l'>>
+[08/10/2022 21:19.00] [#kgb] Beelanda | supporting K#7108 <<'$reboot'>>
+[08/10/2022 21:20.20] [#kgb] Beelanda | supporting K#7108 <<'$reboot'>>
+[08/10/2022 21:26.09] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 10'>>
+[08/10/2022 21:26.19] [#kgb] Beelanda | supporting K#7108 <<'a'>>
+[08/10/2022 21:28.27] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 3'>>
+[08/10/2022 21:28.33] [#kgb] Beelanda | supporting K#7108 <<'a'>>
+[08/10/2022 21:28.35] [#kgb] Beelanda | supporting K#7108 <<'b'>>
+[08/10/2022 21:30.46] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 3'>>
+[08/10/2022 21:30.54] [#kgb] Beelanda | supporting K#7108 <<'finally'>>
+[08/10/2022 21:30.58] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 50'>>
+[08/10/2022 21:32.24] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 10'>>
+[08/10/2022 21:32.50] [#kgb] Beelanda | supporting K#7108 <<'$reboot'>>
+[08/10/2022 21:34.55] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 3'>>
+[08/10/2022 21:35.33] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 20'>>
+[08/10/2022 21:38.35] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 10'>>
+[08/10/2022 21:39.05] [#kgb] Beelanda | supporting K#7108 <<'$reboot'>>
+[08/10/2022 21:41.18] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 15'>>
+[08/10/2022 21:41.49] [#kgb] Beelanda | supporting K#7108 <<'$reboot'>>
+[08/10/2022 21:44.59] [#kgb] Beelanda | supporting K#7108 <<'not so much but ok'>>
+[08/10/2022 21:45.04] [#kgb] Beelanda | supporting K#7108 <<'$sraniboard'>>
+[08/10/2022 21:45.20] [#kgb] Beelanda | supporting K#7108 <<'$remove_msg 100'>>
+[08/10/2022 21:45.27] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 100'>>
+[08/10/2022 21:47.52] [#karantena] Beelanda | supporting K#7108 <<'$admin'>>
+[08/10/2022 21:56.00] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 20'>>
+[08/10/2022 21:56.36] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 15'>>
+[08/10/2022 21:57.06] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 10'>>
+[08/10/2022 21:57.47] [#kgb] Beelanda | supporting K#7108 <<'$msg_remove 5'>>
+[08/10/2022 22:00.40] [#general] Beelanda | supporting K#7108 <<'Právě nestiham doplnit 600 + včera 200 kcal a nechce se mi něco dělat'>>
+[08/10/2022 22:00.49] [#general] Beelanda | supporting K#7108 <<'Tak to jdu doplnit bagetou'>>
+[08/10/2022 22:00.54] [#general] Beelanda | supporting K#7108 <<'která má 560 kcal'>>
+[08/10/2022 22:01.11] [#general] Beelanda | supporting K#7108 <<'Hodnoty má úplně příšerný'>>
+[08/10/2022 22:02.39] [#general] Beelanda | supporting K#7108 <<'270 kcal nutritions'>>
+[08/10/2022 22:02.44] [#general] Beelanda | supporting K#7108 <<'Zbytek nic'>>
+[08/10/2022 22:02.50] [#general] Beelanda | supporting K#7108 <<'<:pepeLa:787339472861790208>'>>
+[08/10/2022 22:33.22] [#general] Stormed#2528 <<'dneska jsem měl samou zdravou stravu'>>
+[08/10/2022 22:33.35] [#general] Stormed#2528 <<'snídaně: pizza
+oběd: KFC
+svačina: mekáč
+večeře: kebab z roje'>>
+[08/10/2022 22:33.36] [#general] Stormed#2528 <<':yep:'>>
+[08/10/2022 22:44.56] [#general] Pupienus#6973 <<'Opilá Jurkova mamka právě vyprávěla, jak si Jurko lepší než mě nenajde a že na mě má dávat pozor <:pepeLaugh:622808862960910336>'>>
+[08/10/2022 23:00.35] [#general] Beelanda | supporting K#7108 <<'Well isn't she right'>>
+[08/10/2022 23:01.14] [#general] Pupienus#6973 <<':yep'>>
+[08/10/2022 23:15.02] [#world-war-3] Beelanda | supporting K#7108 <<'https://twitter.com/_Roman_Maca/status/1578281894965223425?t=HmtfcuYzitG5JnEi4GT0ng&s=19'>>
+[09/10/2022 09:31.24] [#general] Beelanda | supporting K#7108 <<'`Pojem prázdné kalorie je také velice zavádějící`'>>
+[09/10/2022 09:31.27] [#general] Beelanda | supporting K#7108 <<'What'>>
+[09/10/2022 09:31.38] [#general] Beelanda | supporting K#7108 <<''>>
+[09/10/2022 09:35.39] [#general] Beelanda | supporting K#7108 <<''>>
+[09/10/2022 09:35.42] [#general] Beelanda | supporting K#7108 <<'Olej 10 ml'>>
+[09/10/2022 09:35.46] [#general] Beelanda | supporting K#7108 <<'Z tuků 40 kcal'>>
+[09/10/2022 09:36.00] [#general] Beelanda | supporting K#7108 <<'Zbytek eh 0.1?'>>
+[09/10/2022 09:36.13] [#general] Beelanda | supporting K#7108 <<'Olej má pri 10ml 90 kcal'>>
+[09/10/2022 09:36.24] [#general] Beelanda | supporting K#7108 <<'Kolik prázdných kalorií má olej'>>
+[09/10/2022 09:36.30] [#general] Beelanda | supporting K#7108 <<'<:pepeLa:787339472861790208>'>>
+[09/10/2022 10:49.46] [#general] dAjvid#2284 <<'Asi nechápu tuhle úvahu nad olejem. <:rtzW:622808862805852169> <@591643151668871168>'>>
+[09/10/2022 10:49.50] [#general] dAjvid#2284 <<'Olej good :chad:'>>
+[09/10/2022 10:50.27] [#general] dAjvid#2284 <<'A 9.95 * 9 = 89.55 kcal z tuku <:weSmart:622929732090200072>'>>
+[09/10/2022 10:56.03] [#general] Beelanda | supporting K#7108 <<'oh aha'>>
+[09/10/2022 10:56.09] [#general] Beelanda | supporting K#7108 <<'9.95 * 9 neni 40'>>
+[09/10/2022 10:56.15] [#general] Beelanda | supporting K#7108 <<'<:KEKW:668585621945712673>'>>
+[09/10/2022 10:57.00] [#general] Beelanda | supporting K#7108 <<'ok tak wtf co se deje tady'>>
+[09/10/2022 10:57.10] [#general] Beelanda | supporting K#7108 <<'13*4 = 52'>>
+[09/10/2022 10:57.15] [#general] Beelanda | supporting K#7108 <<'8*4 = 32'>>
+[09/10/2022 10:57.26] [#general] Beelanda | supporting K#7108 <<'21*9 = 189'>>
+[09/10/2022 10:57.34] [#general] Beelanda | supporting K#7108 <<'a ma to 565'>>
+[09/10/2022 10:57.35] [#general] Beelanda | supporting K#7108 <<'<:pepeLa:787339472861790208>'>>
+[09/10/2022 10:58.28] [#general] louda#7658 <<'* 1,75'>>
+[09/10/2022 10:58.39] [#general] louda#7658 <<'<:weSmart:622929732090200072>'>>
+[09/10/2022 10:59.04] [#general] Beelanda | supporting K#7108 <<'nope'>>
+[09/10/2022 10:59.11] [#general] Beelanda | supporting K#7108 <<''>>
+[09/10/2022 10:59.53] [#general] Beelanda | supporting K#7108 <<'52+32+189 je 273 a *1,75 je 478, furt mussing cca 100 <:rtzW:622808862805852169>'>>
+[09/10/2022 11:00.22] [#general] Beelanda | supporting K#7108 <<'ale to info u potraviny to ukazuje celkove podle mnozstvi ty nutrienty, ne na 100g afaik <:monkaHmm:622809371574927366>'>>
+[09/10/2022 11:00.32] [#general] louda#7658 <<'asi jo no'>>
+[09/10/2022 11:00.45] [#general] louda#7658 <<'a sůl nemá kalorie,'>>
+[09/10/2022 11:00.52] [#general] Beelanda | supporting K#7108 <<'nema'>>
+[09/10/2022 11:00.58] [#general] louda#7658 <<'<:forsenScoots:690564876787122196>'>>
+[09/10/2022 11:01.07] [#general] Beelanda | supporting K#7108 <<'aspon pisou v gramu soli je 0 kcal'>>
+[09/10/2022 11:01.33] [#general] Beelanda | supporting K#7108 <<'ani tak by to asi moc nepomohlo, ledaze by sul mela tak 100kcal na gram'>>
+[09/10/2022 11:01.43] [#general] louda#7658 <<'má 0 no <:pepelaughlidl:804168876317343774>'>>
+[09/10/2022 11:01.50] [#general] Beelanda | supporting K#7108 <<'proste mi nedava smysl kde se ztratilo tech 300 kcal'>>
+[09/10/2022 11:02.00] [#general] Beelanda | supporting K#7108 <<'jsem myslel ze to jsou ty prazdny kalorie prave'>>
+[09/10/2022 11:02.15] [#general] Beelanda | supporting K#7108 <<'ale ted zjistuju ze to proste vsude sedi'>>
+[09/10/2022 11:02.25] [#general] Beelanda | supporting K#7108 <<'alkohol ma hodne prazdnych kalorii protoze gram alkoholu ma 9 kcal'>>
+[09/10/2022 11:02.33] [#general] Beelanda | supporting K#7108 <<'a 40ml rumu neco ma 118'>>
+[09/10/2022 11:02.42] [#general] Beelanda | supporting K#7108 <<'a to proste na pocet alkoholu a kalorie sedi'>>
+[09/10/2022 11:02.42] [#general] Beelanda | supporting K#7108 <<'xd'>>
+[09/10/2022 11:02.54] [#general] Beelanda | supporting K#7108 <<'nevim no, i guess nejaka vyjimka'>>
+[09/10/2022 11:03.44] [#general] louda#7658 <<'takhle podle mě ten pojem prázdných kalorií nefunguje <:dogeKek:594072390888062986>'>>
+[09/10/2022 11:04.02] [#general] Beelanda | supporting K#7108 <<'no prazdne = hodne fat/alc a zbytek 0/low'>>
+[09/10/2022 11:04.03] [#general] Beelanda | supporting K#7108 <<'ne'>>
+[09/10/2022 11:04.04] [#general] louda#7658 <<'to je jenom lidovej pojem co ti říká že v tomhle výrobku sou sračky co tvýmu tělu nedaj nic moc'>>
+[09/10/2022 11:04.05] [#general] Beelanda | supporting K#7108 <<'<:monkaHmm:622809371574927366>'>>
+[09/10/2022 11:04.17] [#general] Beelanda | supporting K#7108 <<'ja myslel ze prave to je prazdne jako literally'>>
+[09/10/2022 11:04.17] [#general] Beelanda | supporting K#7108 <<'<:pepeLa:787339472861790208>'>>
+[09/10/2022 11:04.26] [#general] Beelanda | supporting K#7108 <<'a ted zjistuju ze jsou to spis sracky'>>
+[09/10/2022 11:04.34] [#general] Beelanda | supporting K#7108 <<'proto jsem si myslel ze v te bagete je 300 prazdnych'>>
+[09/10/2022 11:04.43] [#general] louda#7658 <<'i see <:dogeKek:594072390888062986>'>>
+[09/10/2022 11:04.54] [#general] louda#7658 <<'to netuším ale v čem je problém u bagety <:PepeLa:751183558126731274>'>>
+[09/10/2022 11:45.31] [#general] Beelanda | supporting K#7108 <<'hlavne ta bageta podle internetu ani neexistuje'>>
+[09/10/2022 11:45.33] [#general] Beelanda | supporting K#7108 <<'xd'>>
