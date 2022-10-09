@@ -1,6 +1,7 @@
 ### CUSTOM
-*.txt
-*.json
+log.txt
+message_log.txt
+db.json
 
 ### TEMPLATE
 
