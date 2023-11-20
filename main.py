@@ -30,7 +30,7 @@ DB_AUTO_RECOVERY = False
 #  pri zacatku developmentu setnout na True, aby nevypisoval zpravy pri restartech,
 #  po dokonceni (pred finalnim restartem a zacatkem normalniho behu) vratit na False,
 #  zaroven nezapomenout na switch last_update_message
-DEVMODE = True
+DEVMODE = False
 
 # mention-tag ownera pri spustemi v pripade ze dojde k neocekavanemu restartu
 RESTART_MENTION = False
