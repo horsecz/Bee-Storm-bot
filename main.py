@@ -10,6 +10,7 @@ import pytz
 import sys
 import subprocess
 import time
+from os.path import exists
 
 # logovani zprav na serveru do souboru
 MESSAGE_LOGGING_ENABLED = True
@@ -18,7 +19,7 @@ MESSAGE_LOGGING_ENABLED = True
 #   - v pripade ztraty db bot zacne automatickou obnovu dat/statistik z cele historie [kanal general v AT]
 #   - obnova trva vice jak hodinu, data se prubezne pridavaji jako pri beznych operacich, tudiz je mozne db bezne pouzivat i v prubehu obnovy
 #   - zacne v pripade ze je promenna True a databaze 'db.json' je prazdna
-DB_AUTO_RECOVERY = True
+DB_AUTO_RECOVERY = False
 
 # developer mode, pokud True:
 #  - nevypisuje Hello se zmenami pri spusteni do #kgb
@@ -29,13 +30,16 @@ DB_AUTO_RECOVERY = True
 #  pri zacatku developmentu setnout na True, aby nevypisoval zpravy pri restartech,
 #  po dokonceni (pred finalnim restartem a zacatkem normalniho behu) vratit na False,
 #  zaroven nezapomenout na switch last_update_message
-DEVMODE = False
+DEVMODE = True
 
 # mention-tag ownera pri spustemi v pripade ze dojde k neocekavanemu restartu
 RESTART_MENTION = False
 
 # ID ownera
 OWNER_ID = 591643151668871168
+
+# Token
+BOT_TOKEN = 'MTAyMzYzNzg4MzI4Mzg0MTA5NA.GFUGFm.4eugVmPnYtXJST1LSrYYNwzEnaxyDr_jN92yYg'
 
 # zprava po vyvoji, ktera se prida k Hello po spusteni a oznami update - progress, news
 # development_finished urcite zda se vypise update zprava (1) nebo bezna (0)
@@ -61,7 +65,7 @@ channel_karantena = 663452074893377546
 channel_kgb = 988402540343361606
 channel_general = 663806194598805504
 
-help_message = "** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `replit.com`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\nrandomfact    napise nahodny fakt\ngit    github bota (lze taky pouzit: $github)\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky```\n"
+help_message = "** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `fly.io`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\nrandomfact    napise nahodny fakt\ngit    github bota (lze taky pouzit: $github)\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky```\n"
 
 text_github = "Muj zdrojovy kod je open source a najdes ho zde: https://github.com/horsecz/Bee-Storm-bot"
 
@@ -86,67 +90,130 @@ hello_cmd = [
     'Nazdar', 'Beemec', 'Cauec', 'Tahni', 'Stormec', 'Zdar', 'Zdurburt',
     'Dobry den', 'Ahoj', 'Hello from the other side'
 ]
+
 tymovesrani = [
-    'Uz zase seres?', 'Skvele!', 'Ja uz myslel, ze dnes nepujdes.',
-    'Doufam, ze na zachode ...', 'Zrovna jdu taky!',
-    'Podstatne vsak je ... stihls to?', 'Uz bylo na case.',
-    'Vzhuru do nebes sraniboardu!', 'Bude i dalsi?',
-    'Verim, ze mas na vic, dnes ta penta musi padnout!', 'At se dari!',
-    'Budu ti drzet palce.', 'Snad ti to pujde jako vcera.', 'Muzu se pridat?',
-    'Nemas tam misto i pro vcelu? Taky uz musim.',
+    'Uz zase na zachode?', 
+    'Skvele!', 
+    'Ja uz myslel, ze dnes nepujdes.',
+    'Doufam, ze na zachode ...', 
+    'Doufam, ze ne na podlahu ...'
+    'Zrovna jdu taky!',
+    'Podstatne vsak je ... stihls to?', 
+    'Uz bylo na case.',
+    'Vzhuru do nebes sraniboardu!', 
+    'Bude i dalsi?',
+    'Verim, ze mas na vic, dnes ta penta musi padnout! <3', 
+    'At se dari!',
+    'Budu ti drzet ~~palce~~ zihadlo.', 
+    'Snad ti to pujde jako vcera.',
+    'Muzu se pridat? Kralovna mi okupuje zachod uz nekolik hodin.',
+    'Nemas tam misto i pro vcelu? Taky uz musim a zachod mame furt obsazeny.',
     'To je pekne, ale mas toaletak?',
-    '*Information acknowledged and sent to China successfully*',
+    '*Information acknowledged and sent to USA successfully*',
     '@TymoveSrani! Aha vlastne, takhle ne ...',
-    '<@&633366955855970343>! Nejsi v tom sam.', 'Preji mnoho uspechu!', 'Ok.',
+    '<@&633366955855970343>! Nejsi v tom sam.', 
+    'Preji mnoho uspechu!', 
+    'Ok.',
     'Nezapomen splachnout.',
     'Kdyz mi nekdo rekl, ze dnes budou padat hovna, tak jsem fakt necekal, ze to myslel doslova.',
-    'Citim te az sem, a to jsem jen 1500 radku kodu v Pythonu.',
-    'Tak to lituju lidi blizko tebe.'
+    'Citim te az sem, a to jsem jen 1500 radku kodu v Pythonu na serveru tisice kilometru od tebe ...',
+    'Tak to lituju lidi blizko tebe.',
+    'Nevim jak ty, ale ja to dnes na pentu nevidim.',
+    'Dekuji za dodrzovani pravidel (3.) serveru!',
+    'Hruza',
+    'Zas?',
+    'Pokyny pro srani:\n1. Sednout na zachod*\n2. @TymoveSrani\n3. Sundat kalhoty*\n4. Utrit zadek*\n5. Splachnout\n6. Pouzit stetku dle potreby\n\n*nepovinne',
+    'Pokyny pro srani:\n1. Sundat kalhoty\n2. Sednout na zachod*\n3. @TymoveSrani\n4. Utrit zadek*\n5. Splachnout\n6. Pouzit stetku dle potreby\n\n*nepovinne, ale velmi doporucene',
+    'Vynaset odpad znamena odnest obsah kose do popelnice, ne jit srat!',
+    'Sikulka',
+    'Nezapomen spravne dychat!',
+    'Nadech. Vydech. Poradny nadech a tlac!',
+    'To zas bude porod.',
+    'Je az nemozne jak casto chodis srat ...',
+    'Prosim hlavne ne na podlahu, zrovna je vytrena.',
+    '||Mmmmmm cokoladka||',
+    '||Mmmmmm nutella||',
+    '||Mmmmmm hovado!||',
+    'No tak to je konec sveta.',
+    'Bud tvrdy a dnes pouzij smirkovaci papir misto toaletaku!'
 ]
 doublekill = [
-    'Tymovy dvojzarez!', 'Doublekill!', 'Tady se nekdo rozjizdi!',
-    'Jen tak dal!', 'Bude triple?',
+    'Dvojzarez je tam!', 
+    'DoubleKill!', 
+    'Tady se nekdo rozjizdi!',
+    'Jen tak dal!', 
+    'Bude triple? Dva jsou fajn, ale 3 > 2!',
     'Jenom pokracuj, pentakill je jeste daleko.',
     'Dnes mam dobrou naladu, takze jsem ti zapsal doublekill jako pentu. *kappaPeek*',
-    'Nezastavuj se, cim vic tim lip!', 'O dvojzarez vic ve $sranistats!',
-    'A je to tam!'
+    'Nezastavuj se, cim vic tim lip!', 
+    'O dvojzarez vic ve $sranistats!',
+    'A je to tam!',
+    'Double je fajn, ale co teprve triple!',
+    'Pokracuj!'
 ]
 triplekill = [
-    'Tymovy trojzarez!', 'Triplekill!', 'Dneska skorujes!', 'Bude dnes penta?',
-    'Bude quadra?', 'Pentakill blize nez si myslis! Nevzdavej se!',
-    'Three done, two more to go.', 'Party zacina!', 'Bomba!',
-    'Triplemaster soon!'
+    'Trojzarez!', 
+    'Triplekill!', 
+    'Dneska skorujes!', 
+    'Bude dnes penta? Jestli ne, tak budu zklamany.',
+    'Bude quadra?', 
+    'Pentakill blize nez si myslis! Nevzdavej se!',
+    'Three done, two more to go.', 
+    'Party zacina!', 
+    'Bomba!',
+    'Dnes mas v sobe spostu vlakniny!',
+    'Do par hodin je vitezstvi tvoje!',
 ]
 quadrakill = [
-    'Tymovy ctyrzarez!', 'Neboli te brisko?', 'Delas i neco jineho?',
-    'Jsi i jinde nez na zachode?', 'Jeste jednou a jsi mezi mistry.',
-    'Quadrakill!', 'Verim, ze dnes ta penta padne!',
-    'Jde ti to dobre, ale nezapomen delat i neco jineho.'
+    'Ctyrzarez!', 
+    'Neboli te brisko?', 
+    'Delas i neco jineho?',
+    'Jsi i jinde nez na zachode?', 
+    'Jeste jednou a jsi mezi mistry.',
+    'Quadrakill!', 
+    'Verim, ze dnes ta penta padne!',
+    'Jde ti to dobre, ale nezapomen delat i neco jineho.',
+    'Co takhle s tou vlakninou ubrat?',
+    'Nech taky vyhrat jednou i ostatni.',
+    'Skvele! Jeste jednou a je to tam.'
 ]
 pentakill = [
-    'PENTAKILL!!!!!!!!!', 'Gratuluji k dnesnimu prujmu!',
+    'PENTAKILL!!!!!!!!!', 
+    'Gratuluji k dnesnimu prujmu!',
     'Blahopreji k dnesnimu velkemu uspechu!',
-    'Pentakill! Vzhledem k rarite je mozne, ze jsi se zapsal do $pentaboard!',
-    'A mame tu dalsiho pentakillera!', 'A ted si dej pauzu.',
-    'Budeme slavit nebo jeste pokracujes?'
+    'Pentakill! O krok blize do $pentaboard!',
+    'A mame tu dalsiho pentakillera!', 
+    'A ted si dej pauzu.',
+    'Budeme slavit nebo jeste pokracujes?',
+    'Obcas je fajn delat i neco jineho.',
+    'A ted uz muzes jit spat.',
+    'Uz neni potreba dal pit to projimadlo.'
 ]
 hexakill = [
-    'Neni cas zajit k lekari?', 'Nepotrebujes spunt?',
-    'Dnes tu zrejme nekdo pil projimadlo misto vody ...', 'HEXAKILL!!!',
+    'Neni cas zajit k lekari?', 
+    'Nepotrebujes spunt?',
+    'Dnes tu zrejme nekdo pil projimadlo misto vody ...', 
+    'HEXAKILL!!!',
     'Takova udalost se nestava kazdy den! Toto musime oslavit!',
-    'Neuveritelna udalost!'
+    'Neuveritelna udalost!',
+    'Guinessova kniha rekordu ma novy zaznam!',
+    'Neuveritelne co se dnes deje!'
 ]
 legendarykill = [
-    'Nemam volat 155?', 'Je cas si dat pauzu ...',
+    'Nemam volat 155?', 
+    'Je cas si dat pauzu ...',
     'A mame tu noveho rekordmana!',
     'Co takhle s tim pokracovat zitra? Ve dne se daji delat i jine veci ...',
     'Legendarni.'
 ]
 antimod_text = [
-    'Takova slova se tu nepouziva!', 'Okamzite si zklidni svuj slovnik.',
+    'Takova slova se tu nepouziva!', 
+    'Okamzite si zklidni svuj slovnik.',
     'Jazyk vyslovujici tyto nevhodne fraze muze byt brzy eliminovan!',
     'Slovni spojeni takoveho druhu se zde nesmi pouzivat!',
-    'Prestan takto mluvit!', 'Jeste jednou a vymazu te z databaze. :-)'
+    'Prestan takto mluvit!', 
+    'Jeste jednou a vymazu te z databaze. :-)',
+    'Pravidlo 6 vole.'
 ]
 #########################
 
@@ -183,13 +250,15 @@ def start():
     global DB_UPDATE_DISABLED
     global RF_STARTED_NOW
     global REBOOT_CMD
+    global randfacts_enabled
 
+    randfacts_enabled = False
     REBOOT_CMD = False
 
     DB_EMPTY = False
     DB_RECOVERY_RUNNING = False
     DB_LOADED = False
-    DB_ERROR_SLEEP_TIME = 300
+    DB_ERROR_SLEEP_TIME = 10
     DB_UPDATE_DISABLED = False
 
     RF_STARTED_NOW = True
@@ -247,6 +316,9 @@ def start_periods():
 
 async def db_load():
     global DB_LOADED
+    if exists('db.json') == False:
+        f = open('db.json', 'w')
+        f.close()
     with open('db.json', 'r') as openfile:
         global json_obj
         global srani_list
@@ -261,12 +333,12 @@ async def db_load():
             DB_UPDATE_DISABLED = True
             channel = bot.get_channel(channel_kgb)
             log_print('[HANDLED EXCEPTION] db_load: ' + str(e))
-            await channel.send(
-                "Databaze je poskozena a je nutne vytvorit novou nebo ji rucne opravit. <@!"
-                + str(OWNER_ID) + "> mas " + str(DB_ERROR_SLEEP_TIME) +
-                " sekund na preruseni automaticke opravy nebo prikaz vypnuti. \nChyba: `"
-                + str(e) + "`\nTip: `admin$interrupt, admin$stop`",
-                file=discord.File("db.json"))
+            #await channel.send(
+            #    "Databaze je poskozena a je nutne vytvorit novou nebo ji rucne opravit. <@!"
+            #    + str(OWNER_ID) + "> mas " + str(DB_ERROR_SLEEP_TIME) +
+            #    " sekund na preruseni automaticke opravy nebo prikaz vypnuti. \nChyba: `"
+            #    + str(e) + "`\nTip: `admin$interrupt, admin$stop`",
+            #    file=discord.File("db.json"))
             await asyncio.sleep(DB_ERROR_SLEEP_TIME)
             message = await channel.fetch_message(channel.last_message_id)
             if (message.author.id == OWNER_ID
@@ -633,11 +705,12 @@ async def databaseStatsRecovery():
     Found = False
     message_channel = bot.get_channel(channel_kgb)
     channel = bot.get_channel(channel_general)
-    await message_channel.send(
-        '[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'
-    )
+    #await message_channel.send(
+    #    '[Obnova statistik] Prave jsem zacal pocitat pocet oznaceni @TymoveSrani;@TymovyDoubleKill a pocet zprav, od zacatku historie kanalu. Rychlost operace je zhruba **5 500 zprav za minutu** a ocekavana doba trvani je zhruba **70 minut** pri 400 000 zpravach v kanalu. **Databazi je mozne v prubehu obnovy bezne pouzivat.**'
+    #)
     srani_list = []
     db_update()
+
     async for msg in channel.history(limit=None):
         try:
             msg_cnt = msg_cnt + 1
@@ -718,19 +791,21 @@ async def databaseStatsRecovery():
                     str(msg_cnt) + "+ messages anaylzed)")
         except Exception as e:
             try:
-                await message_channel.send(
-                    '[Obnova statistik] Pri obnovovani databaze nastala vyjimka! Vyjimka:\n`'
-                    + str(e) + "`\nVypis chyby:\n `Nebyla zapocitana zprava " +
-                    str(msg_cnt) + " od " + msg.author.name + " (ID: " +
-                    str(msg.author.id) + ")`\nURL zpravy: " +
-                    str(msg.jump_url))
+                pass
+                #await message_channel.send(
+                #    '[Obnova statistik] Pri obnovovani databaze nastala vyjimka! Vyjimka:\n`'
+                #    + str(e) + "`\nVypis chyby:\n `Nebyla zapocitana zprava " +
+                #    str(msg_cnt) + " od " + msg.author.name + " (ID: " +
+                #    str(msg.author.id) + ")`\nURL zpravy: " +
+                #    str(msg.jump_url))
             except:
-                await message_channel.send(
-                    '[Obnova statistik] Pri obnovovani databaze nastala vyjimka! Vyjimka:\n`'
-                    + str(e) + "`\nVypis chyby:\n `Nebyla zapocitana zprava " +
-                    str(msg_cnt) + " od uzivatele s ID: " +
-                    str(msg.author.id) + ")`\nURL zpravy: " +
-                    str(msg.jump_url))
+                pass
+                #await message_channel.send(
+                #    '[Obnova statistik] Pri obnovovani databaze nastala vyjimka! Vyjimka:\n`'
+                #    + str(e) + "`\nVypis chyby:\n `Nebyla zapocitana zprava " +
+                #    str(msg_cnt) + " od uzivatele s ID: " +
+                #    str(msg.author.id) + ")`\nURL zpravy: " +
+                #    str(msg.jump_url))
             log_print('[HANDLED EXCEPTION] databaseStatsRecovery: ' + str(e))
             log_print('STATE:\nmessage_cnt: ' + str(msg_cnt) + "\n author: " +
                       str(msg.author.id) + "\n content: " + str(msg.content) +
@@ -738,7 +813,7 @@ async def databaseStatsRecovery():
                       str(msg.created_at.date) + "\n URL: " +
                       str(msg.jump_url))
 
-    await message_channel.send('[Obnova statistik] Operace uspesne dokoncena.')
+    #await message_channel.send('[Obnova statistik] Operace uspesne dokoncena.')
 
     log_print('[DB] Stats recovery: Completed')
     DB_RECOVERY_RUNNING = False
@@ -859,7 +934,7 @@ async def recoveryBoot():
     recovery_attempts = recovery_attempts + 1
     if recovery_attempts > 2:
         log_print(
-            "[RECOVERY] Too many attempts (3) to re-run bot mercifully. Attempting to restart 'replit' via killing it."
+            "[RECOVERY] Too many attempts (3) to re-run bot mercifully. Attempting to restart 'hosting' via killing it."
         )
         os.kill(1, 1)
         sys.exit(1)
@@ -1098,7 +1173,7 @@ async def on_message(message):
 
     # doubleKill
     if '<@&821810379952226396>' in message.content:
-        await message.reply(random.choice(doublekill))
+        await message.reply(random.choice(tymovesrani + doublekill))
         await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         change_check = await checkSraniPosChanges(message.channel,
@@ -1107,7 +1182,7 @@ async def on_message(message):
 
     # tripleKill
     if '<@&809477809772560435>' in message.content:
-        await message.reply(random.choice(triplekill))
+        await message.reply(random.choice(tymovesrani + triplekill))
         await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         change_check = await checkSraniPosChanges(message.channel,
@@ -1116,7 +1191,7 @@ async def on_message(message):
 
     # 4Kill
     if '<@&809477524828061721>' in message.content:
-        await message.reply(random.choice(quadrakill))
+        await message.reply(random.choice(tymovesrani + quadrakill))
         await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         change_check = await checkSraniPosChanges(message.channel,
@@ -1125,7 +1200,7 @@ async def on_message(message):
 
     # 5Kill
     if '<@&800082124009898064>' in message.content:
-        await message.reply(random.choice(pentakill))
+        await message.reply(random.choice(tymovesrani + pentakill))
         await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         srani_member["pentakills"] = srani_member["pentakills"] + 1
@@ -1135,7 +1210,7 @@ async def on_message(message):
 
     # 6Kill
     if '<@&828916908413157417>' in message.content:
-        await message.reply(random.choice(hexakill))
+        await message.reply(random.choice(tymovesrani + hexakill))
         await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         srani_member["hexakills"] = srani_member["hexakills"] + 1
@@ -1145,7 +1220,7 @@ async def on_message(message):
 
     # legendaryKill 7+
     if '<@&939151424963620937>' in message.content:
-        await message.reply(random.choice(legendarykill))
+        await message.reply(random.choice(tymovesrani + legendarykill))
         await addSrani(message.author.id)
         srani_member["multikills"] = srani_member["multikills"] + 1
         srani_member["legendary kills"] = srani_member["legendary kills"] + 1
@@ -1203,6 +1278,22 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def github(ctx):
     await ctx.reply(text_github)
+
+@bot.command()
+@commands.is_owner()
+async def randfacttgl(ctx):
+    global randfacts_enabled
+    if randfacts_enabled == True:
+        randfacts_enabled = False
+        await ctx.send("Pravidelna nahodna fakta vypnuta.")
+    else:
+        randfacts_enabled = True
+        await ctx.send("Pravidelna nahodna fakta zapnuta.")
+
+@randfacttgl.error
+async def randfacttgl_error(ctx, error):
+    await ctx.reply("Nemas pravo pouzit tento prikaz.")
+    
 
 
 @bot.command()
@@ -1601,7 +1692,7 @@ async def nowelcome(ctx):
 @commands.is_owner()
 async def admin(ctx):
     global bot_data
-    admin_cmds = "**Prikazy vlastnika:**\n\n```C\nshutdown        (opatrne) vypne bota\nreboot      restartuje bota (nasilnou cestou)\nrefreshfacts    obnovi seznam nahodnych faktu\nrefreshdata      zacne automatickou obnovu databaze\nnowelcome        vypne uvitaci zpravu pri zapnuti bota\nfiles          odesle na discord pracovni soubory bota\nmsg_remove [count]        smaze poslednich 'count' zprav v kanale\n```"
+    admin_cmds = "**Prikazy vlastnika:**\n\n```C\nshutdown        (opatrne) vypne bota\nreboot      restartuje bota (nasilnou cestou)\nrefreshfacts    obnovi seznam nahodnych faktu\nrefreshdata      zacne automatickou obnovu databaze\nnowelcome        vypne uvitaci zpravu pri zapnuti bota\nfiles          odesle na discord pracovni soubory bota\nmsg_remove [count]        smaze poslednich 'count' zprav v kanale\nrandfactt     zapne/vypne pravidelna nahodna fakta```"
     await ctx.send(admin_cmds)
 
 
@@ -1899,6 +1990,8 @@ async def random_facts_messages():
     global RF_STARTED_NOW
     time_now = datetime.now(timezone)
     log_print('[TASKS.LOOP] random_facts_messages: looped ')
+    if (randfacts_enabled == False):
+        return
     if (RF_STARTED_NOW):
         RF_STARTED_NOW = False
         return
@@ -1907,7 +2000,7 @@ async def random_facts_messages():
         await channel.send(random.choice(random_facts))
 
 
-# zprava kazdy den kolem poledne 11:30-12:29
+# zprava kazdy den kolem dopoledne 09:30-10:29
 @tasks.loop(hours=1)
 async def daily_message():
     global daily_message_christmas
@@ -1953,8 +2046,8 @@ async def daily_message():
         daily_message = "Dnes je " + str(time_now.day) + ". " + str(
             time_now.month) + ". a svatek ma " + getSvatekString(
                 time_now.day, time_now.month) + ". "
-    if (int(time_now.hour) == 11
-            and int(time_now.minute) >= 30) or (int(time_now.hour) == 12
+    if (int(time_now.hour) == 9
+            and int(time_now.minute) >= 30) or (int(time_now.hour) == 10
                                                 and int(time_now.minute) < 30):
         channel = bot.get_channel(channel_general)
         if not DEVMODE:
@@ -2077,7 +2170,7 @@ async def member_name_check():
 # bot run
 try:
     start()
-    bot.run(os.environ['TOKEN'])
+    bot.run(BOT_TOKEN)
 except Exception as e:
     if not DB_LOADED:
         asyncio.run(db_load())

@@ -39,6 +39,12 @@ Bot is recording it's activites and storing them into logfile.
 - possibility of server message logging and internal logging
 - replit hosting related: after exception in runtime (temporary ban), bot will try to reboot (kill & start again) multiple times
 
+# Fly.io hosting
+
+- Deploy (run or update): `flyctl deploy`
+- Double messages fix (after deploy): `fly scale count 1`
+
 # TODO list
 
 Bot is currently still under development, but should work just fine. Currently there may be some things to be done in the future, but all of them are not core and required things to run the bot, as the bot in the present state works correctly and as expected. If something should be done, it will be listed in issues.
+
