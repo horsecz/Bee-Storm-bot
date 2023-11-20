@@ -1,5 +1,5 @@
 # flyctl launch added from .gitignore
-### CUSTOM
+# CUSTOM
 **\log.txt
 **\message_log.txt
 **\db.json
@@ -8,7 +8,7 @@
 
 # Byte-compiled / optimized / DLL files
 **\__pycache__
-**\*.py[cod]
+**\*.pycod
 **\*$py.class
 
 # C extensions
