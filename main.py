@@ -39,7 +39,7 @@ RESTART_MENTION = False
 OWNER_ID = 591643151668871168
 
 # Token
-DISCORD_TOKEN = os.environ('BEE_TOKEN')
+DISCORD_TOKEN = os.environ('DISCORD_BOT')
 
 # zprava po vyvoji, ktera se prida k Hello po spusteni a oznami update - progress, news
 # development_finished urcite zda se vypise update zprava (1) nebo bezna (0)
