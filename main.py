@@ -28,9 +28,11 @@ DB_AUTO_RECOVERY = False
 #  - neinkrementuje "bot_run" statistiku (pouziva se v logu)
 # pouziti:  [na zivem serveru, na lokalnim neni duvod]
 #  pri zacatku developmentu setnout na True, aby nevypisoval zpravy pri restartech,
-#  po dokonceni (pred finalnim restartem a zacatkem normalniho behu) vratit na False,
-#  zaroven nezapomenout na switch last_update_message
-DEVMODE = False
+#  po dokonceni (pred finalnim restartem a zacatkem normalniho behu) vratit na False
+DEVMODE = True
+
+# nevypisuje zpravu pri zapnuti bota
+NO_INIT_MSG = True
 
 # mention-tag ownera pri spustemi v pripade ze dojde k neocekavanemu restartu
 RESTART_MENTION = False
@@ -39,23 +41,7 @@ RESTART_MENTION = False
 OWNER_ID = 591643151668871168
 
 # Token
-DISCORD_TOKEN = os.environ["DISCORD_BOT"]
-
-# zprava po vyvoji, ktera se prida k Hello po spusteni a oznami update - progress, news
-# development_finished urcite zda se vypise update zprava (1) nebo bezna (0)
-#  - pred finalnim restartem a DEVMODE == False nastavit na 1,
-#    po uspesnem spusteni na 0 (s ulozenim tohoto souboru, ''bez restartu'')
-#  - bezna zprava existuje pro pripady (vynuceneho) restartu, ktery neprovedl uzivatel,
-#    ale napriklad hosting (replit) -- oznaci admina
-development_finished = 0
-last_update_message = "odstranena fixace uzivatelu v db na jmeno (nove: na id)"
-
-if development_finished != 1:
-    if RESTART_MENTION:
-        last_update_message = "zadne zmeny, tento restart nebyl proveden adminem - <@!" + str(
-            OWNER_ID) + ">?"
-    else:
-        last_update_message = "zadne zmeny, tento restart nebyl proveden adminem"
+BOT_TOKEN = os.environ["DISCORD_BOT"]
 
 # zona casu v datech
 timezone = pytz.timezone("Europe/Prague")
@@ -331,31 +317,7 @@ async def db_load():
             json_obj = json.load(openfile)
         except Exception as e:
             DB_UPDATE_DISABLED = True
-            channel = bot.get_channel(channel_kgb)
-            log_print('[HANDLED EXCEPTION] db_load: ' + str(e))
-            #await channel.send(
-            #    "Databaze je poskozena a je nutne vytvorit novou nebo ji rucne opravit. <@!"
-            #    + str(OWNER_ID) + "> mas " + str(DB_ERROR_SLEEP_TIME) +
-            #    " sekund na preruseni automaticke opravy nebo prikaz vypnuti. \nChyba: `"
-            #    + str(e) + "`\nTip: `admin$interrupt, admin$stop`",
-            #    file=discord.File("db.json"))
-            await asyncio.sleep(DB_ERROR_SLEEP_TIME)
-            message = await channel.fetch_message(channel.last_message_id)
-            if (message.author.id == OWNER_ID
-                    and "admin$interrupt" == message.content):
-                await channel.send(
-                    "Automaticka obnova prerusena, bot se restartuje. Soubor databaze je nezmenen."
-                )
-                os.kill(1, 1)
-                sys.exit(0)
-            elif (message.author.id == OWNER_ID
-                  and "admin$stop" == message.content):
-                await channel.send("Bot bude vypnut, databazi jsem nezmenil.")
-                await bot.close()
-                bot.destroy()
-            await channel.send(
-                "Databaze smazana, vytvorena nova - muze byt automaticky obnovena, pokud je tak nastaveno."
-            )
+            #log_print('[HANDLED EXCEPTION] db_load: ' + str(e))
             json_obj = {}
             DB_EMPTY = True
             with open('db.json', 'w') as openfile:
@@ -406,11 +368,14 @@ def randfacts_load():
     with open('randfacts.txt', 'r') as openfile:
         global random_facts
         global random_facts_count
-        lined = openfile.readlines()
-        for line in lined:
-            random_facts_count = random_facts_count + 1
-            random_facts.append("[Random Fact no. " + str(random_facts_count) +
+        try:
+            lined = openfile.readlines()
+            for line in lined:
+                random_facts_count = random_facts_count + 1
+                random_facts.append("[Random Fact no. " + str(random_facts_count) +
                                 "] " + str(line))
+        except Exception as e:
+            log_print("randfacts_load(): unable to load random facts (corrupt or nonexisting file)")
 
 
 def log_print(text):
@@ -942,7 +907,7 @@ async def recoveryBoot():
         log_print(
             "[RECOVERY] Bot has crashed and is trying to start itself again. (attempt "
             + str(recovery_attempts) + ")")
-        bot.run(os.environ['TOKEN'])
+        bot.run(os.environ['DISCORD_BOT'])
     except Exception as e:
         log_print("[HANDLED EXCEPTION] recoveryBoot: " + str(e))
         return False
@@ -967,11 +932,11 @@ async def handleShutdown():
         sys.exit(2)
     elif (not proper_shutdown and REBOOT_CMD):
         os.kill(1, 1)
-    else:
-        result = await recoveryBoot()
-        proper_shutdown = False
-        if (result != True):
-            sys.exit(1)
+    #else:      # TODO akce pri vypnuti bota
+        #result = await recoveryBoot()
+        #proper_shutdown = False
+        #if (result != True):
+        #    sys.exit(1)
 
 
 async def addReminder(id, tag, text, datetime):
@@ -1084,8 +1049,6 @@ async def changeBotActivity(status, string):
 @bot.event
 async def on_ready():
     additional = ""
-    if (development_finished == 1):
-        additional = "\n('-------------------------------- UPDATED [" + last_update_message + "]"
     await db_load()
     log_print('-------------------------------- BOT RUN [' +
               str(bot_data["bot_runs"] + 1) + ']' + additional)
@@ -1100,7 +1063,7 @@ async def on_ready():
     log_print('[INIT] All loop/periodical events started.')
     if MESSAGE_LOGGING_ENABLED:
         log_print("[INIT] Message logging into 'message_log.txt' file enabled")
-    if not (DEVMODE):
+    if not (DEVMODE) or not (NO_INIT_MSG):
         if (bot_data["banned"] == 0):
             if (bot_data["welcome_msg"]):
                 await messageToChannel(
@@ -1108,7 +1071,7 @@ async def on_ready():
                         "Priletel ten nejlepsi bot na svete!",
                         "Uz jsem zase tady!",
                         "Bee Storm bot je znovu pripraven k pouziti."
-                    ]) + "\n(Posledni zmeny: `" + last_update_message + "`)",
+                    ]),
                     channel_kgb)
             elif (bot_data["rebooted"]):
                 bot_data["rebooted"] = False
