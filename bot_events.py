@@ -12,9 +12,9 @@ import utility
 import discord
 import srani
 import random
+from discord.ext import commands
 
 bot = globals.bot
-
 
 async def on_ready():
     await database.load()
@@ -47,11 +47,12 @@ async def on_message(message):
     if message.author == bot.user or globals.DB_UPDATE_DISABLED:
         return
 
-    # log messages
+    # log messages, process commands
     try:
         logs.user_message(message.channel.name, str(message.author), message.content)
     except:
         pass
+    await globals.bot.process_commands(message)
 
     # check if user is in database (if not - add him)
     author_id = message.author.id
@@ -61,7 +62,7 @@ async def on_message(message):
         srani_member = srani.get_member(author_id)
 
     # poop tags
-    await srani.add_if_tag_in_message(message.content, message.author.id, True)
+    await srani.add_if_tag_in_message(message, message.author.id, True)
     await srani.check_board_changes(message.channel, message.author.id, str(message.author))
 
     # bot tag/mention
@@ -80,7 +81,7 @@ async def on_guild_channel_create(channel):
     await utility.bot_message_to_channel("Buh nam pozehnal novym kanalem " + channel.name + "!", globals.channel_kgb)
 
 async def on_command_error(ctx, error):
-    if isinstance(error, globals.commands.CommandNotFound) or isinstance(error, discord.ext.commands.errors.CommandNotFound):
+    if isinstance(error, commands.CommandNotFound) or isinstance(error, commands.errors.CommandNotFound):
         await ctx.send(
             random.choice([
                 'Neznamy prikaz! Zkus $help.',

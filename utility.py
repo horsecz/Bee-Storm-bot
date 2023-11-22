@@ -20,7 +20,6 @@ async def bot_predefined_message_reply(message):
         await message.channel.send('nice')
     if 'gde body' in message.content or 'gdebody' in message.content:
         await message.channel.send('body nigde')
-        await globals.bot.process_commands(message)
     if 'nazi mods' in message.content or 'nazi admin' in message.content or 'bad mods' in message.content:
         await message.reply(random.choice(globals.antimod_text))
 

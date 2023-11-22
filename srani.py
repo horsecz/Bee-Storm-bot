@@ -25,11 +25,10 @@ async def refresh_order(discord_context):
     cnt_dict = {}
     penta_dict = {}
     multi_dict = {}
-    async with discord_context.typing():
-        for member in globals.srani_list:
-            cnt_dict[member["id"]] = member["count"]
-            penta_dict[member["id"]] = member["pentakills"]
-            multi_dict[member["id"]] = member["multikills"]
+    for member in globals.srani_list:
+        cnt_dict[member["id"]] = member["count"]
+        penta_dict[member["id"]] = member["pentakills"]
+        multi_dict[member["id"]] = member["multikills"]
 
     order = OrderedDict(
         sorted(cnt_dict.items(), key=lambda t: t[1], reverse=True))
@@ -61,35 +60,36 @@ async def check_board_changes(discord_context, auth_id, auth_name):
         i = i + 1
 
     if result != None and not globals.DB_RECOVERY_RUNNING:
-        await utility.bot_message_to_channel("V zebricku ($sraniboard) se '" + str(auth_name) + "' posunul z **" + str(result[0]) + ". mista** na **" + str(result[1]) + ".**!", globals.channel_general)
+        async with discord_context.typing():
+            await utility.bot_message_to_channel("V zebricku ($sraniboard) se '" + str(auth_name) + "' posunul z **" + str(result[0]) + ". mista** na **" + str(result[1]) + ".**!", globals.channel_general)
     return result
 
 async def add_if_tag_in_message(message, author_id, bot_reply=False):
-    if is_tag_in_message(globals.tag_srani, message): 
+    if is_tag_in_message(globals.tag_srani, message.content): 
         await add(author_id)
         if bot_reply == True:
             await message.reply(random.choice(globals.tymovesrani))
-    if is_tag_in_message(globals.tag_doublekill, message):  
+    if is_tag_in_message(globals.tag_doublekill, message.content):  
         await add(author_id, 'D')
         if bot_reply == True:
             await message.reply(random.choice(globals.tymovesrani + globals.doublekill))
-    if is_tag_in_message(globals.tag_triplekill, message):  
+    if is_tag_in_message(globals.tag_triplekill, message.content):  
         await add(author_id, 'T')
         if bot_reply == True:
             await message.reply(random.choice(globals.tymovesrani + globals.triplekill))
-    if is_tag_in_message(globals.tag_quadrakill, message):  
+    if is_tag_in_message(globals.tag_quadrakill, message.content):  
         await add(author_id, 'Q')
         if bot_reply == True:
             await message.reply(random.choice(globals.tymovesrani + globals.quadrakill))
-    if is_tag_in_message(globals.tag_pentakill, message):  
+    if is_tag_in_message(globals.tag_pentakill, message.content):  
         await add(author_id, 'P')
         if bot_reply == True:
             await message.reply(random.choice(globals.tymovesrani + globals.pentakill))
-    if is_tag_in_message(globals.tag_hexakill, message):  
+    if is_tag_in_message(globals.tag_hexakill, message.content):  
         await add(author_id, 'H')
         if bot_reply == True:
             await message.reply(random.choice(globals.tymovesrani + globals.hexakill))
-    if is_tag_in_message(globals.tag_legendarykill, message):  
+    if is_tag_in_message(globals.tag_legendarykill, message.content):  
         await add(author_id, 'L')
         if bot_reply == True:
             await message.reply(random.choice(globals.tymovesrani + globals.legendarykill))

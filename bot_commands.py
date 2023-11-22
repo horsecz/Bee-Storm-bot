@@ -12,6 +12,7 @@ import discord
 import sys
 import logs
 import asyncio
+from discord.ext import commands
 
 ##
 ##
@@ -72,8 +73,8 @@ async def sraniboard(ctx):
 ##
 ##
 
-async def command_error(ctx, error):
-    if isinstance(error, globals.commands.NotOwner):
+async def admin_command_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
         await ctx.send(random.choice(["Tento prikaz muze pouzivat pouze muj vlastnik.",
                                       "Zneuzivani tohoto prikazu je povoleno vsem uzivatelum, kteri jsou mym vlastnikem",
                                       "Nelze mne zneuzit pro tento prikaz. Nejsi muj vlastnik.",

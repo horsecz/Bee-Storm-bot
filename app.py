@@ -10,16 +10,9 @@ import logs
 import sys
 import bot_events
 import bot_commands
+from discord.ext import commands
 
 bot = globals.bot
-commands = globals.commands
-
-try:
-    logs.info('Starting bot ...', 'Bot start')
-    globals.bot.run(globals.BOT_TOKEN)
-except Exception as e:
-    logs.exception(e, 'Bot start')
-    sys.exit(1)
 
 # Bot events declarations
 
@@ -84,7 +77,7 @@ async def files(ctx):
 
 @files.error
 async def files_error(ctx, error):
-    await bot_commands.command_error(ctx, error)
+    await bot_commands.admin_command_error(ctx, error)
 
 @bot.command()
 @commands.is_owner()
@@ -93,7 +86,7 @@ async def msg_remove(ctx, *args):
 
 @msg_remove.error
 async def msg_remove_error(ctx, error):
-    await bot_commands.command_error(ctx, error)
+    await bot_commands.admin_command_error(ctx, error)
 
 @bot.command()
 @commands.is_owner()
@@ -102,4 +95,13 @@ async def admin(ctx):
 
 @admin.error
 async def admin_error(ctx, error):
-    await bot_commands.command_error(ctx, error)
+    await bot_commands.admin_command_error(ctx, error)
+
+# Run
+
+try:
+    logs.info('Starting bot ...', 'Bot start')
+    globals.bot.run(globals.BOT_TOKEN)
+except Exception as e:
+    logs.exception(e, 'Bot start')
+    sys.exit(1)
