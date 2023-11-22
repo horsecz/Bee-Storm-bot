@@ -12,8 +12,7 @@ from datetime import datetime
 import pytz
 
 # Token
-#BOT_TOKEN = os.environ["DISCORD_BOT"]
-BOT_TOKEN = 'MTAyMzYzNzg4MzI4Mzg0MTA5NA.GbtqmT.KgEREPjGUkovWOXUdIPYhP9LwlWSmqCzgt-atY'
+BOT_TOKEN = os.environ["DISCORD_BOT"]
 
 # Bot
 intents = discord.Intents.all()
