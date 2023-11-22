@@ -10,12 +10,11 @@ Discord.py Bot specifically made for Annus Team (or: Bee Storm) Discord server. 
 Start with python (and modules discord, pytz) installed:
 `python app.py`
 
-## Refactored
+# Online at 'Fly.io' hosting
 
-Bot source code refactored. Old and unused features removed:
-- automatic bot reboot, bot run recovery
-- birthday feature
-- new year, christmas, new years eve message
+- Deploy (run or update): `flyctl deploy`
+    - performed automatically on github push
+- Double messages fix (after deploy): `fly scale count 1`
 
 # Functions
 
@@ -30,22 +29,28 @@ Bot source code refactored. Old and unused features removed:
 - non-aggresive censure
 - admin commands
 
-# Database
+## Database
 
 Using simple 'db.json' file and JSON format <=> python dict. 
 - if the file content is entirely lost, bot can auto-restore the stats (slow process, server-specific feature)
 - storing predefined role mentions, reminders and bot data
 - corrupt database file will be sent in message and bot will perform auto-recovery of some data
 
-# Log and crash recovery
+## Logs
 
 Bot is recording it's activites and storing them into logfile.
 - if bot is currently restoring database, logging into file is disabled (log remains just in console)
 - every time bot runs, bot run stat will be incremented
 - possibility of server message logging and internal logging
 
-# Fly.io hosting
+# To be done
+After code refactor, some features are still missing or incomplete. These are:
+- Reminders
+- Name days
+- Periodical daily message (current date and name day)
+- Some commands
 
-- Deploy (run or update): `flyctl deploy`
-    - performed automatically on github push
-- Double messages fix (after deploy): `fly scale count 1`
+Also, some things need to be completed or updated:
+- Help message
+- Admin commands message
+- Source code related: remove unused global variables and some minor 'refactoring'
