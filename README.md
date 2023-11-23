@@ -24,7 +24,6 @@ Start with python (and modules discord, pytz) installed:
 - reacting to predefined messages, bot mention
 - simple commands (hello, time, repeat)
 - name day command (Who has Name day today/at specific day?)
-- reminder command (reminds something at specific date/time to member)
 - daily message at noon (date, who has nameday or specific messages on Christmas, New Year's Eve)
 - non-aggresive censure
 - admin commands
@@ -40,17 +39,10 @@ Using simple 'db.json' file and JSON format <=> python dict.
 
 Bot is recording it's activites and storing them into logfile.
 - if bot is currently restoring database, logging into file is disabled (log remains just in console)
-- every time bot runs, bot run stat will be incremented
-- possibility of server message logging and internal logging
+- possibility of server messages logging and internal logging
 
 # To be done
-After code refactor, some features are still missing or incomplete. These are:
-- Reminders
-- Name days
-- Periodical daily message (current date and name day)
-- Some commands
-
-Also, some things need to be completed or updated:
+Some things need to be completed or updated:
 - Help message
 - Admin commands message
-- Source code related: remove unused global variables and some minor 'refactoring'
+- Source code related: remove unused global variables, code logic refactor => refactor part 2

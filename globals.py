@@ -18,38 +18,43 @@ BOT_TOKEN = os.environ["DISCORD_BOT"]
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='$', intents=intents, help_command=None)
 
-# logovani zprav na serveru do souboru
+# Server chat messages logging
 MESSAGE_LOGGING_ENABLED = True
 
-# automatic database recovery mode
+# Automatic database recovery mode
 #   - v pripade ztraty db bot zacne automatickou obnovu dat/statistik z cele historie [kanal general v AT]
 #   - obnova trva vice jak hodinu, data se prubezne pridavaji jako pri beznych operacich, tudiz je mozne db bezne pouzivat i v prubehu obnovy
 #   - zacne v pripade ze je promenna True a databaze 'db.json' je prazdna
 DB_AUTO_RECOVERY = True
 
-# nevypisuje zpravu pri zapnuti bota
-NO_INIT_MSG = True
-
-# mention-tag ownera pri spustemi v pripade ze dojde k neocekavanemu restartu
-RESTART_MENTION = False
-
-# ID ownera
+# Owner ID
 OWNER_ID = 591643151668871168
 
-# zona casu v datech
+# Bot's home timezone
 timezone = pytz.timezone("Europe/Prague")
 
-# IDs kanalu v Annus Team dc
+# AT channel IDs
 channel_karantena = 663452074893377546
 channel_kgb = 988402540343361606
 channel_general = 663806194598805504
 
-help_message = "** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `fly.io`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\nrandomfact    napise nahodny fakt\ngit    github bota (lze taky pouzit: $github)\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky```\n"
-text_github = "Muj zdrojovy kod je open source a najdes ho zde: https://github.com/horsecz/Bee-Storm-bot"
-admin_help = "**Prikazy vlastnika:**\n\n```C\nshutdown        (opatrne) vypne bota\nreboot      restartuje bota (nasilnou cestou)\nrefreshfacts    obnovi seznam nahodnych faktu\nrefreshdata      zacne automatickou obnovu databaze\nnowelcome        vypne uvitaci zpravu pri zapnuti bota\nfiles          odesle na discord pracovni soubory bota\nmsg_remove [count]        smaze poslednich 'count' zprav v kanale\nrandfactt     zapne/vypne pravidelna nahodna fakta```"
-    
+# Tags
+tag_srani = "<@&633366955855970343>"
+tag_doublekill = "<@&821810379952226396>"
+tag_triplekill = "<@&809477809772560435>"
+tag_quadrakill = "<@&809477524828061721>"
+tag_pentakill = "<@&800082124009898064>"
+tag_hexakill = "<@&828916908413157417>"
+tag_legendarykill = "<@&939151424963620937>"
+tag_bot_self = "<@1023637883283841094>"
 
-# FILES
+# Bot start time
+bot_start_time = datetime.now(timezone)
+
+#
+#### Files
+#
+
 # log file
 log_file_path = 'log.txt'
 
@@ -62,15 +67,13 @@ randfacts_file_path = 'randfacts.txt'
 # Message logging file
 msg_logs_file_path = 'message_log.txt'
 
-# Tags
-tag_srani = "<@&633366955855970343>"
-tag_doublekill = "<@&821810379952226396>"
-tag_triplekill = "<@&809477809772560435>"
-tag_quadrakill = "<@&809477524828061721>"
-tag_pentakill = "<@&800082124009898064>"
-tag_hexakill = "<@&828916908413157417>"
-tag_legendarykill = "<@&939151424963620937>"
-tag_bot_self = "<@1023637883283841094>"
+#
+#### Text messages
+#
+
+help_message = "** **\n Nejlepsi bot na celem Discordu, hostovany zdarma na `fly.io`! Prikazy zacinaji znakem dolaru `$` , jinak je syntaxe stejna jako na jinem Discord botovi.\n\nPokud jde o tagy ci reakce na zpravy (napr. uh oh), zprava ci tag muze byt kdekoliv ve zprave (pokud nejde o vyjimku).\n\n\n**Reaguji na tyto zpravy:**\n```C\nuh oh      [pouze na zacatku zpravy]\n69         \ngdebody    \noznaceni srani (@TymoveSrani;@TymovyDoubleKill;...)  zapocita se do statistik\noznaceni bota (@Bee Storm)\n```\n\n**Momentalne rozumim temto prikazum**:\n```C\nhelp        zobrazi tuto zpravu\n\nhello       <no comment>\nrepeat text text2 text3 ...     zopakuje text\nrandomfact    napise nahodny fakt\ngit    github bota (lze taky pouzit: $github)\ntagy        pocet oznaceni bota od posledniho spusteni\n\nsraniboard  leaderboard clenu serveru ve srani\npentaboard  zebricek pentakilleru\nmultiboard  zebricek vsech, co dali Double Kill a vetsi\nsranistats  statistiky uzivatele\n\nruntime     datum a cas posledniho spusteni bota\ntime        soucasne datum a cas\nsvatek [den mesic]     vypise, kdo ma dnes (nebo v dany den) svatek\nbirthdays    vypise narozeniny clenu serveru, kteri si je zapsali\nbirthday {add/remove} {day month} [year]    zapis narozenin do databaze, bez uvedeneho roku neoznami vek\n\nreminder {add/remove/list/syntax}    prikaz pro pridani pripominky, pro vice informaci 'reminder syntax'```\n\n**Automaticky delam tyto veci:**\n```C\nNahodny fakt    kazdych 7 hodin v case 8-21 hodin napisu do generalu nahodny fakt\nDenni zprava    kazdy den kolem obeda napisu:\n  v beznem dni jeho datum a kdo ma svatek\n  v pripade zapsanych narozenin v $birthdays je oznamim ostatnim\n  neco navic v pripade, ze jsou Vanoce nebo Silvestr\nNovy rok    protoze si toho urcite nikdo nevsimne, dam vam vedet kdy zacne Novy rok\nObnova stats    v pripade ztraty obnovim veskere statistiky```\n"
+text_github = "Muj zdrojovy kod je open source a najdes ho zde: https://github.com/horsecz/Bee-Storm-bot"
+admin_help = "**Prikazy vlastnika:**\n\n```C\nshutdown        (opatrne) vypne bota\nreboot      restartuje bota (nasilnou cestou)\nrefreshfacts    obnovi seznam nahodnych faktu\nrefreshdata      zacne automatickou obnovu databaze\nnowelcome        vypne uvitaci zpravu pri zapnuti bota\nfiles          odesle na discord pracovni soubory bota\nmsg_remove [count]        smaze poslednich 'count' zprav v kanale\nrandfactt     zapne/vypne pravidelna nahodna fakta```"
 
 #
 #### Random messages
@@ -216,6 +219,13 @@ antimod_text = [
 
 ################### Unsorted global variables ## TODO
 
+
+# nevypisuje zpravu pri zapnuti bota
+NO_INIT_MSG = True
+
+# mention-tag ownera pri spustemi v pripade ze dojde k neocekavanemu restartu
+RESTART_MENTION = False
+
 randfacts_enabled = False
 REBOOT_CMD = False
 
@@ -228,8 +238,7 @@ DB_UPDATE_DISABLED = False
 RF_STARTED_NOW = True
 
 timezone = pytz.timezone("Europe/Prague")
-now = datetime.now(timezone)
-runtime_start_date = now.strftime("%d/%m/%Y %H:%M:%S")
+runtime_start_date = bot_start_time.strftime("%d/%m/%Y %H:%M:%S")
 end_of_year = False
 daily_message_christmas = False
 daily_message_eoy = False

@@ -21,7 +21,7 @@ def find_top_pooper_count():
 
     return max
 
-async def refresh_order(discord_context):
+async def refresh_order():
     cnt_dict = {}
     penta_dict = {}
     multi_dict = {}

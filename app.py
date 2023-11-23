@@ -10,7 +10,8 @@ import logs
 import sys
 import bot_events
 import bot_commands
-from discord.ext import commands
+import bot_tasks
+from discord.ext import commands, tasks
 
 bot = globals.bot
 
@@ -37,6 +38,10 @@ async def on_command_error(ctx, error):
     await bot_events.on_command_error(ctx, error)
 
 # Bot commands declarations
+
+@bot.command()
+async def runtime(ctx):
+    await bot_commands.runtime(ctx)
 
 @bot.command()
 async def github(ctx):
@@ -71,6 +76,25 @@ async def sraniboard(ctx):
     await bot_commands.sraniboard(ctx)
 
 @bot.command()
+async def sranistats(ctx):
+    await bot_commands.sranistats(ctx)
+
+@bot.command()
+async def pentaboard(ctx):
+    await bot_commands.pentaboard(ctx)
+
+
+@bot.command()
+async def multiboard(ctx):
+    await bot_commands.multiboard(ctx)
+
+@bot.command()
+async def svatek(ctx, *args):
+    await bot_commands.svatek(ctx, *args)
+
+# Admin commands declarations
+
+@bot.command()
 @commands.is_owner()
 async def files(ctx):
     await bot_commands.files(ctx)
@@ -96,6 +120,21 @@ async def admin(ctx):
 @admin.error
 async def admin_error(ctx, error):
     await bot_commands.admin_command_error(ctx, error)
+
+@bot.command()
+@commands.is_owner()
+async def refreshdata(ctx):
+    await bot_commands.refreshdata(ctx)
+
+@refreshdata.error
+async def refreshdata_error(ctx, error):
+    await bot_commands.admin_command_error(ctx, error)
+
+# Tasks declarations
+
+@tasks.loop(hours=1)
+async def daily_message():
+    await bot_tasks.daily_message()
 
 # Run
 

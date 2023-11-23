@@ -11,6 +11,10 @@ import database
 import discord
 import random
 
+async def bot_recovery_warning(discord_context):
+    if globals.DB_RECOVERY_RUNNING:
+        await discord_context.send("Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt presna.")
+
 async def bot_predefined_message_reply(message):
     if message.author.bot:  # dont reply if the message was sent by bot
         return None
