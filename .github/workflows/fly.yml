@@ -9,7 +9,7 @@ env:
 
 jobs:
   deploy:
-    name: Deploy app Bee Storm
+    name: Deploy app Bee Storm to Fly.io hosting
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
