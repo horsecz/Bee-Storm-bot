@@ -23,4 +23,4 @@ primary_region = "cdg"
 
 [mounts]
   source = "bee-storm-data"
-  destination = "/data'
+  destination = "/data"
