@@ -1,7 +1,20 @@
 import globals
 import datetime
 import logs
+import math
+import utility
 
+# After some inactivity in main channel (#general), send some message(s)
+async def dead_room_revival():
+    channel = globals.bot.get_channel(globals.channel_general)
+    message = await channel.fetch_message(channel.last_message_id)
+    last_message_time = message.created_at
+    today = datetime.now()
+
+    if math.abs(last_message_time.hour - today.hour) > 18 or math.abs(last_message_time.day - today.day) > 1: # TODO not sure it will work properly
+        utility.bot_message_to_channel(globals.dead_room_messages, globals.channel_general)    # TODO not sure this will work
+
+# Daily periodical message - reports day, current date, and name day (CZ) 
 async def daily_message():
     time_now = datetime.now(globals.timezone)
     daily_message_additional = ""

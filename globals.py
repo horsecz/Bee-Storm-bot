@@ -214,7 +214,27 @@ antimod_text = [
     'Slovni spojeni takoveho druhu se zde nesmi pouzivat!',
     'Prestan takto mluvit!', 
     'Jeste jednou a vymazu te z databaze. :-)',
-    'Pravidlo 6 vole.'
+    'Pravidlo 6 vole.',
+    'Nerespektovani pravidel muze vest ke spatne efektivite pri vykonavani prikazu bota.',
+    'Budes potrestan!',
+    'VYSTORNUJU TE!'
+]
+dead_room_messages = [
+    'Dead room.',
+    'Vedeli jste, ze vysoka neaktivita na discordu je prvnim priznakem toho, ze jste venku a nesedite jen u PC?',
+    'X. pokus o oziveni tohoto chatu. Make chat alive again!',
+    'Co takhle ozivit tento chat?',
+    'Prijde mi, ze je tu mrtvo. Asi nahlasim dovolenou ...',
+    'Prvni, kdo pujde srat, dostane bod zdarma!',
+    'Nevim jak vy, ale ja si myslim, ze je tu celkem mrtvo.',
+    'Blizi se tornado!',
+    'Vzhledem k neaktivite serveru nadesel muj cas ... Sbohem svete!',
+    'Jelikoz je tu mrtvo, zmenil jsem ownera serveru.',
+    'Skacu!',
+    'Bezim!',
+    'Z mistni neaktivity se mi udelalo zle. Beru si sickday.',
+    'Uvaril jsem ... med. Nechce nekdo?',
+    'Gde chat'
 ]
 
 ################### Unsorted global variables ## TODO

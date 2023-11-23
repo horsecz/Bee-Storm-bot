@@ -136,6 +136,10 @@ async def refreshdata_error(ctx, error):
 async def daily_message():
     await bot_tasks.daily_message()
 
+@tasks.loop(hours=1)
+async def dead_room_revival():
+    await bot_tasks.dead_room_revival()
+
 # Run
 
 try:

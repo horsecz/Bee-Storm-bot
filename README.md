@@ -45,4 +45,7 @@ Bot is recording it's activites and storing them into logfile.
 Some things need to be completed or updated:
 - Help message
 - Admin commands message
-- Source code related: remove unused global variables, code logic refactor => refactor part 2
+- Source code related: remove unused global variables, code logic refactor, comments, etc. => refactor part 2
+
+New (upcoming) features:
+- Dead room revival
