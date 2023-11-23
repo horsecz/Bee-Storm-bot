@@ -20,7 +20,3 @@ primary_region = "cdg"
   memory = "1gb"
   cpus = 1
   processes = ["app"]
-
-[mounts]
-  source = "bee-storm-data"
-  destination = "/data"
