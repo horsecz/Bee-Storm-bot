@@ -43,7 +43,7 @@ async def refresh_order():
 async def check_board_changes(discord_context, auth_id, auth_name):
     old_srani_order = globals.srani_order
     result = None
-    await refresh_order(discord_context)
+    await refresh_order()
     i = 0
     j = 0
     while (i < len(old_srani_order)):
@@ -64,6 +64,7 @@ async def check_board_changes(discord_context, auth_id, auth_name):
             await utility.bot_message_to_channel("V zebricku ($sraniboard) se '" + str(auth_name) + "' posunul z **" + str(result[0]) + ". mista** na **" + str(result[1]) + ".**!", globals.channel_general)
     return result
 
+# Message is discord message object
 async def add_if_tag_in_message(message, author_id, bot_reply=False):
     if is_tag_in_message(globals.tag_srani, message.content): 
         await add(author_id)
@@ -94,6 +95,7 @@ async def add_if_tag_in_message(message, author_id, bot_reply=False):
         if bot_reply == True:
             await message.reply(random.choice(globals.tymovesrani + globals.legendarykill))
 
+# Message is string
 def is_any_tag_in_message(message):
     if globals.tag_srani in message or globals.tag_doublekill in message or globals.tag_triplekill in message:
         return True

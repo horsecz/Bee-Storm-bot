@@ -26,7 +26,7 @@ async def recovery(tag_channel):
     async for msg in tag_channel.history(limit=None):
         try:
             msg_cnt = msg_cnt + 1
-            await srani.add_if_tag_in_message(msg.content, msg.author.id)
+            await srani.add_if_tag_in_message(msg, msg.author.id)
             if srani.is_any_tag_in_message(msg.content):
                 total_poops = total_poops + 1
 
