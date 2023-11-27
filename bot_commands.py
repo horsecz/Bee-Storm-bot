@@ -113,10 +113,10 @@ async def sranistats(ctx):
 
 async def pentaboard(ctx):
     await utility.bot_recovery_warning(ctx)
-    if srani.find_top_pooper_count() > 0:
+    if srani.find_top_pooper_count() > 0 and len(globals.srani_order_penta) > 0:
         await srani.refresh_order()
         i = 0
-        while (i < 5):
+        while (i < len(globals.srani_order_penta) and i < 5):
             id = globals.srani_order_penta[i][0]
             name = await globals.bot.fetch_user(id)
             name = name.name
@@ -130,10 +130,10 @@ async def pentaboard(ctx):
 
 async def multiboard(ctx):
     await utility.bot_recovery_warning(ctx)
-    if srani.find_top_pooper_count() > 0:
+    if srani.find_top_pooper_count() > 0 and len(globals.srani_order_multi) > 0:
         await srani.refresh_order()
         i = 0
-        while (i < 5):
+        while (i < len(globals.srani_order_multi) and i < 5):
             id = globals.srani_order_multi[i][0]
             name = await globals.bot.fetch_user(id)
             name = name.name
