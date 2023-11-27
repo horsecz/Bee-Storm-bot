@@ -61,8 +61,9 @@ async def totalsrani(ctx):
         await ctx.send("Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt momentalne presna.")
 
 async def sraniboard(ctx):
+    await utility.bot_recovery_warning(ctx)
     if srani.find_top_pooper_count() > 0:
-        await srani.refresh_order(ctx)
+        await srani.refresh_order()
         i = 0
         text = ""
         while (i < 5):
@@ -76,11 +77,7 @@ async def sraniboard(ctx):
     else:
         await ctx.send("Na tomto serveru maji bohuzel vsichni zacpu nebo jeste nikdo nesral.")
 
-    if globals.DB_RECOVERY_RUNNING:
-        await ctx.send("Upozorneni: Probiha obnova databaze - data se mohou menit a nemusi byt momentalne presna.")
-
 async def sranistats(ctx):
-    await utility.bot_recovery_warning(ctx)
     await srani.refresh_order()
 
     name = str(ctx.message.author)
