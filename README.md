@@ -6,6 +6,10 @@ Discord.py Bot specifically made for Annus Team (or: Bee Storm) Discord server. 
 - language (made for Czech server, so he speaks Czech)
 - commands (for example command '$svatky' applies only for Czech calendar, Czech Republic)
 
+## Discontinued
+
+**Development is discontinued.** No one cares about this bot and I don't wanna do this anymore.
+
 ## Start
 Start with python (and modules discord, pytz) installed:
 `python app.py`
